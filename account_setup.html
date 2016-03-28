@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+
+<html lang = "en">
+	<head>
+		<meta charset = "UTF-8"/>
+		<meta name = "description" content = "This is the user account creation page."/>
+		<meta name = "keyword" content =  "nextstep account"/>
+		<meta name = "robots" content = "noindex, nofollow"/>
+		<base href = "file:///Users/David/Documents/Education/Computer%20Science/CSCI%20CAPSTONE/Next%20Step/Web%20Development/"/>
+		<link rel = "stylesheet" href = "account_setup_styles.css"/>
+		<link rel = "icon" href = "next_step_icon.ico"/>
+		<title>Account Creation</title>
+	</head>
+	
+	<body>
+	<div id = "wrapper">
+		<header>
+			<a href="file:///Users/David/Documents/Education/Computer%20Science/CSCI%20CAPSTONE/Next%20Step/Web%20Development/">
+			<img id="websiteLogo" alt="Next Step Logo" src="next_step_stickman.png" style="width:10%; height:15%;"/>
+			</a>
+			Next Step
+		</header>
+		
+		<nav id="horzNav">
+			<p>
+				<a href="google.com">Home</a>
+				<a href="google.com">Why Next Step</a>
+				<a href="google.com">About Us</a>
+				<a href="google.com">Login</a>
+			</p>
+		</nav>
+		
+		<main id="content">
+			<h2>User Account Creation Page</h2>
+			<hr>
+			<form method="GET" action="phpscript.php">
+				Name: <input type="text" name="name" size="30" maxlength="30"><br>
+				Address: <input type="text" name="address" size="50" maxlength="50"><br>
+				Preferred Major: <select name="preferred_major">
+  					<optgroup label="Marvel">
+   	 					<option value="spiderman">Spiderman</option>
+    					<option value="wolverine">Wolverine</option>
+  					</optgroup>
+  					<optgroup label="DC">
+    					<option value="flash">Flash</option>
+	   		 			<option value="batman">Batman</option>
+  					</optgroup>
+				</select><br>
+				Your Grade: <input type="number" name="grade" size="3" maxlength="3"><br><br>
+				-- SAT Scores --<br>
+				Reading: <input type="number" name="sat_reading_grade" size="3" maxlength="3">
+				Writing: <input type="number" name="sat_writing_grade" size="3" maxlength="3">
+				Math: <input type="number" name="sat_math_grade" size="3" maxlength="3"><br><br>
+				<fieldset>
+					<legend>Cost Preference</legend>
+						1<input type="radio" name="cost_preference" value="1">
+						2<input type="radio" name="cost_preference" value="2">
+						3<input type="radio" name="cost_preference" value="3">
+						4<input type="radio" name="cost_preference" value="4">
+						5<input type="radio" name="cost_preference" value="5">
+				</fieldset>
+				<fieldset>
+					<legend>Distance Preference</legend>
+						1<input type="radio" name="distance_preference" value="1">
+						2<input type="radio" name="distance_preference" value="2">
+						3<input type="radio" name="distance_preference" value="3">
+						4<input type="radio" name="distance_preference" value="4">
+						5<input type="radio" name="distance_preference" value="5">
+				</fieldset>
+				<fieldset>
+					<legend>Academic Preference</legend>
+						1<input type="radio" name="academic_preference" value="1">
+						2<input type="radio" name="academic_preference" value="2">
+						3<input type="radio" name="academic_preference" value="3">
+						4<input type="radio" name="academic_preference" value="4">
+						5<input type="radio" name="academic_preference" value="5">
+				</fieldset>
+			
+				<br><input type="reset" value="Reset">
+				<input type="submit" name="submit" value="Submit">
+			</form><br>
+		</main>
+		<footer>
+			<address>NextStepEmail@Address.com</address>
+			<small>copyright 2016</small>
+		</footer>
+	</div>
+	</body>
+</html>
