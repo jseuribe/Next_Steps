@@ -1,0 +1,40 @@
+a:hover { color: blue; }
+a:active { color: red; }
+a:visited { color: #989898; }
+
+body {
+	background: #ADD8E6;
+}
+
+div#wrapper{
+	margin:auto;
+	width:800px;
+}
+
+/* Treat the nav tag as a block element */
+#horzNav { 
+	display:block;
+	/* Padding Top, Right, Bottom, Left */
+	padding: 10px 20px 10px 0px;
+	background: black;
+}
+ 
+/* Remove underlines from links in the nav element */
+#horzNav a {
+	text-decoration: none;
+	padding: 0px 0px 0px 20px;
+	color: white;
+}
+
+main {
+	margin:auto;
+	background-color: rgba(255, 255, 255, 0.6);
+	/* Padding Top, Right, Bottom, Left */
+	padding: 10px 20px 20px 20px;
+}
+
+footer{
+	background: black;
+	color: white;
+	padding: 10px 10px 10px 10px; 
+}
