@@ -114,20 +114,65 @@
         				<select id="leftValues" size="5" multiple></select>
     				</div>
     				<div>
-        				<input type="button" id="btnLeft" value="&lt;&lt;" />
-        				<input type="button" id="btnRight" value="&gt;&gt;" />
+        				<input type="button" id="btnLeft" onclick="leftClick()" value="&lt;&lt;" />
+        				<input type="button" id="btnRight" onclick="rightClick()" value="&gt;&gt;" />
     				</div>
-    					<div>
-        					<select id="rightValues" size="4" multiple>
-            				<option>1</option>
-            				<option>2</option>
-            				<option>3</option>
+    				<div>
+        				<select id="rightValues" size="4" multiple>
+            				<option>Hunter</option>
+            				<option>Hogwarts</option>
+            				<option>HarryPotter</option>
+            				<option>Hen Tie</option>
+            				<option>Hunger</option>
+            				<option>Hunt</option>			
+            				<option>Baruch</option>
+            				<option>Brooklyn</option>
         					</select>
-        				<div>
-            				<input type="text" id="txtRight" />
-        				</div>
-    				</div>
-				</section><br>
+
+					<div>
+        		
+            			<input type="text" id="txtRight" list="search" />
+							<datalist id ="search">
+            					<option>Hunter</option>
+            					<option>Hogwarts</option>
+            					<option>HarryPotter</option>
+            					<option>Hen Tie</option>
+            					<option>Hunger</option>
+            					<option>Hunt</option>			
+            					<option>Baruch</option>
+            					<option>Brooklyn</option>
+							</datalist>
+        			</div>
+
+					<script>
+						function leftClick(){
+           				    var selectedValue = document.getElementById("rightValues");
+            				var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
+            				var insertValue = document.getElementById("leftValues");
+            				var option = document.createElement("option");
+           					option.text = selectedItem;
+            				insertValue.add(option);          
+            				selectedValue.remove(selectedValue.selectedIndex);  
+
+              				// //AutoComplete Text Bar
+              				// var srchText = document.getElementById("txtRight").value;
+              				// var option = document.createElement("option");
+              				// option = srchText; 
+              				// alert(option);         
+						}
+
+						function rightClick(){
+		    				var selectedValue = document.getElementById("leftValues");
+		    				var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
+		    				var insertValue = document.getElementById("rightValues");
+		    				var option = document.createElement("option");
+		    				option.text = selectedItem;
+		    				insertValue.add(option);			
+		    				selectedValue.remove(selectedValue.selectedIndex);
+						}
+					</script>
+    			</div>
+			</section><br>
 				Preferred Degree: <select name="preferred_degree">
 					<option value="degree_empty"></option>
 					<option value="degree_associate">Associate</option>
