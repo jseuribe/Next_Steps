@@ -1,3 +1,4 @@
+/* Change the color of links in the document based on events */
 a:hover { color: blue; }
 a:active { color: red; }
 a:visited { color: #989898; }
@@ -37,4 +38,22 @@ footer{
 	background: black;
 	color: white;
 	padding: 10px 10px 10px 10px; 
+}
+
+SELECT, INPUT[type="text"] {
+    width: 160px;
+    box-sizing: border-box;
+}
+SECTION {
+    padding: 8px;
+    background-color: #f0f0f0;
+    overflow: auto;
+}
+SECTION > DIV {
+    float: left;
+    padding: 4px;
+}
+SECTION > DIV + DIV {
+    width: 40px;
+    text-align: center;
 }
