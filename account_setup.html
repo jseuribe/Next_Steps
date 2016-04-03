@@ -127,12 +127,12 @@
             				<option>Hunt</option>			
             				<option>Baruch</option>
             				<option>Brooklyn</option>
-        					</select>
+        				</select>
 
 					<div>
         		
             			<input type="text" id="txtRight" list="search" />
-							<datalist id ="search">
+					<datalist id ="search">
             					<option>Hunter</option>
             					<option>Hogwarts</option>
             					<option>HarryPotter</option>
@@ -141,34 +141,34 @@
             					<option>Hunt</option>			
             					<option>Baruch</option>
             					<option>Brooklyn</option>
-							</datalist>
+					</datalist>
         			</div>
 
 					<script>
 						function leftClick(){
-           				    var selectedValue = document.getElementById("rightValues");
-            				var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
-            				var insertValue = document.getElementById("leftValues");
-            				var option = document.createElement("option");
-           					option.text = selectedItem;
-            				insertValue.add(option);          
-            				selectedValue.remove(selectedValue.selectedIndex);  
+           				        	var selectedValue = document.getElementById("rightValues");
+            						var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
+            						var insertValue = document.getElementById("leftValues");
+            						var option = document.createElement("option");
+           						option.text = selectedItem;
+            						insertValue.add(option);          
+            						selectedValue.remove(selectedValue.selectedIndex);  
 
-              				// //AutoComplete Text Bar
-              				// var srchText = document.getElementById("txtRight").value;
-              				// var option = document.createElement("option");
-              				// option = srchText; 
-              				// alert(option);         
+              						// //AutoComplete Text Bar
+              						// var srchText = document.getElementById("txtRight").value;
+              						// var option = document.createElement("option");
+              						// option = srchText; 
+              						// alert(option);         
 						}
 
 						function rightClick(){
-		    				var selectedValue = document.getElementById("leftValues");
-		    				var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
-		    				var insertValue = document.getElementById("rightValues");
-		    				var option = document.createElement("option");
-		    				option.text = selectedItem;
-		    				insertValue.add(option);			
-		    				selectedValue.remove(selectedValue.selectedIndex);
+		    					var selectedValue = document.getElementById("leftValues");
+		    					var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
+		    					var insertValue = document.getElementById("rightValues");
+		    					var option = document.createElement("option");
+		    					option.text = selectedItem;
+		    					insertValue.add(option);			
+		    					selectedValue.remove(selectedValue.selectedIndex);
 						}
 					</script>
     			</div>
