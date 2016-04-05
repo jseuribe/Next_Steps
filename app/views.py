@@ -34,7 +34,7 @@ def login():
 		else:
 			the_hash = extract_hashed_pass(user)#Retrieve the hashed_pass, user exists
 	if validate_login(form.password.data, the_hash):#determine if the login is correct!
-		user_obj = load_user(user)#get the user id
+		user_obj = load_user(user)#get the username
 			login_user(user_obj)
 			flash("Logged in successfully", category='success')
 			return redirect(request.args.get("next"))

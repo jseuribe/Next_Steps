@@ -14,12 +14,12 @@ def create_new_user(inp_username, inp_password, inp_email):
 #You should get the user_id from the context!
 
 @lm.user_loader
-def load_user(inp_id):
-	u = User.objects(user_id = inp_id)
+def load_user(inp_username):
+	u = User.objects(username = inp_username)
 
 	if not u:
 		return None
-	return u[0].user_id
+	return u[0].username
 
 def extract_hashed_pw(queryList):
 	if not queryList:
@@ -28,4 +28,3 @@ def extract_hashed_pw(queryList):
 		return queryList[0].hashed_pass
 def validate_login(password, password_hash):
 	return hashpw(password, password_hash) == password_hash
-
