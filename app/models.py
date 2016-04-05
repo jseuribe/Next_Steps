@@ -42,4 +42,3 @@ class User(db.EmbeddedDocument):
 	}
 	#Eventually, we should add some other fields here (grades, other parameters, etc.)
 
-

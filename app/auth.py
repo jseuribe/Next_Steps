@@ -21,5 +21,5 @@ def load_user(inp_id):
 		return None
 	return User(u['user_id'])
 
-def validate_login(password_hash, password):
+def validate_login(password, password_hash):
 	return hashpw(password, password_hash) == password_hash
