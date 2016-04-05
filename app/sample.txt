@@ -1,0 +1,10 @@
+
+high_degree = input("Enter the user_id you're looking for")
+
+query_dict = { "HIGH_DEGREE":high_degree }
+
+cursor = db.schools.find(query_dict)
+
+
+for document in cursor:
+	

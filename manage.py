@@ -1,10 +1,18 @@
-#!/usr/bin/env python
-import os
-import sys
+import os, sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from flask.ext.script import Manager, Server
+from app import app
+
+manager = Manager(app)
+
+#Turn on debugger by default and reloader
+
+manager.add_command("runserver", Server(
+	use_debugger = True,
+	use_reloader = True,
+	host = '127.0.0.2')
+)
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "nextstep.settings")
-
-    from django.core.management import execute_from_command_line
-
-    execute_from_command_line(sys.argv)
+	manager.run()
