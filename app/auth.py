@@ -19,7 +19,13 @@ def load_user(inp_id):
 
 	if not u:
 		return None
-	return User(u['user_id'])
+	return u[0].user_id
 
+def extract_hashed_pw(queryList):
+	if not queryList:
+		return None
+	else:
+		return queryList[0].hashed_pass
 def validate_login(password, password_hash):
 	return hashpw(password, password_hash) == password_hash
+

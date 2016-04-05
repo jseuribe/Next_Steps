@@ -2,7 +2,7 @@ from flask import request, url_for, render_template, flash, redirect
 from app import app, db
 from .forms import LoginForm
 from models import User
-from auth import validate_login
+from auth import load_user, extract_hashed_pw, validate_login
 
 @app.route('/')
 @app.route('/index')
@@ -30,14 +30,19 @@ def login():
 	if request.method == 'POST' and form.validate_on_submit():
 		user = User.objects(username=form.username.data)
 		if not user:
-			print("Something has gone horribly wrong")
+			print("Something has gone horribly wrong")#TERMINATE EXECUTION HERE, Non-Existant user
 		else:
-			the_hash = user.hashed_pass#Retrieve the hashed_pass
-	if user and validate_login(form.password.data, the_hash):
-		user_obj = user.user_id#get the user id
+			the_hash = extract_hashed_pass(user)#Retrieve the hashed_pass, user exists
+	if validate_login(form.password.data, the_hash):#determine if the login is correct!
+		user_obj = load_user(user)#get the user id
 			login_user(user_obj)
 			flash("Logged in successfully", category='success')
 			return redirect(request.args.get("next"))
 	flash("Wrong username or password", category='error')
 
 	return(render_template('login.html', title='login', form=form))
+
+@app.route('/logout')
+def logout():
+	logout_user()
+	return redirect(url_for('login'))

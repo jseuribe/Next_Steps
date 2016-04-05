@@ -37,8 +37,22 @@ class User(db.EmbeddedDocument):
 	slug = db.StringField(max_length=255, required=True)#????
 	hashed_pass = db.StringField(max_length=255, required)
 
+
 	meta = {#To declare admin users
 		'allow_inheritance': True
 	}
+
+	def is_authenticated(self):
+		return True
+	def is_active(self):
+
+	def is_anonymous(self):
+		return False
+
+	def get_id(self):
+		return self.username
+
+	def validate_login(password, password_hash):
+		return hashpw(password, password_hash) == password_hash
 	#Eventually, we should add some other fields here (grades, other parameters, etc.)
 
