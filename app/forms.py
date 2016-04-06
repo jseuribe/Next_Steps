@@ -9,5 +9,5 @@ class LoginForm(Form):
 
 class RegisterForm(Form):
 	new_username = StringField('username', validators=[DataRequired()])
-	new_email = StringField(max_length=255, required=True)
+	new_email = StringField('email', validators=[DataRequired()])
 	new_password = PasswordField('Password', [validators.Required(), validators.EqualTo('confirm', message='Passwords must match.')])

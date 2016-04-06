@@ -34,7 +34,7 @@ class User(db.EmbeddedDocument):
 	created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
 	email = db.EmailField(max_length=255, required=True)
 	username = db.StringField(max_length=255, required=True)
-	slug = db.StringField(max_length=255, required=True)#????
+	#slug = db.StringField(max_length=255, required=True)#????
 	hashed_pass = db.StringField(max_length=255, required=True)
 
 	meta = {#To declare admin users

@@ -27,7 +27,7 @@ def register():
 	form = RegisterForm()
 	response = render_template('registration.html', title='title', form=form)
 	return response
-	
+
 @app.route('/')
 @app.route('/login', methods=['GET'])
 def login():
@@ -60,3 +60,33 @@ def login_confirm():
 def logout():
 	logout_user()
 	return redirect(url_for('login'))
+
+@app.route('/register/confirm', methods=['GET', 'POST'])
+def register_confirm():
+	form = RegisterForm()
+	new_user = User(username=form.new_username.data, email=form.new_email.data, hashed_pass=hashpw(form.new_password.data, gensalt()))
+	new_user.save()#Save the user after populating it with the new information
+
+	u_obj = User.load_user(form.new_username.data)
+	if not u_obj:
+		print("CATASTROPHIC ERROR")
+		return redirect('registration.html', title='title', form=RegisterForm())
+	else:
+		login_user(u_obj)
+		flash("Logged in for the first time!", category='success')
+
+	#Begin bad validation
+	user = {'nickname': form.new_username.data} #display a new name!
+	posts = [
+		{
+			'author': {'nickname': 'John'},
+			'body':	'Beautiful day in portland!'
+		},
+
+		{
+			'author': {'nickname': 'Susan'},
+			'body': 'The Avengers movie was so cool! Shame about BvS!'
+		}
+	]
+	#End bad validation
+	return render_template('index.html', title='LoggedIn', user=user, post=posts)
