@@ -1,0 +1,16 @@
+--Generic Page that shows all the routes--
+~~Add routes here as you go along~~
+=>Home
+@app.route('/index')@app.route('/logout')
+
+=>Registration
+@app.route('/register', methods=['GET'])
+
+=>Login
+@app.route('/login', methods=['GET'])
+==>New User
+@app.route('/login/confirm', methods=['GET', 'POST'])
+
+==>Logout
+@app.route('/logout')
+
