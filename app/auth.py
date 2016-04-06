@@ -13,12 +13,12 @@ def create_new_user(inp_username, inp_password, inp_email):
 
 #You should get the user_id from the context!
 
-def extract_hashed_pw(queryList):
-	if not queryList:
-		return None
-	else:
-		return queryList[0].hashed_pass
-def validate_login(password, password_hash):
+def extract_hashed_pw(query):
+	return query.hashed_pass
+
+def validate_login(password, password_hash, user):
+	print(user.username)
+	print("ATTEMPT: ", password, ' HASH: ', password_hash)
 	return hashpw(password, password_hash) == password_hash
 
 '''

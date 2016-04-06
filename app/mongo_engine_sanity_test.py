@@ -17,10 +17,9 @@ class User(Document):
 
 vessel = User.objects(user_id=612)
 
+u = User()
 if not vessel:
 	print("no results found")
 else:
-	for result in vessel:
-		u = User()
-		u.set(result)
-		u.cool_spot()
+	u = vessel[0]
+	print(u.user_id)

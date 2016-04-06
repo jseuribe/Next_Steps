@@ -3,7 +3,7 @@ from flask import request, url_for, render_template, flash, redirect
 from .forms import LoginForm, RegisterForm
 from models import User
 from auth import *
-import unicodedata#for the pesky unicode stuff
+from utils import normalize_from_unicode#for the pesky unicode stuff
 
 @app.route('/')
 @app.route('/index')
@@ -40,19 +40,27 @@ def login():
 @app.route('/login/confirm', methods=['GET', 'POST'])
 #The parameters under methods specify what HTML reponses to accept
 def login_confirm():
+
 	form = LoginForm()
 	the_hash = '' #the good stuff
-	if request.method == 'POST' and form.validate_on_submit():
-		user = User.objects(username=form.username.data)
-		if not user:
+
+	if request.method == 'POST':
+		user = User()
+		user_set = User.objects(username=normalize_from_unicode(form.username.data))
+		print("VALIDATING EXISTANCE HOLD ON")
+		if not user_set:
 			print("Something has gone horribly wrong")#TERMINATE EXECUTION HERE, Non-Existant user
 		else:
-			the_hash = extract_hashed_pass(user)#Retrieve the hashed_pass, user exists
-	if validate_login(form.password.data, the_hash):#determine if the login is correct!
-		user_obj = User.load_user(user)#get the username
-		login_user(user_obj)
+			user = user_set[0]
+			print("USERNAME")
+			print(user.username)
+			the_hash = user.hashed_pass#Retrieve the hashed_pass, user exists
+
+	if validate_login(normalize_from_unicode(form.password.data), normalize_from_unicode(the_hash), user):#determine if the login is correct!
+		login_user(user, remember='no')
 		flash("Logged in successfully", category='success')
-		return redirect(request.args.get("next"))
+		return render_template('success.html')
+
 	flash("Wrong username or password", category='error')
 
 	return(render_template('login.html', form))
@@ -65,10 +73,10 @@ def logout():
 @app.route('/register/confirm', methods=['GET', 'POST'])
 def register_confirm():
 	form = RegisterForm()
-	normalized_pass = unicodedata.normalize('NFKD', form.new_password.data).encode('ascii', 'ignore')
+	normalized_pass = normalize_from_unicode(form.new_password.data)
 	new_user = User()
 
-	normalized_name = unicodedata.normalize('NFKD', form.new_username.data).encode('ascii', 'ignore')
+	normalized_name = normalize_from_unicode(form.new_username.data)
 
 	new_user.username = form.new_username.data
 	new_user.email = form.new_email.data
@@ -81,7 +89,7 @@ def register_confirm():
 		print("CATASTROPHIC ERROR")
 		return redirect('registration.html', title='title', form=RegisterForm())
 	else:
-		unicode_vessel = unicodedata.normalize('NFKD', does_user_exist_now[0].username).encode('ascii', 'ignore')
+		unicode_vessel = normalize_from_unicode(does_user_exist_now[0].username)
 		retrieved_name = unicode_vessel
 		login_user(new_user, remember='no')
 		flash("Logged in for the first time!", category='success')
