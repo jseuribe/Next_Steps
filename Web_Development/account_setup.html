@@ -218,7 +218,89 @@
 								<hr>
 							</div> <!-- /.col-lg-10 -->
 							<div class="col-lg-8 col-lg-offset-2">
-								<label>Preferred Majors</label>
+								Preferred Major: <select name="preferred_major">
+				</select><br><br>
+				<section class="container">
+    				<div>
+        				<select id="leftValues" size="5" multiple></select>
+    				</div>
+    				<div>
+        				<input type="button" id="btnLeft" onclick="leftClick()" value="&lt;&lt;" />
+        				<input type="button" id="btnRight" onclick="rightClick()" value="&gt;&gt;" />
+        				<input type="button" id="btnInput" onclick="inputClick()" value="&lt;" />
+    				</div>
+    				<div>
+        				<select id="rightValues" size="4" multiple>
+        				</select>
+
+					<div>
+        		
+            			<input type="text" id="txtRight" list="search" />
+					<datalist id ="search">
+            					<option>ComputerScience</option>
+            					<option>Homelessness</option>
+            					<option>Math</option>
+            					<option>Pastafarian</option>
+            					<option>LiberalArts</option>
+					</datalist>
+        			</div>
+
+					<script language ="JavaScript" scrc = "jquery-1.3.2.min.js"></script>
+					<script language="JavaScript" src="jquery.autocomplete.min.js" ></script>
+					<script>
+						var majors = ["ComputerScience", "Homelessness","Math","Pastafarian","LiberalArts"];
+						majors.sort();
+						var appendList = document.getElementById("rightValues");
+
+						for(var i = 0; i < majors.length; i++){
+							var opt = document.createElement("option");
+							opt.text = majors[i];
+							appendList.appendChild(opt);
+						}
+						function leftClick(){
+           				    var selectedValue = document.getElementById("rightValues");
+            				var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
+            				var insertValue = document.getElementById("leftValues");
+            				var option = document.createElement("option");
+           					option.text = selectedItem;
+            				insertValue.add(option);          
+            				selectedValue.remove(selectedValue.selectedIndex);  
+						}
+
+						function rightClick(){
+		    				var selectedValue = document.getElementById("leftValues");
+		    				var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
+		    				var insertValue = document.getElementById("rightValues");
+		    				var option = document.createElement("option");
+		    				option.text = selectedItem;
+		    				insertValue.add(option);			
+		    				selectedValue.remove(selectedValue.selectedIndex);
+						}					
+						function inputClick(){
+							var getText = document.getElementById("txtRight").value;
+              				var inputLeft = document.getElementById("leftValues");
+              				var inputRight = document.getElementById("rightValues");
+              				var txt = document.createElement("option");
+
+              				for(var i = 0; i < majors.length; i++){
+              					if(getText == majors[i]){
+              						txt.text = majors[i];
+              						inputLeft.appendChild(txt);
+              						document.getElementById("txtRight").value = '';
+              						//delete majors[i]; //would probably need majors[i], refrain from deleting
+ 									var k = inputRight.options.length;
+              						for(var j = 0; j < k; ++j ){
+              							if(inputRight.options[j].innerHTML === getText){
+              								inputRight.selectedIndex = j;
+              								inputRight.remove(inputRight.selectedIndex);
+              							}
+
+              						}
+              						break;
+              					}
+              				}
+						}
+					</script>
 								<form>
 									<div class="form-group">
 										<label>Preferred Degree</label>
