@@ -22,9 +22,17 @@ def index():
 	return render_template('index.html', title='Home', user=user, posts=posts)
 
 
-@app.route('/login', methods=['GET', 'POST'])
-#The parameters under methods specify what HTML reponses to accept
+@app.route('/')
+@app.route('/login', methods=['GET'])
 def login():
+	form = LoginForm()
+	response = render_template('login.html', title='title', form=form)
+	return response
+
+@app.route('/')
+@app.route('/login/confirm', methods=['GET', 'POST'])
+#The parameters under methods specify what HTML reponses to accept
+def login_confirm():
 	form = LoginForm()
 	the_hash = '' #the good stuff
 	if request.method == 'POST' and form.validate_on_submit():
@@ -40,7 +48,7 @@ def login():
 		return redirect(request.args.get("next"))
 	flash("Wrong username or password", category='error')
 
-	return(render_template('login.html', title='login', form=form))
+	return(render_template('login.html', form))
 
 @app.route('/logout')
 def logout():

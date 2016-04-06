@@ -2,12 +2,12 @@
 
 {% block content %}
 	<h1> Sign In </h1>
-	<form action="/login" method="post" name="login">
+	<form action="/login/confirm" method="post" name="login">
 
 	{{form.hidden_tag()}}
 	<p>
-		Please enter your email: <br>
-		{{form.email(size=80)}} <br>
+		Please enter your username: <br>
+		{{form.username(size=80)}} <br>
 		Password: <br>
 		{{form.password(size=80)}} <br>
 	</p>
