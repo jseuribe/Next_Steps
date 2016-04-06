@@ -1,13 +1,14 @@
 from app import app, db
 from flask import request, url_for, render_template, flash, redirect
 from .forms import LoginForm, RegisterForm
-from models import *
+from models import User
 from auth import *
+import unicodedata#for the pesky unicode stuff
 
 @app.route('/')
 @app.route('/index')
 def index():
-	user = {'nickname': 'Miguel'} #fake user
+	vessel = {'nickname': 'Miguel'} #fake user
 	posts = [
 		{
 			'author': {'nickname': 'John'},
@@ -19,7 +20,7 @@ def index():
 			'body': 'The Avengers movie was so cool! Shame about BvS!'
 		}
 	]
-	return render_template('index.html', title='Home', user=user, posts=posts)
+	return render_template('index.html', title='Home', user=vessel, posts=posts)
 
 @app.route('/')
 @app.route('/register', methods=['GET'])
@@ -64,19 +65,29 @@ def logout():
 @app.route('/register/confirm', methods=['GET', 'POST'])
 def register_confirm():
 	form = RegisterForm()
-	new_user = User(username=form.new_username.data, email=form.new_email.data, hashed_pass=hashpw(form.new_password.data, gensalt()))
+	normalized_pass = unicodedata.normalize('NFKD', form.new_password.data).encode('ascii', 'ignore')
+	new_user = User()
+
+	normalized_name = unicodedata.normalize('NFKD', form.new_username.data).encode('ascii', 'ignore')
+
+	new_user.username = form.new_username.data
+	new_user.email = form.new_email.data
+	new_user.hashed_pass = hashpw(normalized_pass, gensalt())
 	new_user.save()#Save the user after populating it with the new information
 
-	u_obj = User.load_user(form.new_username.data)
-	if not u_obj:
+	does_user_exist_now = User.objects(username=normalized_name)
+	retrieved_name = ''
+	if not does_user_exist_now:
 		print("CATASTROPHIC ERROR")
 		return redirect('registration.html', title='title', form=RegisterForm())
 	else:
-		login_user(u_obj)
+		unicode_vessel = unicodedata.normalize('NFKD', does_user_exist_now[0].username).encode('ascii', 'ignore')
+		retrieved_name = unicode_vessel
+		login_user(new_user, remember='no')
 		flash("Logged in for the first time!", category='success')
 
 	#Begin bad validation
-	user = {'nickname': form.new_username.data} #display a new name!
+	user = {'nickname': retrieved_name} #display a new name!
 	posts = [
 		{
 			'author': {'nickname': 'John'},

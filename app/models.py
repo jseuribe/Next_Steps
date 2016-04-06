@@ -29,7 +29,7 @@ class Post(db.Document):
 	}
 '''
 
-class User(db.EmbeddedDocument):
+class User(db.Document):
 	user_id = db.IntField(min_value=0, max_value=9001)
 	created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
 	email = db.EmailField(max_length=255, required=True)
@@ -41,12 +41,13 @@ class User(db.EmbeddedDocument):
 		'allow_inheritance': True
 	}
 
-	@lm.user_loader
-	def load_user(inp_username):
-		u = User.objects(username = inp_username)
+	def is_authenticated(self):
+		return True
 
-		if not u:
-			return None
-		return u[0].username
+	def is_active(self):
+		return True
+
+	def get_id(self):
+		return self.username
 
 	#Eventually, we should add some other fields here (grades, other parameters, etc.)
