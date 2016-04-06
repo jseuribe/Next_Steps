@@ -1,8 +1,8 @@
-from flask import request, url_for, render_template, flash, redirect
 from app import app, db
+from flask import request, url_for, render_template, flash, redirect
 from .forms import LoginForm
-from models import User
-from auth import load_user, extract_hashed_pw, validate_login
+from models import *
+from auth import *
 
 @app.route('/')
 @app.route('/index')
@@ -34,10 +34,10 @@ def login():
 		else:
 			the_hash = extract_hashed_pass(user)#Retrieve the hashed_pass, user exists
 	if validate_login(form.password.data, the_hash):#determine if the login is correct!
-		user_obj = load_user(user)#get the username
-			login_user(user_obj)
-			flash("Logged in successfully", category='success')
-			return redirect(request.args.get("next"))
+		user_obj = User.load_user(user)#get the username
+		login_user(user_obj)
+		flash("Logged in successfully", category='success')
+		return redirect(request.args.get("next"))
 	flash("Wrong username or password", category='error')
 
 	return(render_template('login.html', title='login', form=form))

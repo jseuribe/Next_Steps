@@ -1,6 +1,6 @@
 import datetime
 from flask import url_for
-from app import db
+from app import db, lm
 from bcrypt import hashpw, gensalt
 
 '''
@@ -35,24 +35,18 @@ class User(db.EmbeddedDocument):
 	email = db.EmailField(max_length=255, required=True)
 	username = db.StringField(max_length=255, required=True)
 	slug = db.StringField(max_length=255, required=True)#????
-	hashed_pass = db.StringField(max_length=255, required)
-
+	hashed_pass = db.StringField(max_length=255, required=True)
 
 	meta = {#To declare admin users
 		'allow_inheritance': True
 	}
 
-	def is_authenticated(self):
-		return True
-	def is_active(self):
+	@lm.user_loader
+	def load_user(inp_username):
+		u = User.objects(username = inp_username)
 
-	def is_anonymous(self):
-		return False
+		if not u:
+			return None
+		return u[0].username
 
-	def get_id(self):
-		return self.username
-
-	def validate_login(password, password_hash):
-		return hashpw(password, password_hash) == password_hash
 	#Eventually, we should add some other fields here (grades, other parameters, etc.)
-
