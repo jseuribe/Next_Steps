@@ -15,6 +15,19 @@ def load_user(inp_username):
 	return u[0].username
 
 def login_required(f):
+	'''
+	Redirects to the log-in screen if the key "user_id" is not found
+	Otherwise, hands control to the function it wrapped.
+
+	EX:
+
+	@login_required#This will execute if user_id exists
+	def function(para,meters):
+		...
+		...
+
+	otherwise, you get redirected to the login page
+	'''
 	@wraps(f)
 	def wrap(*args, **kwargs):
 		if 'user_id' in session:
