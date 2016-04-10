@@ -9,6 +9,8 @@
 	<body>
 		<div> Microblog: <a href="/login">Home</a></div>
 		<div> Register!  <a href='/register'>Home</a></div>
+		<div> Logged in users only: <a href='/settings'>Settings</a></div>
+		<div> LogOut <a href="/logout">LogOut </a></div>
 		<hr>
 		{% with messages =  get_flashed_messages() %}
 			{% if messages %}

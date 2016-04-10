@@ -1,9 +1,15 @@
 from app import app, db
-from flask import request, url_for, render_template, flash, redirect
+from flask import g, request, url_for, render_template, flash, redirect
 from .forms import LoginForm, RegisterForm
 from models import User
 from auth import *
 from utils import normalize_from_unicode#for the pesky unicode stuff
+from flask.ext.login import current_user
+
+@app.before_request
+def before_request():
+	g.user = current_user
+
 
 @app.route('/')
 @app.route('/index')
@@ -21,6 +27,11 @@ def index():
 		}
 	]
 	return render_template('index.html', title='Home', user=vessel, posts=posts)
+
+@app.route('/settings')
+@login_required
+def settings():
+	return render_template('settings.html')
 
 @app.route('/')
 @app.route('/register', methods=['GET'])
@@ -65,7 +76,9 @@ def login_confirm():
 
 	return(render_template('login.html', form))
 
+@app.route('/')
 @app.route('/logout')
+@login_required
 def logout():
 	logout_user()
 	return redirect(url_for('login'))

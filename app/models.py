@@ -2,6 +2,8 @@ import datetime
 from flask import url_for
 from app import db, lm
 from bcrypt import hashpw, gensalt
+from flask.ext.login import UserMixin
+from utils import normalize_from_unicode
 
 '''
 class Comment(db.EmbeddedDocument):
@@ -47,7 +49,13 @@ class User(db.Document):
 	def is_active(self):
 		return True
 
+	def is_anonymous(self):
+		return False
+
 	def get_id(self):
-		return self.username
+		try:
+			return unicode(self.username)
+		except NameError:
+			return normalize_from_unicode(self.username)
 
 	#Eventually, we should add some other fields here (grades, other parameters, etc.)
