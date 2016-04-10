@@ -18,6 +18,7 @@ def login_required(f):
 	@wraps(f)
 	def wrap(*args, **kwargs):
 		if 'user_id' in session:
+			flash('Hello, ', session['user_id'])
 			return f(*args, **kwargs)
 		else:
 			flash('Please login!')

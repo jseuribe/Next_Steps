@@ -61,6 +61,8 @@ def login_confirm():
 		print("VALIDATING EXISTANCE HOLD ON")
 		if not user_set:
 			print("Something has gone horribly wrong")#TERMINATE EXECUTION HERE, Non-Existant user
+			flash('Invalid user!')
+			return redirect(url_for('login'))
 		else:
 			user = user_set[0]
 			print("USERNAME")
