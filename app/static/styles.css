@@ -63,21 +63,21 @@ body {
 		background-color: #777;
 	}
 	.slide1{
-		background-image: url("img/graduates_success.png");
+		background-image: url('img/graduates_success.png');
 		height: 600px;
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
 	}
 	.slide2{
-		background-image: url("img/arms_up.png");
+		background-image: url('img/arms_up.png');
 		height: 600px;
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
 	}
 	.slide3{
-		background-image: url("img/next_step_slogan.png");
+		background-image: url('img/next_step_slogan.png');
 		height: 600px;
 		background-repeat: no-repeat;
 		background-position: center;
