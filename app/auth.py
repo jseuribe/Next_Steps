@@ -52,12 +52,3 @@ def validate_login(password, password_hash, user):
 	print(user.username)
 	print("ATTEMPT: ", password, ' HASH: ', password_hash)
 	return hashpw(password, password_hash) == password_hash
-
-'''
-def load_user(inp_username):
-	u = User.objects(username = inp_username)
-
-	if not u:
-		return None
-	return u[0].username
-'''

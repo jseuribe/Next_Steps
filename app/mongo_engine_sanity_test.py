@@ -23,3 +23,15 @@ if not vessel:
 else:
 	u = vessel[0]
 	print(u.user_id)
+
+'''
+User retrieval guide:
+
+user_list = User.objects(user_id=612)
+
+user = user_list[0]
+
+user.save()
+
+
+'''

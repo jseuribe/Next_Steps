@@ -26,7 +26,7 @@ def index():
 			'body': 'The Avengers movie was so cool! Shame about BvS!'
 		}
 	]
-	return render_template('index.html', title='Home', user=vessel, posts=posts)
+	return render_template('Web_Development/homepage.html', title='Home', user=vessel, posts=posts)
 
 @app.route('/settings')
 @login_required
