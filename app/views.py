@@ -129,3 +129,25 @@ def register_confirm():
 	]
 	#End bad validation
 	return render_template('index.html', title='LoggedIn', user=user, post=posts)
+
+'''
+If the html page that uses the action "account_setup"
+calls this method with the form:
+
+<form action='/account_setup' method='POST'>
+	<label for ='FIELD1'>FIELD1: </label>
+	<input type='text' name='FIELD1" /> <br />
+	<input type='submit'/>
+</form>
+
+Then your method should look like:
+
+@app.route('/account_setup', methods=['POST'])
+def account_setup():
+	FIELD1 = request.form['FIELD1'] #Should obtain FIELD1
+
+'''
+@app.route('/')
+@app.route('/account_setup')
+def account_setup():
+	return True
