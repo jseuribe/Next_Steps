@@ -28,6 +28,11 @@ def index():
 	]
 	return render_template('Web_Development/homepage.html', title='Home', user=vessel, posts=posts)
 
+@app.route('/')
+@app.route('/about')
+def return_about():
+	return render_template('Web_Development/about.html')
+	
 @app.route('/settings')
 @login_required
 def settings():
