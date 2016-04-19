@@ -7,9 +7,9 @@
 	<meta name = "robots" content = "noindex, nofollow"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width = device-width, initial-scale = 1">
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}">
+	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='bootstrap.css')}}">
 	<!-- Custom styles for this template -->
-    <link href="{{url_for('static',filename='styles.css')}}" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles.css')}}" >
 	<title>About Next Step</title>
 </head>
 <body>
@@ -24,14 +24,14 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand pull-left" href="homepage.html" aria-hidden="true"><img src="next_step_logo.png"></a>
+						<a class="navbar-brand pull-left" href='{{url_for("index")}}' aria-hidden="true"><img src="{{ url_for('static',filename='img/next_step_logo.png')}}"></a>
 					</div> <!-- /.navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="homepage.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home<span class="sr-only">(current)</span></a></li>
-							<li><a href="about.html"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-							<li><a href="contact_us.html"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact us</a></li>
-							<li><a href="login.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
+							<li class="active"><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home<span class="sr-only">(current)</span></a></li>
+							<li><a href="{{url_for('return_about')}}"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+							<li><a href="{{url_for('return_contact')}}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact us</a></li>
+							<li><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
 						</ul>
 						<form class="navbar-form navbar-right" role="search">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -58,24 +58,24 @@
 			<div class="item active">
 				<div class="slide1"></div>
 				<!--
-				<img class="first-slide" src="graduates_success.png" alt="First slide"> -->
+				<img class="first-slide" src="{{url_for('static',filename='img/graduates_success.png')}}" alt="First slide"> -->
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>Welcome to Next Step!</h1>
 						<p>Next Step is a simple web application dedicated to help prospective college students find the right college to attend.</p>
-						<p><a class="btn btn-lg btn-primary" href="account_setup.html" role="button">Sign up today!</a></p>
+						<p><a class="btn btn-lg btn-primary" href="{{url_for('return_account_setup')}}" role="button">Sign up today!</a></p>
 					</div> <!-- /.carousel-caption -->
 				</div> <!-- /.container -->
 			</div> <!-- /.item active -->
 			<div class="item">
 				<div class="slide2"></div>
 				<!--
-				<img class="second-slide" src="arms_up.png" alt="Second slide"> -->
+				<img class="second-slide" src="{{url_for('static',filename='arms_up.png')}}" alt="Second slide"> -->
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>Simplify your choices!</h1>
 						<p>We understand how difficult it is to find the right college. Discover our inspiration and features to make this an easier process for you!</p>
-						<p><a class="btn btn-lg btn-primary" href="about.html" role="button">Learn more</a></p>
+						<p><a class="btn btn-lg btn-primary" href="{{url_for('return_about')}}" role="button">Learn more</a></p>
 					</div> <!-- /.carousel-caption -->
 				</div> <!-- /.container -->
 			</div> <!-- /.item -->
@@ -99,6 +99,8 @@
 		</footer>
 	</div> <!-- /.container -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
+	<script src="{{ url_for( 'static',filename='js/bootstrap.min.js' ) }}"></script>
+
+<a href='/playground'>PLAYGROUND_DEBUG_</a>
 </body>
 </html>
