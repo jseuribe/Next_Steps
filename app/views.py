@@ -11,6 +11,10 @@ def before_request():
 	g.user = current_user
 
 
+'''
+Home page links! Anything that you can get to from the homepage is here
+Includes: Homepage, Contacts, About, and Account_Setup.
+'''
 @app.route('/')
 @app.route('/index')
 def index():
@@ -18,21 +22,36 @@ def index():
 	posts = [
 		{
 			'author': {'nickname': 'John'},
-			'body':	'Beautiful day in portland!'
+			'body':	'Beautiful day in City 17!'
 		},
 
 		{
 			'author': {'nickname': 'Susan'},
-			'body': 'The Avengers movie was so cool! Shame about BvS!'
+			'body': 'The Avengers movie was so cool! Shame about Batman Vs. Superman!'
 		}
 	]
 	return render_template('Web_Development/homepage.html', title='Home', user=vessel, posts=posts)
 
 @app.route('/')
+@app.route('/contacts_page')
+def return_contact():
+	return render_template('Web_Development/contact_us.html')
+
+@app.route('/')
 @app.route('/about')
 def return_about():
 	return render_template('Web_Development/about.html')
-	
+
+@app.route('/')
+@app.route('/account_setup')
+def return_account_setup():
+	return render_template('Web_Development/account_setup.html')
+
+@app.route('/')
+@app.route('/return_log')
+def return_log():
+	return render_template('Web_Development/login.html')
+
 @app.route('/settings')
 @login_required
 def settings():
@@ -45,6 +64,11 @@ def register():
 	response = render_template('registration.html', title='title', form=form)
 	return response
 
+'''
+Beyond this point are the //LOGOUT FUNCTIONS//
+You'll find:
+login(), login_confirm(), logout()
+'''
 @app.route('/')
 @app.route('/login', methods=['GET'])
 def login():
@@ -99,8 +123,23 @@ def register_confirm():
 	normalized_name = normalize_from_unicode(form.new_username.data)
 
 	new_user.username = form.new_username.data
+	'''
+	if not new_user.username:
+		flash("Invalid username", category='success')
+		return render_template('{{url_for("register")}}', title='title', form=RegisterForm())
+	'''
 	new_user.email = form.new_email.data
+	'''
+	if not new_user.email:
+		flash("Invalid email", category='success')
+		return render_template('register.html', title='title', form=RegisterForm())
+	'''
 	new_user.hashed_pass = hashpw(normalized_pass, gensalt())
+	'''
+	if not new_user.hashed_pass:
+		flash("Invalid password", category='success')
+		return render_template('{{url_for("register")}}', title='title', form=RegisterForm())
+	'''
 	new_user.save()#Save the user after populating it with the new information
 
 	does_user_exist_now = User.objects(username=normalized_name)
@@ -151,3 +190,97 @@ def account_setup():
 @app.route('/account_setup')
 def account_setup():
 	return True
+
+'''
+PROTOTYPE FUNCTIONS. THESE ARE NOT FOR FINAL USE. MERELY A TEST
+'''
+@app.route('/')
+@app.route('/p_home')
+def p_index():
+	vessel = {'nickname': 'Miguel'} #fake user
+	posts = [
+		{
+			'author': {'nickname': 'John'},
+			'body':	'Beautiful day in portland!'
+		},
+
+		{
+			'author': {'nickname': 'Susan'},
+			'body': 'The Avengers movie was so cool! Shame about BvS!'
+		}
+	]
+	return render_template('index.html', title='Home', user=vessel, posts=posts)
+
+
+'''
+!!DEBUG ZONE!! Everything here is a toy and is probably super useless
+No documentation will probably ever be written for this stuff
+'''
+@app.route('/')
+@app.route('/playground', methods=['GET'])
+def get_playground():
+	return render_template('Web_Development/playground.html')
+
+@app.route('/')
+@app.route('/playground/activate', methods=['POST'])
+def do_playground_stuff():#This does some stuff
+	field1 = normalize_from_unicode(request.form['FIELD1'])
+	print('This is your input: ', field1)
+	if field1 == 'TEST':
+		print("hello!")
+		return render_template('/Web_Development/playground.html')
+	else:
+		print("Whoops")
+
+	return render_template('/Web_Development/playground.html')
+
+'''
+"""
+function register() handles registration once called from the appropriate action form in
+account_setup.html.
+
+Currently this expects only 5 fields (password & pass verification, email, first and last names)
+This can be easily expanded to receive other input as we see fit, or it can be separated into other fields
+"""
+@app.route('/')
+@app.route('/register', methods=['POST'])
+def register():
+	#Obtain some initial information from the request form
+
+	password = normalize_from_unicode(request.form['password'])
+	verify_password = normalize_from_unicode(request.form['verify_passord'])
+
+	email = normalize_from_unicode(request.form['email'])
+
+	f_name = normalize_from_unicode(request.form['f_name'])
+	l_name = normalize_from_unicode(request.form['l_name'])
+	
+	#Other fields will probably be squeezed in here. Or perhaps in another function?
+
+	#include a check for if password == verify_password
+	if not password && not verify_password && not email && not f_name && not l_name:
+		print("CRITICAL ERROR")
+	else:
+		#normal execution
+		#Initialize the basic profile info to this other information
+		new_user = User()
+		new_user.username = email #Are user-names required?
+		new_user.email = email
+		new_user.hashed_pass = hashpw(password, gensalt())
+		new_user.save()#Save the user after populating it with the new information
+
+		does_user_exist_now = User.objects(username=normalized_name)
+		retrieved_name = ''
+		if not does_user_exist_now:#Not sure when this could happen. But good to check otherwise
+			print("CATASTROPHIC ERROR")
+			return redirect('{{url_for("account_setup.html")}}')
+		else:#The object is correct! Now create a new context and log the new user in
+			unicode_vessel = normalize_from_unicode(does_user_exist_now[0].username)
+			retrieved_name = unicode_vessel
+			login_user(new_user, remember='no')
+			flash("Logged in for the first time!", category='success')
+
+	return render_template('{{url_for('index')}}')
+
+
+'''
