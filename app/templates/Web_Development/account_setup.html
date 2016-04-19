@@ -7,9 +7,13 @@
 	<meta name = "robots" content = "noindex, nofollow"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width = device-width, initial-scale = 1">
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}">
+	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='bootstrap.css')}}">
 	<!-- Custom styles for this template -->
-    <link href="{{url_for('static',filename='styles.css')}}" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles.css')}}" >
+
+	<link href="/noUiSlider/distribute/nouislider.min.css" rel="stylesheet">
+	<script src="/noUiSlider/distribute/nouislider.js"></script>
+
 	<title>Account Creation</title>
 </head>
 <body>
@@ -24,13 +28,13 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand pull-left" href="homepage.html" aria-hidden="true"><img src="next_step_logo.png"></a>
+						<a class="navbar-brand pull-left" href="homepage.html" aria-hidden="true"><img src="{{ url_for('static',filename='img/next_step_logo.png')}}"></a>
 					</div> <!-- /.navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li><a href="homepage.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-							<li><a href="about.html"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-							<li><a href="contact_us.html"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact us</a></li>
+							<li><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+							<li><a href="{{url_for('return_about')}}"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+							<li><a href="{{url_for('return_contact')}}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact us</a></li>
 							<li class="active"><a href="login.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login<span class="sr-only">(current)</span></a></li>
 						</ul>
 						<form class="navbar-form navbar-right" role="search">
@@ -65,15 +69,15 @@
 								<form role="form">
 									<div class="form-group">
 										<label>User ID (e-mail address)</label>
-										<input class="form-control" type="email" placeholder="E-mail address"></input>
+										<input class="form-control" name='email' type="email" placeholder="E-mail address"></input>
 									</div> <!-- /.form-group -->
 									<div class="form-group">
 										<label>Password</label>
-										<input class="form-control" type="password" placeholder="********"></input>
+										<input class="form-control" name='password' type="password" placeholder="********"></input>
 									</div> <!-- /.form-group -->
 									<div class="form-group">
 										<label>Verify Password</label>
-										<input class="form-control" type="password" placeholder="********"></input>
+										<input class="form-control" name='verify_password' type="password" placeholder="********"></input>
 									</div> <!-- /.form-group -->
 								</form>
 							</div>  <!-- /.col-lg-8 -->
@@ -84,19 +88,19 @@
 								<form>
 									<div class="form-group">
 										<label>First Name</label>
-										<input class="form-control" type="text" placeholder="John">
+										<input class="form-control" name='f_name' type="text" placeholder="John">
 									</div> <!-- /.form-group -->
 									<div class="form-group">
 										<label>Middle</label>
-										<input class="form-control" type="text">
+										<input class="form-control" name='m_name' type="text">
 									</div> <!-- /.form-group -->
 									<div class="form-group">
 										<label>Last Name</label>
-										<input class="form-control" type="text" placeholder="Doe">
+										<input class="form-control" name='l_name' type="text" placeholder="Doe">
 									</div> <!-- /.form-group -->
 									<div class="form-group">
 										<label>Street</label>
-										<input class="form-control" type="text">
+										<input class="form-control" name='street' type="text">
 									</div> <!-- /.form-group -->
 								</form>
 							</div> <!-- /.col-lg-8 -->
@@ -104,7 +108,7 @@
 								<form>
 									<div class="form-group">
 										<label>City</label>
-										<input class="form-control" type="text">
+										<input class="form-control" name='city' type="text">
 									</div> <!-- /.form-group -->
 								</form>
 							</div> <!-- /.col-lg-6 -->
@@ -112,7 +116,7 @@
 								<form>
 									<div class="form-group">
 										<label>State</label>
-										<select class="form-control">
+										<select name='state'class="form-control">
 											<option value="state_empty"></option>
 											<option value="alabama">AL</option>
 											<option value="alaska">AK</option>
@@ -172,7 +176,7 @@
 								<form>
 									<div class="form-group">
 										<label>ZIP</label>
-										<input class="form-control" type="number">
+										<input name='zip_code' class="form-control" type="number">
 									</div> <!-- /.form-group -->
 								</form>
 							</div> <!-- /.form-group -->
@@ -183,7 +187,7 @@
 								<form>
 									<div class="form-group">
 										<label>Grade Average</label>
-										<input class="form-control" type="number">
+										<input name='grade_avg' class="form-control" type="number">
 									</div> <!-- /.form-group -->
 								</form>
 							</div> <!-- /.col-lg-8 -->
@@ -194,19 +198,19 @@
 								<div class="col-lg-4">
 									<div class="input-group input-group-md">
 										<span class="input-group-addon">Reading</span>
-										<input class="form-control" type="number">
+										<input name='sat_score_reading' class="form-control" type="number">
 									</div> <!-- /.input-group -->
 								</div> <!-- /.col-lg-4 -->
 								<div class="col-lg-4">
 									<div class="input-group input-group-md">
 										<span class="input-group-addon">Writing</span>
-										<input class="form-control" type="number">
+										<input name='sat_score_writing' class="form-control" type="number">
 									</div> <!-- /.input-group -->
 								</div> <!-- /.col-lg-4 -->
 								<div class="col-lg-4">
 									<div class="input-group input-group-md">
 										<span class="input-group-addon">Math</span>
-										<input class="form-control" type="number">
+										<input name='sat_score_math' class="form-control" type="number">
 									</div> <!-- /.input-group -->
 								</div> <!-- /.col-lg-4 -->
 							</div> <!-- /.col-lg-10 -->
@@ -214,7 +218,89 @@
 								<hr>
 							</div> <!-- /.col-lg-10 -->
 							<div class="col-lg-8 col-lg-offset-2">
-								<label>Preferred Majors</label>
+								Preferred Major: <select name="preferred_major">
+				</select><br><br>
+				<section class="container">
+    				<div>
+        				<select id="leftValues" size="5" multiple></select>
+    				</div>
+    				<div>
+        				<input type="button" id="btnLeft" onclick="leftClick()" value="&lt;&lt;" />
+        				<input type="button" id="btnRight" onclick="rightClick()" value="&gt;&gt;" />
+        				<input type="button" id="btnInput" onclick="inputClick()" value="&lt;" />
+    				</div>
+    				<div>
+        				<select id="rightValues" size="4" multiple>
+        				</select>
+
+					<div>
+        		
+            			<input type="text" id="txtRight" list="search" />
+					<datalist id ="search">
+            					<option>ComputerScience</option>
+            					<option>Homelessness</option>
+            					<option>Math</option>
+            					<option>Pastafarian</option>
+            					<option>LiberalArts</option>
+					</datalist>
+        			</div>
+
+					<script language ="JavaScript" src = "jquery-1.3.2.min.js"></script>
+					<script language="JavaScript" src="jquery.autocomplete.min.js" ></script>
+					<script>
+						var majors = ["ComputerScience", "Homelessness","Math","Pastafarian","LiberalArts"];
+						majors.sort();
+						var appendList = document.getElementById("rightValues");
+
+						for(var i = 0; i < majors.length; i++){
+							var opt = document.createElement("option");
+							opt.text = majors[i];
+							appendList.appendChild(opt);
+						}
+						function leftClick(){
+           				    var selectedValue = document.getElementById("rightValues");
+            				var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
+            				var insertValue = document.getElementById("leftValues");
+            				var option = document.createElement("option");
+           					option.text = selectedItem;
+            				insertValue.add(option);          
+            				selectedValue.remove(selectedValue.selectedIndex);  
+						}
+
+						function rightClick(){
+		    				var selectedValue = document.getElementById("leftValues");
+		    				var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
+		    				var insertValue = document.getElementById("rightValues");
+		    				var option = document.createElement("option");
+		    				option.text = selectedItem;
+		    				insertValue.add(option);			
+		    				selectedValue.remove(selectedValue.selectedIndex);
+						}					
+						function inputClick(){
+							var getText = document.getElementById("txtRight").value;
+              				var inputLeft = document.getElementById("leftValues");
+              				var inputRight = document.getElementById("rightValues");
+              				var txt = document.createElement("option");
+
+              				for(var i = 0; i < majors.length; i++){
+              					if(getText == majors[i]){
+              						txt.text = majors[i];
+              						inputLeft.appendChild(txt);
+              						document.getElementById("txtRight").value = '';
+              						//delete majors[i]; //would probably need majors[i], refrain from deleting
+ 									var k = inputRight.options.length;
+              						for(var j = 0; j < k; ++j ){
+              							if(inputRight.options[j].innerHTML === getText){
+              								inputRight.selectedIndex = j;
+              								inputRight.remove(inputRight.selectedIndex);
+              							}
+
+              						}
+              						break;
+              					}
+              				}
+						}
+					</script>
 								<form>
 									<div class="form-group">
 										<label>Preferred Degree</label>
@@ -297,71 +383,6 @@
 										</label>
 									</div> <!-- /.form-group -->
 									<div class="form-group">
-										<label>Do you have a preference of which state you'd like to attend college?</label>
-										<label class="radio-inline">
-											<input type="radio" name="in-state_preference" value="true">Yes
-										</label>
-										<label class="radio-inline">
-											<input type="radio" name="in_state_preference" value="false">No
-										</label>
-									</div>
-									<div class="form-group">
-										<label>Which State would you like to attend school?</label>
-										<select class="form-control">
-											<option value="state_empty"></option>
-											<option value="alabama">AL</option>
-											<option value="alaska">AK</option>
-											<option value="arizona">AZ</option>
-											<option value="arkansas">AR</option>
-											<option value="california">CA</option>
-											<option value="colorado">CO</option>
-											<option value="connecticut">CT</option>
-											<option value="delaware">DE</option>
-											<option value="florida">FL</option>
-											<option value="georgia">GA</option>
-											<option value="hawaii">HI</option>
-											<option value="idaho">ID</option>
-											<option value="illinois">IL</option>
-											<option value="indiana">IN</option>
-											<option value="iowa">IA</option>
-											<option value="kansas">KS</option>
-											<option value="kentucky">KY</option>
-											<option value="louisiana">LA</option>
-											<option value="maine">ME</option>
-											<option value="maryland">MD</option>
-											<option value="massachusetts">MA</option>
-											<option value="michigan">MI</option>
-											<option value="minnesota">MN</option>
-											<option value="mississippi">MS</option>
-											<option value="missouri">MO</option>
-											<option value="montana">MT</option>
-											<option value="nebraska">NE</option>
-											<option value="nevada">NV</option>
-											<option value="new_hampshire">NH</option>
-											<option value="new_jersey">NJ</option>
-											<option value="new_mexico">NM</option>
-											<option value="new_york">NY</option>
-											<option value="north_carolina">NC</option>
-											<option value="north_dakota">ND</option>
-											<option value="ohio">OH</option>
-											<option value="oklahoma">OK</option>
-											<option value="oregon">OR</option>
-											<option value="pennsylvania">PA</option>
-											<option value="rhode_island">RI</option>
-											<option value="south_carolina">SC</option>
-											<option value="south_dakota">SD</option>
-											<option value="tennessee">TN</option>
-											<option value="texas">TX</option>
-											<option value="utah">UT</option>
-											<option value="vermont">VT</option>
-											<option value="virginia">VA</option>
-											<option value="washington">WA</option>
-											<option value="west_virginia">WV</option>
-											<option value="wisconsin">WI</option>
-											<option value="wyoming">WY</option>
-										</select>
-									</div>
-									<div class="form-group">
 										<label>Distance Preference</label>
 										<br>
 										<label class="radio-inline">
@@ -421,6 +442,6 @@
 	</footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
+	<script src="{{ url_for( 'static',filename='js/bootstrap.min.js' ) }}"></script>
 </body>
 </html>
