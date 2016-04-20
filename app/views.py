@@ -335,5 +335,22 @@ def account_setup_0():
 	return render_template('Web_Development/account_setup_1.html')
 
 @app.route('/')
-@app.route('/account_setup1', methods=['GET'])
+@app.route('/account_setup_1', methods=['GET'])
 @login_required
+def return_account_setup_1():
+	return render_template('Web_Development/account_setup_1')
+
+@app.route('/')
+@app.route('/account_setup_1/confirm')
+@login_required
+def account_setup_1():
+	n_f_name = normalize_from_unicode(request.form['f_name'])
+	n_m_name = normalize_from_unicode(request.form['m_name'])
+	n_l_name = normalize_from_unicode(request.form['l_name'])
+	n_street = normalize_from_unicode(request.form['street'])
+
+	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
+
+	user_q = User.objects(username=u_name_look_up) #get the object
+
+

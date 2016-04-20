@@ -39,6 +39,12 @@ class User(db.Document):
 	#slug = db.StringField(max_length=255, required=True)#????
 	hashed_pass = db.StringField(max_length=255, required=True)
 
+	#name and address
+	f_name = db.StringField(max_length=255, required=False)
+	m_name = db.StringField(max_length=255, required=False)
+	l_name = db.StringField(max_length=255, required=False)
+	street = db.StringField(max_length=255, required=False)
+
 	meta = {#To declare admin users
 		'allow_inheritance': True
 	}
