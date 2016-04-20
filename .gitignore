@@ -1,0 +1,6 @@
+#Ignore compiled source
+*.pyc
+
+#Ignore bin director (for now)
+/bin
+/lib
