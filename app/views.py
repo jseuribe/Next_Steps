@@ -45,7 +45,7 @@ def return_about():
 @app.route('/')
 @app.route('/account_setup')
 def return_account_setup():
-	return render_template('Web_Development/account_setup.html')
+	return render_template('Web_Development/account_setup_0.html')
 
 @app.route('/')
 @app.route('/return_log')
@@ -283,8 +283,4 @@ def register():
 	return render_template('{{url_for('index')}}')
 
 
-<<<<<<< HEAD
 '''
-=======
-'''
->>>>>>> bf35be0be74822d6c4888ebb3ea537eced6000bc
