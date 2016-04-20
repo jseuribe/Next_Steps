@@ -10,6 +10,18 @@ from flask.ext.login import current_user
 def before_request():
 	g.user = current_user
 
+'''
+TEMPLATE FOR FRONT_END_DEVELOPERS!!!
+@app.route('/')
+@app.route('/the/url/you/want/the/browser/to/display')
+def serve_html_page():
+	#If some interstitial condition is not met (say, the context of a login is missing)
+	#flash('') displays a message on the page 
+	if some_condition_not_met:
+		flash("message!") 
+		return render("/Web_Development/PAGE_NAME.html", var="", ...)
+	return render("/Web_Development/PAGE_NAME.html", var1="val", var2="val", ... )
+'''
 
 '''
 Home page links! Anything that you can get to from the homepage is here
@@ -284,3 +296,7 @@ def register():
 
 
 '''
+
+@app.route('/')
+@app.route('/account_setup_0/confirm')
+def account_setup_0():
