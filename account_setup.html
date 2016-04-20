@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -285,16 +286,24 @@
               				for(var i = 0; i < majors.length; i++){
               					if(getText == majors[i]){
               						txt.text = majors[i];
-              						inputLeft.appendChild(txt);
-              						document.getElementById("txtRight").value = '';
-              						//delete majors[i]; //would probably need majors[i], refrain from deleting
- 									var k = inputRight.options.length;
-              						for(var j = 0; j < k; ++j ){
-              							if(inputRight.options[j].innerHTML === getText){
+              						document.getElementById("txtRight").value = ''; //deletes text from input
+
+              						ParseRight:
+              						for(var j = 0; j < inputRight.options.length; j++ ){
+
+										for(var k = 0; k < inputLeft.options.length; k++){
+
+											if(inputLeft.options[k].innerHTML == getText){
+											alert("Selection already exists!");
+											break ParseRight;
+											}
+										}
+              							if(inputRight.options[j].innerHTML == getText){
+              								inputLeft.appendChild(txt);
               								inputRight.selectedIndex = j;
               								inputRight.remove(inputRight.selectedIndex);
+              								break;
               							}
-
               						}
               						break;
               					}
