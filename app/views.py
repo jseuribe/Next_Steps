@@ -283,4 +283,8 @@ def register():
 	return render_template('{{url_for('index')}}')
 
 
+<<<<<<< HEAD
 '''
+=======
+'''
+>>>>>>> bf35be0be74822d6c4888ebb3ea537eced6000bc
