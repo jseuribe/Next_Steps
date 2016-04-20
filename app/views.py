@@ -1,5 +1,5 @@
 from app import app, db
-from flask import g, request, url_for, render_template, flash, redirect
+from flask import g, request, url_for, render_template, flash, redirect, session
 from .forms import LoginForm, RegisterForm
 from models import User
 from auth import *
@@ -298,5 +298,42 @@ def register():
 '''
 
 @app.route('/')
-@app.route('/account_setup_0/confirm')
+@app.route('/account_setup_0/confirm', methods=['POST'])
 def account_setup_0():
+
+	if 'user_id' in session:
+		flash('You are logged in already!')
+		return render_template('Web_Development/account_setup_1.html')
+	else:
+		n_username = normalize_from_unicode(request.form['email'])
+		n_email = normalize_from_unicode(request.form['email'])
+		n_passw = normalize_from_unicode(request.form['password'])
+		n_v_passw = normalize_from_unicode(request.form['v_password'])
+
+		if not n_username and not n_email and not n_passw and not n_v_passw:
+			flash("error, please do not leave any field blank")
+			return render_template('/Web_Development/account_setup_0.html')
+		elif n_passw != n_v_passw:
+			flash("Passwords do not match, re-enter both")
+			return render_template('/Web_Development/account_setup_0.html')
+		else:
+			new_user = User()
+			new_user.email = n_email
+			new_user.username = n_username
+			new_user.hashed_pass = hashpw(n_passw, gensalt())
+			new_user.save()
+			does_user_exist_now = User.objects(username=n_username)
+			if not does_user_exist_now:
+				flash('Something went wrong; please try again.')
+				return render_template('Web_Development/account_setup_0.html')
+			else:#The object is correct!
+				unicode_vessel = normalize_from_unicode(does_user_exist_now[0].username)
+				retrieved_name = unicode_vessel
+				login_user(new_user, remember='no')
+				flash("Logged in for the first time!, category='success'")
+
+	return render_template('Web_Development/account_setup_1.html')
+
+@app.route('/')
+@app.route('/account_setup1', methods=['GET'])
+@login_required

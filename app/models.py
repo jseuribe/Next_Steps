@@ -32,7 +32,7 @@ class Post(db.Document):
 '''
 
 class User(db.Document):
-	user_id = db.IntField(min_value=0, max_value=9001)
+	user_id = db.IntField(min_value=0, max_value=9001)#this should be set by mongo to keep it incrementing and such
 	created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
 	email = db.EmailField(max_length=255, required=True)
 	username = db.StringField(max_length=255, required=True)
@@ -59,3 +59,7 @@ class User(db.Document):
 			return normalize_from_unicode(self.username)
 
 	#Eventually, we should add some other fields here (grades, other parameters, etc.)
+
+'''
+Here's where the school class goes
+'''
