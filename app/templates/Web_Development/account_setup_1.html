@@ -75,22 +75,25 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
-							<form>
+							<form role="form" id="page1">
 								<div class="form-group">
-									<label>First Name</label>
-									<input class="form-control" type="text" placeholder="John">
+									<label for ="inputFirst">First Name</label>
+									<input class="form-control alphaonly" id="inputFirst" type="text" name="First" placeholder="John"></input>
+									<span class ="error">Please enter your first name</span>
 								</div> <!-- /.form-group -->
 								<div class="form-group">
-									<label>Middle</label>
-									<input class="form-control" type="text">
+									<label for ="inputMiddle">Middle</label>
+									<input class="form-control alphaonly valid" id="inputMiddle" type="text" name="Middle"></input>
 								</div> <!-- /.form-group -->
 								<div class="form-group">
-									<label>Last Name</label>
-									<input class="form-control" type="text" placeholder="Doe">
+									<label for "inputLast">Last Name</label>
+									<input class="form-control alphaonly" id="inputLast" type="text" name="Last"placeholder="Doe"></input>
+									<span class ="error">Please enter your last name</span>
 								</div> <!-- /.form-group -->
 								<div class="form-group">
-									<label>Street</label>
-									<input class="form-control" type="text">
+									<label for="inputStreet">Street</label>
+									<input class="form-control" id="inputStreet" type="text" name="Street" placeholder="742 EverGreen Terrace"></input>
+									<span class ="error">Please enter your address</span>
 								</div> <!-- /.form-group -->
 							</form>
 						</div> <!-- /.col-lg-8 -->
@@ -100,7 +103,7 @@
 			<nav>
 				<ul class="pager">
 					<li class="previous"><a href="account_setup_0.html"><span aria-hidden="true">&larr;</span> Previous</a></li>
-					<li class="next"><a href="account_setup_2.html">Next <span aria-hidden="true">&rarr;</span></a></li>
+					<li class="next" id ="submitPage1"><a href="account_setup_2.html">Next <span aria-hidden="true">&rarr;</span></a></li>
 				</ul>
 			</nav>
 		</div> <!-- /.col-lg-8 -->
@@ -117,5 +120,69 @@
 	<!-- Put this back!
 	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
 -->
+<script>
+	$(document).ready(function(){
+		<!--First name must contain a character-->
+		$('#inputFirst').on('input', function() {
+			var input=$(this);
+			var name=input.val();
+			if(name){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});		
+
+		<!--Last name must contain a character-->
+		$('#inputLast').on('input', function() {
+			var input=$(this);
+			var last=input.val();
+			if(last){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});				
+
+		<!--Address must contain a character-->
+		$('#inputStreet').on('input', function() {
+			var input=$(this);
+			var street=input.val();
+			if(street){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});		
+		<!--Check whole form -->
+		$("#submitPage1").click(function(event){
+			var formData=$("#page1").serializeArray();
+			var zeroErrors=true;
+			for (var input in formData){
+				var element=$("#input"+formData[input]['name']);
+				var valid=element.hasClass("valid");
+				var errorAt=$("span", element.parent());
+				if (!valid){
+					errorAt.removeClass("error").addClass("errorShow");
+					zeroErrors=false;
+				}
+				else{
+					errorAt.removeClass("errorShow").addClass("error");
+				}
+			}
+			if (!zeroErrors){
+				event.preventDefault(); 
+			}
+		});
+		
+		<!--Class limits to alphabets only-->
+		$('.alphaonly').bind('keyup blur',function(){ 
+    		$(this).val( $(this).val().replace(/[^A-Za-z]/g,'') );
+    	});
+	});
+</script>
 </body>
 </html>
