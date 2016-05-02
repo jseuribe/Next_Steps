@@ -75,7 +75,7 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
-<form role="form" id="page0" onsubmit="return nextPage()">
+							<form role="form" id="page0">
 								<div class="form-group">
 									<label for="inputEmail">User ID (e-mail address)</label>
 									<input class="form-control" id="inputEmail" type="email" placeholder="E-mail address" name="Email"></input>
@@ -92,16 +92,13 @@
 									<input class="form-control" type="password" id="inputRepassword" name="Repassword" placeholder="********"></input>
 									<span class="error">Password does not match!</span>
 								</div> <!-- /.form-group -->
-								<div id="submitPage0">				
-									<button type="submit">Submit</button>
-								</div>			
 							</form>
 						</div> <!-- /.col-lg-8 -->
 					</div> <!-- /.row -->
 				</div> <!-- /.panel-body -->
 			</div> <!-- /.panel -->
 			<nav>
-				<ul class="pager">
+				<ul id = "submitPage0" class="pager">
 					<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
 					<li class="next"><a href="account_setup_1.html">Next <span aria-hidden="true">&rarr;</span></a></li>
 				</ul>
@@ -174,18 +171,8 @@
 			if (!zeroErrors){
 				event.preventDefault(); 
 			}
-			//else{
-			//	alert('All is swell #test remove later');
-			//	var url ='www.google.com';
-			//	window.location.href = url;
-			//}
 		});
 	});
-
-	function nextPage(){
-		window.location.replace("account_setup_1.html");
-		return false;
-	}
 </script>
 </body>
 </html>
