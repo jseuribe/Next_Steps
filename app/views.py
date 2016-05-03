@@ -30,6 +30,10 @@ Includes: Homepage, Contacts, About, and Account_Setup.
 @app.route('/')
 @app.route('/index')
 def index():
+	if 'user_id' in session:
+		flash("Hello: ", session['user_id'])
+	else:
+		flash('Not logged in')
 	return render_template('Web_Development/homepage.html', title='Home')
 
 @app.route('/')
