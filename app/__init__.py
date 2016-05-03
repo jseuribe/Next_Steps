@@ -5,7 +5,7 @@ import bcrypt
 app = Flask(__name__)
 
 if __name__ == '__main__':
-	app.run()
+	app.run(host='0.0.0.0')
 
 lm = LoginManager()
 lm.init_app(app)
