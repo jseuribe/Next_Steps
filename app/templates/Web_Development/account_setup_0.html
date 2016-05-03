@@ -92,17 +92,25 @@
 									<input class="form-control" type="password" id="inputRepassword" name="Repassword" placeholder="********"></input>
 									<span class="error">Password does not match!</span>
 								</div> <!-- /.form-group -->
+
+			<!--
+			<nav>
+				<ul id = "submitPage0" class="pager">
+					<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+					<li class="next"> <input type='submit'>Next</input> <span aria-hidden="true">&rarr;</span></a></li>
+				</ul>
+			</nav>
+			-->
+			<div class="container">
+			<a href="#" class="btn btn-info" role="button">Link Button</a>
+			<input type="submit" class="btn btn-info" value="Submit Button" id="submitPage0">
+			</div>
 							</form>
 						</div> <!-- /.col-lg-8 -->
 					</div> <!-- /.row -->
 				</div> <!-- /.panel-body -->
 			</div> <!-- /.panel -->
-			<nav>
-				<ul id = "submitPage0" class="pager">
-					<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
-					<li class="next"><a href="{{url_for('return_account_setup_1')}}">Next <span aria-hidden="true">&rarr;</span></a></li>
-				</ul>
-			</nav>
+
 		</div> <!-- /.col-lg-8 -->
 	</div> <!-- /.row -->
 	<!-- FOOTER -->
