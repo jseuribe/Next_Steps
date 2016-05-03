@@ -30,19 +30,7 @@ Includes: Homepage, Contacts, About, and Account_Setup.
 @app.route('/')
 @app.route('/index')
 def index():
-	vessel = {'nickname': 'Miguel'} #fake user
-	posts = [
-		{
-			'author': {'nickname': 'John'},
-			'body':	'Beautiful day in City 17!'
-		},
-
-		{
-			'author': {'nickname': 'Susan'},
-			'body': 'The Avengers movie was so cool! Shame about Batman Vs. Superman!'
-		}
-	]
-	return render_template('Web_Development/homepage.html', title='Home', user=vessel, posts=posts)
+	return render_template('Web_Development/homepage.html', title='Home')
 
 @app.route('/')
 @app.route('/contacts_page')
@@ -246,7 +234,8 @@ def do_playground_stuff():#This does some stuff
 
 	return render_template('/Web_Development/playground.html')
 
-'''
+#'''
+
 """
 function register() handles registration once called from the appropriate action form in
 account_setup.html.
@@ -255,22 +244,22 @@ Currently this expects only 5 fields (password & pass verification, email, first
 This can be easily expanded to receive other input as we see fit, or it can be separated into other fields
 """
 @app.route('/')
-@app.route('/register', methods=['POST'])
-def register():
+@app.route('/register_n', methods=['POST'])
+def register_n():
 	#Obtain some initial information from the request form
 
-	password = normalize_from_unicode(request.form['password'])
-	verify_password = normalize_from_unicode(request.form['verify_passord'])
+	password = normalize_from_unicode(request.form['Password'])
+	verify_password = normalize_from_unicode(request.form['Repassword'])
 
-	email = normalize_from_unicode(request.form['email'])
+	email = normalize_from_unicode(request.form['Email'])
 
-	f_name = normalize_from_unicode(request.form['f_name'])
-	l_name = normalize_from_unicode(request.form['l_name'])
+	#f_name = normalize_from_unicode(request.form['f_name'])
+	#l_name = normalize_from_unicode(request.form['l_name'])
 	
 	#Other fields will probably be squeezed in here. Or perhaps in another function?
 
 	#include a check for if password == verify_password
-	if not password && not verify_password && not email && not f_name && not l_name:
+	if not password and not verify_password and not email:
 		print("CRITICAL ERROR")
 	else:
 		#normal execution
@@ -292,10 +281,10 @@ def register():
 			login_user(new_user, remember='no')
 			flash("Logged in for the first time!", category='success')
 
-	return render_template('{{url_for('index')}}')
+	return render_template('\Web_Development\account_setup_1.html')
 
 
-'''
+#'''
 
 @app.route('/')
 @app.route('/account_setup_0/confirm', methods=['POST'])
@@ -305,10 +294,10 @@ def account_setup_0():
 		flash('You are logged in already!')
 		return render_template('Web_Development/account_setup_1.html')
 	else:
-		n_username = normalize_from_unicode(request.form['email'])
-		n_email = normalize_from_unicode(request.form['email'])
-		n_passw = normalize_from_unicode(request.form['password'])
-		n_v_passw = normalize_from_unicode(request.form['v_password'])
+		n_username = normalize_from_unicode(request.form['Email'])
+		n_email = normalize_from_unicode(request.form['Email'])
+		n_passw = normalize_from_unicode(request.form['Password'])
+		n_v_passw = normalize_from_unicode(request.form['Repassword'])
 
 		#print("the input: ", n_username, n_)
 		if not n_username and not n_email and not n_passw and not n_v_passw:
