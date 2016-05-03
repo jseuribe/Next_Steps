@@ -30,7 +30,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="img/next_step_logo.png"></a>
+						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="{{url_for('static',filename='next_step_logo.png')}}"></a>
 					</div> <!-- /.navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
@@ -96,7 +96,7 @@
 			<nav>
 				<ul class="pager">
 					<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
-					<li class="next"><a href="{{url_for('return_account_setup_0')}}">Next <span aria-hidden="true">&rarr;</span></a></li>
+					<li class="next"><a href="{{url_for('return_account_setup_1')}}">Next <span aria-hidden="true">&rarr;</span></a></li>
 				</ul>
 			</nav>
 		</div> <!-- /.col-lg-8 -->

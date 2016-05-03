@@ -310,6 +310,7 @@ def account_setup_0():
 		n_passw = normalize_from_unicode(request.form['password'])
 		n_v_passw = normalize_from_unicode(request.form['v_password'])
 
+		#print("the input: ", n_username, n_)
 		if not n_username and not n_email and not n_passw and not n_v_passw:
 			flash("error, please do not leave any field blank")
 			return render_template('/Web_Development/account_setup_0.html')
@@ -319,7 +320,7 @@ def account_setup_0():
 		else:
 			new_user = User()
 			new_user.email = n_email
-			new_user.username = n_username
+			new_user.username = n_username#Not sure if we'll implement a separate username. this should suffice for now, though
 			new_user.hashed_pass = hashpw(n_passw, gensalt())
 			new_user.save()
 			does_user_exist_now = User.objects(username=n_username)
@@ -352,5 +353,10 @@ def account_setup_1():
 	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
 
 	user_q = User.objects(username=u_name_look_up) #get the object
+
+	if not user_q:
+		flash("Error please try again - USER_NOT_FOUND")
+
+	user_obj = user_q[0]
 
 
