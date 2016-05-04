@@ -30,11 +30,13 @@ Includes: Homepage, Contacts, About, and Account_Setup.
 @app.route('/')
 @app.route('/index')
 def index():
+	is_log = None
 	if 'user_id' in session:
 		print(session['user_id'])
 		flash("Hello: ", normalize_from_unicode(session['user_id']))
 	else:
 		flash('Not logged in')
+
 	return render_template('Web_Development/homepage.html', title='Home')
 
 @app.route('/')
@@ -353,4 +355,9 @@ def account_setup_1():
 
 	user_obj = user_q[0]
 
-
+'''
+@app.route('/api/token')
+@auth.login_required
+def get_auth_token():
+	token = g.user.generate_auth_token()
+'''

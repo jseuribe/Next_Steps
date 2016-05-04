@@ -4,6 +4,7 @@ from app import db, lm
 from bcrypt import hashpw, gensalt
 from flask.ext.login import UserMixin
 from utils import normalize_from_unicode
+from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
 
 '''
 class Comment(db.EmbeddedDocument):
@@ -64,7 +65,23 @@ class User(db.Document):
 		except NameError:
 			return normalize_from_unicode(self.username)
 
+	'''
+	def generate_auth_token(self, expiration = 600):
+		s = Serializer(app.config["SECRET_KEY"], expires_in = expiration)
+		return s.dumps({'id': self.username})
+
+	@staticmethod
+	def verify_auth_token(token):
+		s = Serializer(app.config['SECRET_KEY'])
+		try:
+			data = s.loads(token)
+		except SignatureExpired:
+			return None #valid token that has expired
+		except BadSignature:
+			return None #invalid token
+		user = User.query.get
 	#Eventually, we should add some other fields here (grades, other parameters, etc.)
+	'''
 
 '''
 Here's where the school class goes
