@@ -46,6 +46,7 @@ class User(db.Document):
 	l_name = db.StringField(max_length=255, required=False)
 	street = db.StringField(max_length=255, required=False)
 
+	gpa = db.FloatField(min_value=0, max_value=4.0, required=False)
 	SAT_read = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_write = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_math = db.IntField(min_value=0,max_value=800, required=False)

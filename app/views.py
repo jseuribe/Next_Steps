@@ -392,10 +392,10 @@ def account_setup_2():
 		return redirect(url_for('return_account_setup_1'))
 
 	user_obj = user_q[0]#This should be the object what is the user.
-	user_obj.f_name = n_f_name
-	user_obj.m_name = n_m_name
-	user_obj.l_name = n_l_name
-	user_obj.street = n_street
+	user_obj.SAT_read = n_read
+	user_obj.SAT_math = n_math
+	user_obj.SAT_write = n_write
+	user_obj.degree = n_degree
 	user_obj.save()
 	return redirect(url_for('return_account_setup_2'))
 
