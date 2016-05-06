@@ -88,19 +88,19 @@
 									<div class="col-lg-4">
 										<div class="input-group input-group-md">
 											<span class="input-group-addon">Reading</span>
-											<input class="form-control" type="number">
+											<input class="form-control" type="number" name="Read">
 										</div> <!-- /.input-group -->
 									</div> <!-- /.col-lg-4 -->
 									<div class="col-lg-4">
 										<div class="input-group input-group-md">
 											<span class="input-group-addon">Writing</span>
-											<input class="form-control" type="number">
+											<input class="form-control" type="number" name="Write">
 										</div> <!-- /.input-group -->
 									</div> <!-- /.col-lg-4 -->
 									<div class="col-lg-4">
 										<div class="input-group input-group-md">
 											<span class="input-group-addon">Math</span>
-											<input class="form-control" type="number">
+											<input class="form-control" type="number" name="Math">
 										</div> <!-- /.input-group -->
 									</div> <!-- /.col-lg-4 -->
 								</div> <!-- /.col-lg-10 -->
@@ -109,7 +109,7 @@
 
 									<div class="form-group">
 										<label>Preferred Degree</label>
-										<select class="form-control">
+										<select class="form-control" name="degree">
 											<option value="degree_empty"></option>
 											<option value="degree_associate">Associate</option>
 											<option value="degree_bachelor">Bachelor</option>
@@ -119,15 +119,23 @@
 									</div> <!-- /.form-group -->
 
 								</div> <!-- /.col-lg-8 -->
+							<div class="container">
+							<a href="#" class="btn btn-info" role="button">Link Button</a>
+							<input type="submit" class="btn btn-info" value="Submit Button" id="submitPage2">
+							</div>
+
 							</form>
 						</div> <!-- /.row -->
 					</div> <!-- /.panel-body -->
 				</div> <!-- /.panel -->
 				<nav>
+
+					<!--
 					<ul class="pager">
 						<li class="previous"><a href="account_setup_1.html"><span aria-hidden="true">&larr;</span> Previous</a></li>
 						<li class="next"><a href="account_setup_3.html">Next <span aria-hidden="true">&rarr;</span></a></li>
 					</ul>
+					-->
 				</nav>
 			</div> <!-- /.col-lg-8 -->
 		</div> <!-- /.row -->
