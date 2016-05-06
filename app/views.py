@@ -52,7 +52,10 @@ def return_about():
 @app.route('/')
 @app.route('/account_setup')
 def return_account_setup():
-	return render_template('Web_Development/account_setup_0.html')
+	if 'user_id' not in session:
+		return render_template('Web_Development/account_setup_0.html')
+	else:
+		return redirect(url_for('return_account_setup_1'))
 
 @app.route('/')
 @app.route('/return_log')
