@@ -58,6 +58,11 @@ def return_account_setup():
 		return redirect(url_for('return_account_setup_1'))
 
 @app.route('/')
+@app.route('/account_setup_2')
+@login_required
+def return_account_setup_2():
+	return render_template('Web_Development/account_setup_2.html')
+@app.route('/')
 @app.route('/return_log')
 def return_log():
 	return render_template('Web_Development/login.html')
@@ -345,7 +350,7 @@ def return_account_setup_1():
 	return render_template('/Web_Development/account_setup_1.html')
 
 @app.route('/')
-@app.route('/account_setup_1/confirm')
+@app.route('/account_setup_1/confirm', methods=['POST'])
 @login_required
 def account_setup_1():
 	n_f_name = normalize_from_unicode(request.form['First'])
@@ -359,8 +364,15 @@ def account_setup_1():
 
 	if not user_q:
 		flash("Error please try again - USER_NOT_FOUND")
+		return redirect(url_for('return_account_setup_1'))
 
-	user_obj = user_q[0]
+	user_obj = user_q[0]#This should be the object what is the user.
+	user_obj.f_name = n_f_name
+	user_obj.m_name = n_m_name
+	user_obj.l_name = n_l_name
+	user_obj.street = n_street
+	user_obj.save()
+	return redirect(url_for('return_account_setup_2'))
 
 '''
 @app.route('/api/token')

@@ -72,7 +72,7 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
-							<form role="form" id="page1">
+							<form role="form" action="/account_setup_1/confirm" method='POST' id="page1" >
 								<div class="form-group">
 									<label for ="inputFirst">First Name</label>
 									<input class="form-control alphaonly" id="inputFirst" type="text" name="First" placeholder="John"></input>
@@ -92,6 +92,10 @@
 									<input class="form-control" id="inputStreet" type="text" name="Street" placeholder="742 EverGreen Terrace"></input>
 									<span class ="error">Please enter your address</span>
 								</div> <!-- /.form-group -->
+							<div class="container">
+							<a href="#" class="btn btn-info" role="button">Link Button</a>
+							<input type="submit" class="btn btn-info" value="Submit Button" id="submitPage1">
+							</div>
 							</form>
 						</div> <!-- /.col-lg-8 -->
 					</div> <!-- /.row -->
@@ -106,10 +110,7 @@
 				</ul>
 								</nav>
 			-->
-							<div class="container">
-							<a href="#" class="btn btn-info" role="button">Link Button</a>
-							<input type="submit" class="btn btn-info" value="Submit Button" id="submitPage0">
-							</div>
+
 			</nav>
 		</div> <!-- /.col-lg-8 -->
 	</div> <!-- /.row -->
@@ -163,7 +164,7 @@
 			}
 		});		
 		<!--Check whole form -->
-		$("#submitPage1").click(function(event){
+		$("#submitPage1").submit(function(event){
 			var formData=$("#page1").serializeArray();
 			var zeroErrors=true;
 			for (var input in formData){
