@@ -108,8 +108,9 @@ def login_confirm():
 
 	if validate_login(form_password, normalize_from_unicode(the_hash), user):#determine if the login is correct!
 		login_user(user, remember='no')
+		session['logged_in'] = True
 		flash("Logged in successfully", category='success')
-		return render_template(url_for('index'))
+		return redirect(url_for('index'))
 
 	flash("Wrong username or password", category='error')
 
@@ -120,7 +121,8 @@ def login_confirm():
 @login_required
 def logout():
 	logout_user()
-	return redirect(url_for('login'))
+	session['logged_in'] = False
+	return redirect(url_for('index'))
 
 @app.route('/register/confirm', methods=['GET', 'POST'])
 def register_confirm():
@@ -330,7 +332,7 @@ def account_setup_0():
 				retrieved_name = unicode_vessel
 				login_user(new_user, remember='no')
 				flash("Logged in for the first time!, category='success'")
-
+	session['logged_in'] = True
 	return return_account_setup_1()
 
 @app.route('/')
