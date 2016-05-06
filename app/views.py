@@ -62,6 +62,13 @@ def return_account_setup():
 @login_required
 def return_account_setup_2():
 	return render_template('Web_Development/account_setup_2.html')
+
+@app.route('/')
+@app.route('/account_setup_3')
+@login_required
+def return_account_setup_3():
+	return render_template('Web_Development/account_setup_3.html')
+
 @app.route('/')
 @app.route('/return_log')
 def return_log():
@@ -375,7 +382,7 @@ def account_setup_1():
 	return redirect(url_for('return_account_setup_2'))
 
 @app.route('/')
-@app.route('/account_setup_1/confirm', methods=['POST'])
+@app.route('/account_setup_2/confirm', methods=['POST'])
 @login_required
 def account_setup_2():
 	n_gpa = float(normalize_from_unicode(request.form['gpa']))
@@ -399,7 +406,7 @@ def account_setup_2():
 	user_obj.SAT_write = n_write
 	user_obj.degree = n_degree
 	user_obj.save()
-	return redirect(url_for('return_account_setup_2'))
+	return redirect(url_for('return_account_setup_3'))
 
 '''
 @app.route('/api/token')
