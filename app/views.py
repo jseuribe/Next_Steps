@@ -378,6 +378,7 @@ def account_setup_1():
 @app.route('/account_setup_1/confirm', methods=['POST'])
 @login_required
 def account_setup_2():
+	n_gpa = float(normalize_from_unicode(request.form['gpa']))
 	n_read = int(normalize_from_unicode(request.form['Read']))
 	n_math = int(normalize_from_unicode(request.form['Math']))
 	n_write = int(normalize_from_unicode(request.form['Write']))
@@ -392,6 +393,7 @@ def account_setup_2():
 		return redirect(url_for('return_account_setup_1'))
 
 	user_obj = user_q[0]#This should be the object what is the user.
+	user_obj.gpa = n_gpa
 	user_obj.SAT_read = n_read
 	user_obj.SAT_math = n_math
 	user_obj.SAT_write = n_write
