@@ -348,10 +348,10 @@ def return_account_setup_1():
 @app.route('/account_setup_1/confirm')
 @login_required
 def account_setup_1():
-	n_f_name = normalize_from_unicode(request.form['f_name'])
-	n_m_name = normalize_from_unicode(request.form['m_name'])
-	n_l_name = normalize_from_unicode(request.form['l_name'])
-	n_street = normalize_from_unicode(request.form['street'])
+	n_f_name = normalize_from_unicode(request.form['First'])
+	n_m_name = normalize_from_unicode(request.form['Middle'])
+	n_l_name = normalize_from_unicode(request.form['Last'])
+	n_street = normalize_from_unicode(request.form['Street'])
 
 	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
 
