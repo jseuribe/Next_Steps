@@ -88,31 +88,32 @@ def login():
 #The parameters under methods specify what HTML reponses to accept
 def login_confirm():
 
-	form = LoginForm()
+	form_user_name = normalize_from_unicode(request.form['username'])
+	form_password = normalize_from_unicode(request.form['password'])
 	the_hash = '' #the good stuff
 
 	if request.method == 'POST':
 		user = User()
-		user_set = User.objects(username=normalize_from_unicode(form.username.data))
+		user_set = User.objects(username=form_user_name)
 		print("VALIDATING EXISTANCE HOLD ON")
 		if not user_set:
 			print("Something has gone horribly wrong")#TERMINATE EXECUTION HERE, Non-Existant user
 			flash('Invalid user!')
-			return redirect(url_for('login'))
+			return redirect(url_for('return_log'))
 		else:
 			user = user_set[0]
 			print("USERNAME")
 			print(user.username)
 			the_hash = user.hashed_pass#Retrieve the hashed_pass, user exists
 
-	if validate_login(normalize_from_unicode(form.password.data), normalize_from_unicode(the_hash), user):#determine if the login is correct!
+	if validate_login(form_password, normalize_from_unicode(the_hash), user):#determine if the login is correct!
 		login_user(user, remember='no')
 		flash("Logged in successfully", category='success')
-		return render_template('success.html')
+		return render_template(url_for('index'))
 
 	flash("Wrong username or password", category='error')
 
-	return(render_template('login.html', form))
+	return(url_for('index'))
 
 @app.route('/')
 @app.route('/logout')
@@ -297,9 +298,10 @@ def register_n():
 @app.route('/account_setup_0/confirm', methods=['POST'])
 def account_setup_0():
 
+	print("Registration Time")
 	if 'user_id' in session:
 		flash('You are logged in already!')
-		return render_template('Web_Development/account_setup_1.html')
+		return return_account_setup_1()
 	else:
 		n_username = normalize_from_unicode(request.form['Email'])
 		n_email = normalize_from_unicode(request.form['Email'])
@@ -309,10 +311,10 @@ def account_setup_0():
 		#print("the input: ", n_username, n_)
 		if not n_username and not n_email and not n_passw and not n_v_passw:
 			flash("error, please do not leave any field blank")
-			return render_template('/Web_Development/account_setup_0.html')
+			return return_account_setup()
 		elif n_passw != n_v_passw:
 			flash("Passwords do not match, re-enter both")
-			return render_template('/Web_Development/account_setup_0.html')
+			return return_account_setup()
 		else:
 			new_user = User()
 			new_user.email = n_email
@@ -322,20 +324,20 @@ def account_setup_0():
 			does_user_exist_now = User.objects(username=n_username)
 			if not does_user_exist_now:
 				flash('Something went wrong; please try again.')
-				return render_template('Web_Development/account_setup_0.html')
+				return return_account_setup()
 			else:#The object is correct!
 				unicode_vessel = normalize_from_unicode(does_user_exist_now[0].username)
 				retrieved_name = unicode_vessel
 				login_user(new_user, remember='no')
 				flash("Logged in for the first time!, category='success'")
 
-	return render_template('Web_Development/account_setup_1.html')
+	return return_account_setup_1()
 
 @app.route('/')
 @app.route('/account_setup_1', methods=['GET'])
 @login_required
 def return_account_setup_1():
-	return render_template('Web_Development/account_setup_1')
+	return render_template('/Web_Development/account_setup_1.html')
 
 @app.route('/')
 @app.route('/account_setup_1/confirm')

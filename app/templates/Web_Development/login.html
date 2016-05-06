@@ -53,19 +53,19 @@
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
 				<div class="jumbotron">
-					<form role="form">
+					<form role="form" action="{url_for('login_confirm')}" method="POST">
 						<fieldset>
 							<div class="input-group input-group-lg">
 								<span class="input-group-addon">User ID</span>
-								<input type="email" class="form-control" placeholder="Email Address">
+								<input type="email" class="form-control" placeholder="Email Address" name='username'>
 							</div><br> <!-- /.input-group -->
 							<div class="input-group input-group-lg">
 								<span class="input-group-addon">Password</span>
-								<input type="password" class="form-control" placeholder="********">
+								<input type="password" class="form-control" placeholder="********" name='password'>
 							</div> <!-- /.input-group -->
 							<br>
 							<p>
-								<a href="{{url_for('return_account_setup')}}"><small>New user? Click here to sign up!</small></a><a class="btn btn-lg btn-primary pull-right" href="#" role="button">Sign in</a>
+								<a href="{{url_for('return_account_setup')}}"><small>New user? Click here to sign up!</small></a><a class="btn btn-lg btn-primary pull-right" role="button">Sign in</a>
 							</p>
 						</fieldset>
 

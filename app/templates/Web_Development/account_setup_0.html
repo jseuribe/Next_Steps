@@ -34,10 +34,10 @@
 					</div> <!-- /.navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li><a href="{url_for('index')}"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home</a></li>
-							<li><a href="{url_for('return_about')}"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
-							<li><a href="contact_us.html"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
-							<li class="active"><a href="{url_for('return_account_setup')}"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Login<span class="sr-only">(current)</span></a></li>
+							<li><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home</a></li>
+							<li><a href="{{url_for('return_about')}}"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
+							<li><a href="{{url_for('return_contact')}}"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
+							<li class="active"><a href="{{url_for('return_account_setup')}}"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Login<span class="sr-only">(current)</span></a></li>
 						</ul>
 						<form class="navbar-form navbar-right" role="search">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -75,7 +75,7 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
-							<form role="form" action="{url_for('account_setup_0')}" method='POST' id="page0">
+							<form role="form" action="/account_setup_0/confirm" method='POST' id="page0">
 								<div class="form-group">
 									<label for="inputEmail">User ID (e-mail address)</label>
 									<input class="form-control" id="inputEmail" type="email" placeholder="E-mail address" name="Email"></input>
@@ -83,7 +83,7 @@
 								</div> <!-- /.form-group -->
 								<div class="form-group">
 									<label for="inputPassword">Password</label>
-									<input class="form-control" type="password" id="inputPassword" name="Password"placeholder="******** (must be at least 3 characters long)"></input>
+									<input class="form-control" type="password" id="inputPassword" name="Password" placeholder="******** (must be at least 3 characters long)"></input>
 									<span class="error">Password does not match!</span>
 								</div> <!-- /.form-group -->
 		
@@ -93,18 +93,18 @@
 									<span class="error">Password does not match!</span>
 								</div> <!-- /.form-group -->
 
-			<!--
-			<nav>
+								<!--
+								<nav>
 				<ul id = "submitPage0" class="pager">
 					<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
 					<li class="next"> <input type='submit'>Next</input> <span aria-hidden="true">&rarr;</span></a></li>
 				</ul>
-			</nav>
+								</nav>
 			-->
-			<div class="container">
-			<a href="#" class="btn btn-info" role="button">Link Button</a>
-			<input type="submit" class="btn btn-info" value="Submit Button" id="submitPage0">
-			</div>
+							<div class="container">
+							<a href="#" class="btn btn-info" role="button">Link Button</a>
+							<input type="submit" class="btn btn-info" value="Submit Button" id="submitPage0">
+							</div>
 							</form>
 						</div> <!-- /.col-lg-8 -->
 					</div> <!-- /.row -->
@@ -163,7 +163,7 @@
 		});
 
 		<!--Check whole form -->
-		$("#submitPage0").click(function(event){
+		$("#submitPage0").submit(function(event){
 			var formData=$("#page0").serializeArray();
 			var zeroErrors=true;
 			for (var input in formData){
