@@ -75,36 +75,45 @@
 						</div>
 						<div class="row">
 							<form>
-								<div class="col-lg-8 col-lg-offset-2">
+								<div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Grade Average</label>
 										<input class="form-control" type="number" min="0" max="100" onchange="limitGrade(this);">
 									</div> <!-- /.form-group -->
 								</div> <!-- /.col-lg-8 -->
+								<div class="col-lg-5 col-md-6 col-sm-6">
+									<div class="form-group">
+										<label>ACT</label>
+										<input class="form-control" type="number" placeholder="Leave blank if unavailable" min="0" max="36">
+									</div> <!-- /. form-group -->
+								</div>
 								<div class="col-lg-10 col-lg-offset-1">
-									<div class="col-lg-10">
-										<label>SAT Scores</label>
-									</div> <!-- /.col-lg-10 -->
-									<div class="col-lg-4">
+									<label>SAT Scores</label>
+								</div> <!-- /.col-lg-10 -->
+								<div class="col-lg-10 col-lg-offset-1">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 										<div class="input-group input-group-md">
 											<span class="input-group-addon">Reading</span>
 											<input class="form-control" type="number" min="0" max="800" onchange="limitSAT(this);">
 										</div> <!-- /.input-group -->
 									</div> <!-- /.col-lg-4 -->
-									<div class="col-lg-4">
+									<div class="col-lg-4 col-md-4 col-sm-4">
 										<div class="input-group input-group-md">
-											<span class="input-group-addon">Writing</span>
+											<span class="input-group-addon" style="text-indent: 8px;">Writing</span>
 											<input class="form-control" type="number" min="0" max="800" onchange="limitSAT(this);">
 										</div> <!-- /.input-group -->
 									</div> <!-- /.col-lg-4 -->
-									<div class="col-lg-4">
+									<div class="col-lg-4 col-md-4 col-sm-4">
 										<div class="input-group input-group-md">
-											<span class="input-group-addon">Math</span>
+											<span class="input-group-addon" style="text-indent: 20px;">Math</span>
 											<input class="form-control" type="number" min="0" max="800" onchange="limitSAT(this);">
 										</div> <!-- /.input-group -->
 									</div> <!-- /.col-lg-4 -->
-								</div> <!-- /.col-lg-10 -->
-								<div class="col-lg-8 col-lg-offset-2">
+								</div>
+								<div class="col-lg-10 col-lg-offset-1">
+									<hr>
+								</div>
+								<div class="col-lg-10 col-lg-offset-1">
 									<label>Preferred Majors</label>
 
 									<div class="form-group">
@@ -144,21 +153,21 @@
 	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
 
 -->
-	<script>
-		function limitSAT(input){
-			if(input.value < 0)
-				input.value = 0;
+<script>
+	function limitSAT(input){
+		if(input.value < 0)
+			input.value = 0;
 
-			if(input.value > 800)
-				input.value = 800;
-		}
-		function limitGrade(input){
-			if(input.value < 0)
-				input.value = 0;
+		if(input.value > 800)
+			input.value = 800;
+	}
+	function limitGrade(input){
+		if(input.value < 0)
+			input.value = 0;
 
-			if(input.value > 100)
-				input.value = 100;			
-		}
-	</script>
+		if(input.value > 100)
+			input.value = 100;			
+	}
+</script>
 </body>
 </html>
