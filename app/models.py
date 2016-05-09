@@ -51,6 +51,12 @@ class User(db.Document):
 	SAT_write = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_math = db.IntField(min_value=0,max_value=800, required=False)
 	degree = db.StringField(max_length=255, required=False)
+	tuition = db.FloatField(min_value=0, max_value=100000, required=False)
+	dorm_price = db.FloatField(min_value=0, max_value=20000, required=False)
+	state = db.StringField(max_length=255, required=False)
+	cost_preference = db.FloatField(min_value=0, max_value=5, required=False)
+	distance_preference = db.FloatField(min_value=0, max_value=5, required=False)
+	academic_preference = db.FloatField(min_value=0, max_value=5, required=False)	
 	meta = {#To declare admin users
 		'allow_inheritance': True
 	}

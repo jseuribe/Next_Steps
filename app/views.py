@@ -70,6 +70,12 @@ def return_account_setup_3():
 	return render_template('Web_Development/account_setup_3.html')
 
 @app.route('/')
+@app.route('/account_setup_4')
+@login_required
+def return_account_setup_4():
+	return render_template('Web_Development/account_setup_4.html')
+
+@app.route('/')
 @app.route('/return_log')
 def return_log():
 	return render_template('Web_Development/login.html')
@@ -407,6 +413,34 @@ def account_setup_2():
 	user_obj.degree = n_degree
 	user_obj.save()
 	return redirect(url_for('return_account_setup_3'))
+
+@app.route('/')
+@app.route('/account_setup_3/confirm', methods=['POST'])
+@login_required
+def account_setup_3():
+	n_tuition = float(normalize_from_unicode(request.form['tuition']))
+	n_dorm_price = float(normalize_from_unicode(request.form['dorm_price']))
+	n_state = normalize_from_unicode(request.form['state'])
+	n_distance_preference = float(normalize_from_unicode(request.form['distance_preference']))
+	n_academic_preference = float(normalize_from_unicode(request.form['academic_preference']))
+	n_cost_preference = float(normalize_from_unicode(request.form['cost_preference']))
+	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
+
+	user_q = User.objects(username=u_name_look_up) #get the object
+
+	if not user_q:
+		flash("Error please try again - USER_NOT_FOUND")
+		return redirect(url_for('return_account_setup_3'))
+
+	user_obj = user_q[0]#This should be the object what is the user.
+	user_obj.tuition = n_tuition
+	user_obj.dorm_price = n_dorm_price
+	user_obj.state = n_state
+	user_obj.distance_preference = n_distance_preference
+	user_obj.academic_preference = n_academic_preference
+	user_obj.cost_preference = n_cost_preference
+	user_obj.save()
+	return redirect(url_for('return_account_setup_4'))
 
 '''
 @app.route('/api/token')
