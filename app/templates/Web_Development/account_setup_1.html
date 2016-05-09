@@ -34,7 +34,12 @@
 							<li><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home</a></li>
 							<li><a href="{{url_for('return_about')}}"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
 							<li><a href="{{url_for('return_contact')}}"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
-							<li class="active"><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Login<span class="sr-only">(current)</span></a></li>
+							{% if not session.logged_in %}
+								<li><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
+							{% else %}
+								<li><a href='{{url_for("logout")}}'><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log-out </a></li>
+
+							{% endif %}
 						</ul>
 						<form class="navbar-form navbar-right" role="search">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
