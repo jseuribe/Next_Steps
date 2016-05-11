@@ -97,12 +97,13 @@
 					</div> <!-- /.row -->
 				</div> <!-- /.panel-body -->
 			</div> <!-- /.panel -->
-			<nav>
+<!-- 			<nav>
 				<ul id = "submitPage0" class="pager">
 					<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
 					<li class="next"><a href="account_setup_1.html">Next <span aria-hidden="true">&rarr;</span></a></li>
 				</ul>
-			</nav>
+				</nav> -->
+			<button id="submitPage0" type="submit" class="btn btn-default">Next</button>				
 		</div> <!-- /.col-lg-8 -->
 	</div> <!-- /.row -->
 	<!-- FOOTER -->
@@ -162,6 +163,7 @@
 				var errorAt=$("span", element.parent());
 				if (!valid){
 					errorAt.removeClass("error").addClass("errorShow");
+					element.removeClass("valid").addClass("invalid");
 					zeroErrors=false;
 				}
 				else{
