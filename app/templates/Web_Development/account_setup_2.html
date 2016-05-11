@@ -74,17 +74,18 @@
 							</div>
 						</div>
 						<div class="row">
-							<form>
+							<form role="form" id="page2">
 								<div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Grade Average</label>
-										<input class="form-control" type="number" min="0" max="100" onchange="limitGrade(this);">
+										<input class="form-control numericonly" id="inputGPA" name="GPA" type="number" min="0" max="100" onchange="limitGrade(this);">
+										<span class ="error">Please enter your Grade Average</span>
 									</div> <!-- /.form-group -->
 								</div> <!-- /.col-lg-8 -->
 								<div class="col-lg-5 col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>ACT</label>
-										<input class="form-control" type="number" placeholder="Leave blank if unavailable" min="0" max="36">
+										<input class="form-control numericonly valid" type="number" placeholder="Leave blank if unavailable" min="0" max="36" onchange="limitACT(this);">
 									</div> <!-- /. form-group -->
 								</div>
 								<div class="col-lg-10 col-lg-offset-1">
@@ -94,19 +95,22 @@
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 										<div class="input-group input-group-md">
 											<span class="input-group-addon">Reading</span>
-											<input class="form-control" type="number" min="0" max="800" onchange="limitSAT(this);">
+											<input class="form-contro numericonly" id="inputSATR" name="SATR" type="number" min="0" max="800" onchange="limitSAT(this);">
+											<span class ="error">Please enter your Reading Score</span>
 										</div> <!-- /.input-group -->
 									</div> <!-- /.col-lg-4 -->
 									<div class="col-lg-4 col-md-4 col-sm-4">
 										<div class="input-group input-group-md">
 											<span class="input-group-addon" style="text-indent: 8px;">Writing</span>
-											<input class="form-control" type="number" min="0" max="800" onchange="limitSAT(this);">
+											<input class="form-control numericonly" id="inputSATW" name="SATW"type="number" min="0" max="800" onchange="limitSAT(this);">
+											<span class ="error">Please enter your Writing Score</span>
 										</div> <!-- /.input-group -->
 									</div> <!-- /.col-lg-4 -->
 									<div class="col-lg-4 col-md-4 col-sm-4">
 										<div class="input-group input-group-md">
 											<span class="input-group-addon" style="text-indent: 20px;">Math</span>
-											<input class="form-control" type="number" min="0" max="800" onchange="limitSAT(this);">
+											<input class="form-control numericonly"id="inputSATM" name="SATM" type="number" min="0" max="800" onchange="limitSAT(this);">
+											<span class ="error">Please enter your Math Score</span>
 										</div> <!-- /.input-group -->
 									</div> <!-- /.col-lg-4 -->
 								</div>
@@ -118,13 +122,14 @@
 
 									<div class="form-group">
 										<label>Preferred Degree</label>
-										<select class="form-control">
+										<select class="form-control" id="inputDegree" name="Degree">
 											<option value="degree_empty"></option>
 											<option value="degree_associate">Associate</option>
 											<option value="degree_bachelor">Bachelor</option>
 											<option value="degree_master">Master</option>
 											<option value="degree_no_pref">No Preference</option>
 										</select>
+										<span class ="error">Please select your preferred degree</span>
 									</div> <!-- /.form-group -->
 
 								</div> <!-- /.col-lg-8 -->
@@ -133,11 +138,7 @@
 					</div> <!-- /.panel-body -->
 				</div> <!-- /.panel -->
 				<nav>
-					<ul class="pager">
-						<li class="previous"><a href="account_setup_1.html"><span aria-hidden="true">&larr;</span> Previous</a></li>
-						<li class="next"><a href="account_setup_3.html">Next <span aria-hidden="true">&rarr;</span></a></li>
-					</ul>
-				</nav>
+			<button id="submitPage2" type="submit" class="btn btn-default">Next</button>
 			</div> <!-- /.col-lg-8 -->
 		</div> <!-- /.row -->
 		<!-- FOOTER -->
@@ -154,6 +155,88 @@
 
 -->
 <script>
+	$(document).ready(function(){
+		<!--GPA must contain a value-->
+		$('#inputGPA').on('input', function() {
+			var input=$(this);
+			var gpa=input.val();
+			if(gpa){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});		
+
+		<!--SAT Reading must contain a value-->
+		$('#inputSATR').on('input', function() {
+			var input=$(this);
+			var satR=input.val();
+			if(satR){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});				
+
+		<!--SAT Writing must contain a value-->
+		$('#inputSATW').on('input', function() {
+			var input=$(this);
+			var satW=input.val();
+			if(satW){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});		
+		<!--SAT Math must contain a value-->
+		$('#inputSATM').on('input', function() {
+			var input=$(this);
+			var satM=input.val();
+
+			if(satM){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});		
+		<!--Degree must be selected-->
+		$('#inputDegree').on('input', function() {
+			var input=$(this);
+			var degree=input.val();
+
+			if(degree && degree != "degree_empty"){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});	
+		<!--Check whole form -->
+		$("#submitPage2").click(function(event){
+			var formData=$("#page2").serializeArray();
+			var zeroErrors=true;
+			for (var input in formData){
+				var element=$("#input"+formData[input]['name']);
+				var valid=element.hasClass("valid");
+				var errorAt=$("span", element.parent());
+				if (!valid){
+					errorAt.removeClass("error").addClass("errorShow");
+					element.removeClass("valid").addClass("invalid");
+					zeroErrors=false;
+				}
+				else{
+					errorAt.removeClass("errorShow").addClass("error");
+				}
+			}
+			if (!zeroErrors){
+				event.preventDefault(); 
+			}
+		});
+	});
 	function limitSAT(input){
 		if(input.value < 0)
 			input.value = 0;
@@ -168,6 +251,16 @@
 		if(input.value > 100)
 			input.value = 100;			
 	}
+	function limitACT(input){
+		if(input.value < 0)
+			input.value = 0;
+		if(input.value > 36)
+			input.value = 36;
+	}
+
+	$('.numericonly').bind('keyup blur',function(){ 
+		$(this).val( $(this).val().replace(/[^0-9]/g,'') );
+	});
 </script>
 </body>
 </html>
