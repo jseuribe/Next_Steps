@@ -99,14 +99,15 @@
 								</div> <!-- /.col-lg-8 -->
 								<div class="col-lg-4 col-lg-offset-2 col-md-6 col-sm-6">
 									<div class="form-group">
-										<label>City</label>
-										<input class="form-control" type="text">
+										<label for="inputCity">City</label>
+										<input class="form-control alphaonly" id="inputCity" name="City" type="text">
+										<span class ="error">Please enter your city</span>
 									</div>
 								</div> <!-- /.col-lg-6 -->
 								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
 									<div class="form-group">
 										<label>State</label>
-										<select class="form-control">
+										<select id="inputState" name="State" class="form-control">
 											<option value="state_empty"></option>
 											<option value="alabama">AL</option>
 											<option value="alaska">AK</option>
@@ -159,12 +160,14 @@
 											<option value="wisconsin">WI</option>
 											<option value="wyoming">WY</option>
 										</select>
+										<span class ="error">Please enter your State</span>
 									</div> <!-- /.form-group -->
 								</div> <!-- /.col-lg-2 -->
 								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
 									<div class="form-group">
 										<label>ZIP</label>
-										<input class="form-control" type="number">
+										<input class="form-control numericonly" id="inputZIP" name="ZIP" type="number">
+										<span class ="error">Please enter your 5-digit ZIP code</span>	
 									</div> <!-- /.form-group -->
 								</div>
 							</form>
@@ -172,11 +175,7 @@
 					</div> <!-- /.panel-body -->
 				</div> <!-- /.panel -->
 				<nav>
-					<ul class="pager">
-						<li class="previous"><a href="account_setup_0.html"><span aria-hidden="true">&larr;</span> Previous</a></li>
-						<li class="next" id ="submitPage1"><a href="account_setup_2.html">Next <span aria-hidden="true">&rarr;</span></a></li>
-					</ul>
-				</nav>
+			<button id="submitPage1" type="submit" class="btn btn-default">Next</button>
 			</div> <!-- /.col-lg-8 -->
 		</div> <!-- /.row -->
 		<!-- FOOTER -->
@@ -228,6 +227,42 @@
 				input.removeClass("valid").addClass("invalid");
 			}
 		});		
+		<!--State must have choice from dropdown-->
+		$('#inputState').on('input', function() {
+			var input=$(this);
+			var state=input.val();
+
+			if(state && state != "state_empty"){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});		
+		<!--City must have a character-->
+		$('#inputCity').on('input', function() {
+			var input=$(this);
+			var city=input.val();
+
+			if(city){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});	
+		<!--ZIP must be entered-->
+		$('#inputZIP').on('input', function() {
+			var input=$(this);
+			var zip=input.val();
+
+			if(zip && zip.length == 5){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});	
 		<!--Check whole form -->
 		$("#submitPage1").click(function(event){
 			var formData=$("#page1").serializeArray();
@@ -238,6 +273,7 @@
 				var errorAt=$("span", element.parent());
 				if (!valid){
 					errorAt.removeClass("error").addClass("errorShow");
+					element.removeClass("valid").addClass("invalid");
 					zeroErrors=false;
 				}
 				else{
@@ -252,6 +288,10 @@
 		<!--Class limits to alphabets only-->
 		$('.alphaonly').bind('keyup blur',function(){ 
 			$(this).val( $(this).val().replace(/[^A-Za-z]/g,'') );
+		});
+		<!--Class limits to numeric only-->
+		$('.numericonly').bind('keyup blur',function(){ 
+			$(this).val( $(this).val().replace(/[^0-9]/g,'') );
 		});
 	});
 </script>
