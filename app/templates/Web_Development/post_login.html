@@ -48,12 +48,7 @@
 							<li class="active"><a href="homepage.html"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home<span class="sr-only">(current)</span></a></li>
 							<li><a href="about.html"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
 							<li><a href="contact_us.html"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
-							{% if not session.logged_in %}
-								<li><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
-							{% else %}
-								<li><a href='{{url_for("logout")}}'><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log-out </a></li>
-
-							{% endif %}
+							<li><a href="login.html"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Logout</a></li>
 						</ul>
 						<form class="navbar-form navbar-right" role="search">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -74,23 +69,23 @@
 		</div> <!-- /.page-header -->
 		<div class="row">
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-				<div class="jumbotron" style="padding: 30px;">
-					<h2 style="text-align: center;">Full Name</h2>
+				<div class="jumbotron" style="padding: 30px; padding-top: 10px;">
+					<h2 style="text-align: center;">Bob Billy</h2>
 					<img class="img-thumbnail img-responsive center-block" src="img/default_profile_pic.png" alt="Generic placeholder image">
-					<div class="row" style="padding: 5px;">
+					<div class="row text-center" style="padding: 5px; padding-bottom: 10px;">
 						<a class="btn btn-sm btn-primary" href="login.html" role="button">Log off</a>
 					</div>
 					<div class="row" style="padding: 2px;">
-						<a class="btn btn-sm btn-default col-lg-12" href="#" role="button" style="background-color: transparent;">Button</a>
+						<a class="btn btn-sm btn-default col-lg-12" href="#" role="button" style="background-color: transparent;">View Full Profile</a>
 					</div>
 					<div class="row" style="padding: 2px;">
-						<a class="btn btn-sm btn-default col-lg-12" href="#" role="button" style="background-color: transparent;">Button</a>
+						<a class="btn btn-sm btn-default col-lg-12" href="#" role="button" style="background-color: transparent;">View Bookmarked Schools</a>
 					</div>
 					<div class="row" style="padding: 2px;">
-						<a class="btn btn-sm btn-default col-lg-12" href="#" role="button" style="background-color: transparent;">Button</a>
+						<a class="btn btn-sm btn-default col-lg-12" href="#" role="button" style="background-color: transparent;">More Buttons</a>
 					</div>
 					<div class="row" style="padding: 2px;">
-						<a class="btn btn-sm btn-default col-lg-12" href="#" role="button" style="background-color: transparent;">Button</a>
+						<a class="btn btn-sm btn-default col-lg-12" href="#" role="button" style="background-color: transparent;">Even More Buttons!</a>
 					</div>
 				</div> <!-- /.jumbotron -->
 			</div> <!-- /.col -->
@@ -101,7 +96,59 @@
 							<div id="mycarousel" class="carousel slide" data-ride="carousel">
 								<div class="carousel-inner">
 									<div class="item active">
-										<div class="slidemaster"></div>
+										<div class="slidemaster" style="background-image: url('img/college_stony_brook.png');"></div>
+										<div class="container">
+											<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
+												<div class="desc">
+													<h5>Stony Brook University</h5>
+												</div>
+											</div> <!-- /.carousel-caption -->
+										</div>
+									</div>
+								</div> <!-- /.item active -->
+							</div>
+						</div>
+						<div class="panel-body">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<p class="bg-success">Fit-Number: +100</p>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<p class="bg-info">Bookmarks: 100</p>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading" style="padding: 0px;">
+							<div id="mycarousel" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner">
+									<div class="item active">
+										<div class="slidemaster" style="background-image: url('img/college_hunter.png');"></div>
+										<div class="container">
+											<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
+												<div class="desc">
+													<h5>Hunter College</h5>
+												</div>
+											</div> <!-- /.carousel-caption -->
+										</div>
+									</div>
+								</div> <!-- /.item active -->
+							</div>
+						</div>
+						<div class="panel-body">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<p class="bg-danger">Fit-Number: -100</p>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<p class="bg-info">Bookmarks: 0</p>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading" style="padding: 0px;">
+							<div id="mycarousel" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner">
+									<div class="item active">
+										<div class="slidemaster" style="background-image: url('img/school_skyline.png');"></div>
 										<div class="container">
 											<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
 												<div class="desc">
@@ -115,48 +162,59 @@
 						</div>
 						<div class="panel-body">
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-								<h5>Fit-Number: </h5>
+								<p class="bg-warning">Fit-Number: 0</p>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-								<h5>Bookmarks: </h5>
+								<p class="bg-info">Bookmarks: 0</>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div> <!-- /.col -->
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-				<div class="jumbotron" style="padding: 15px;">
-					<div class="panel-group">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h5><small>Top Schools for You:</small></h5>
+				</div> <!-- /.col -->
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+					<div class="jumbotron" style="padding: 15px;">
+						<div class="panel-group">
+							<div class="panel panel-primary">
+								<div class="panel-heading" style="padding: 5px; padding-bottom: 0px;">
+									<p class="text-center"><small>Top Schools for You</small></p>
+								</div>
+								<div class="panel-body" style="padding-top: 0px; padding-bottom: 0px; padding-left: 2px; padding-right: 2px;">
+									<ol style="padding: 0px;"> <!-- ordered list -->
+										<li><small>Stony Brook University</small></li>
+										<li><small>Hunter College</small></li>
+										<li><small>More Colleges</small></li>
+										<li><small>Even More Colleges</small></li>
+									</ol>
+								</div>
 							</div>
-							<div class="panel-body">
-								<h6><small>Most Bookmarked Schools:</small></h6>
+							<div class="panel panel-primary">
+								<div class="panel-heading" style="padding: 5px; padding-bottom: 0px;">
+									<p class="text-center"><small>Most Bookmarked Schools</small></p>
+								</div>
+								<div class="panel-body" style="padding-top: 0px; padding-bottom: 0px; padding-left: 2px; padding-right: 2px;">
+									<ol style="padding: 0px;"> <!-- ordered list -->
+										<li><small>University at Buffalo</small></li>
+										<li><small>Columbia University</small></li>
+										<li><small>Hunter College</small></li>
+										<li><small>More Colleges</small></li>
+										<li><small>Even More Colleges</small></li>
+									</ol>
+								</div>
 							</div>
 						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h5><small>Top Schools for You:</small></h5>
-							</div>
-							<div class="panel-body">
-								<h6><small>Most Bookmarked Schools:</small></h6>
-							</div>
-						</div>
-					</div>
-				</div> <!-- /.jumbotron -->
-			</div> <!-- /.col -->
-		</div> <!-- /.row -->
+					</div> <!-- /.jumbotron -->
+				</div> <!-- /.col -->
+			</div> <!-- /.row -->
 
-		<!-- FOOTER -->
-		<footer>
-			<p class="pull-right"><a href="#">Back to top</a></p>
-			<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-		</footer>
-	</div> <!-- /.container -->
+			<!-- FOOTER -->
+			<footer>
+				<p class="pull-right"><a href="#">Back to top</a></p>
+				<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+			</footer>
+		</div> <!-- /.container -->
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<!-- Put this back!
 	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
 -->
