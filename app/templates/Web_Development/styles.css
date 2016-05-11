@@ -182,10 +182,10 @@ body {
 		color: red;
 		margin-left: 10px;
 	}
-	input.invalid, textarea.invalid{
+	input.invalid, textarea.invalid, select.invalid{
 		border: 2px solid red;
 	}
 	
-	input.valid, textarea.valid{
+	input.valid, textarea.valid, select.valid{
 		border: 2px solid green;
 	}	
