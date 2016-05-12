@@ -61,19 +61,19 @@ def return_account_setup():
 @app.route('/account_setup_2')
 @login_required
 def return_account_setup_2():
-	return render_template('Web_Development/account_setup_2.html')
+	return render_template('Web_Development/account_setup_2.html', title="Account Setup (Step 3 of 4)")
 
 @app.route('/')
 @app.route('/account_setup_3')
 @login_required
 def return_account_setup_3():
-	return render_template('Web_Development/account_setup_3.html')
+	return render_template('Web_Development/account_setup_3.html', title="Account Setup (Step 4 of 4)")
 
 @app.route('/')
 @app.route('/account_setup_4')
 @login_required
 def return_account_setup_4():
-	return render_template('Web_Development/account_setup_4.html')
+	return render_template('Web_Development/account_setup_4.html', title="Account Setup Complete")
 
 @app.route('/')
 @app.route('/return_log')
@@ -391,7 +391,7 @@ def account_setup_1():
 	user_obj.l_name = n_l_name
 	user_obj.street = n_street
 	user_obj.save()
-	return redirect(url_for('return_account_setup_2'))
+	return return_account_setup_2()
 
 @app.route('/')
 @app.route('/account_setup_2/confirm', methods=['POST'])
@@ -446,7 +446,7 @@ def account_setup_3():
 	user_obj.academic_preference = n_academic_preference
 	user_obj.cost_preference = n_cost_preference
 	user_obj.save()
-	return redirect(url_for('return_account_setup_4'))
+	return return_account_setup_4()
 
 '''
 @app.route('/api/token')
