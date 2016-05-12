@@ -7,15 +7,16 @@
 	<meta name = "robots" content = "noindex, nofollow"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width = device-width, initial-scale = 1">
+	<!-- Put this back
+
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<!-- Put this back
+-->
+
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}">
--->
-<!-- Custom styles for this template -->
+<!-- Custom styles for this template
 <link rel="stylesheet" type="text/css" href="styles.css">
-	<!-- Put this back
-    <link href="{{url_for('static',filename='styles.css')}}" rel="stylesheet">
 -->
+    <link href="{{url_for('static',filename='styles.css')}}" rel="stylesheet">
 <style type="text/css">
 	div.desc{
 		background-color: #000;
@@ -96,7 +97,7 @@
 							<div id="mycarousel" class="carousel slide" data-ride="carousel">
 								<div class="carousel-inner">
 									<div class="item active">
-										<div class="slidemaster" style="background-image: url('img/college_stony_brook.png');"></div>
+										<div class="slidemaster" style='background-image: url("/home/joseu/Next_Steps/app/static/img/stony_brook.png");'></div>
 										<div class="container">
 											<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
 												<div class="desc">
@@ -214,9 +215,11 @@
 		</div> <!-- /.container -->
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<!-- Put this back!
-	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
+
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 -->
+
+	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
 </body>
 </html>

@@ -92,6 +92,12 @@ def register():
 	response = render_template('registration.html', title='title', form=form)
 	return response
 
+@app.route('/')
+@app.route('/dashboard')
+@login_required
+def return_dash():
+	return render_template('Web_Development/post_login.html')
+	
 '''
 Beyond this point are the //LOGOUT FUNCTIONS//
 You'll find:
