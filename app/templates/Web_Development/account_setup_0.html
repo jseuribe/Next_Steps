@@ -1,24 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name = "description" content = "This is the user account creation page."/>
-	<meta name = "keyword" content =  "nextstep account"/>
-	<meta name = "robots" content = "noindex, nofollow"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width = device-width, initial-scale = 1">
-    <link href="{{url_for('static',filename='css/bootstrap.css')}}" rel="stylesheet">
-	<!-- Put this back
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}">
--->
-<!-- Custom styles for this template -->
-    <link href="{{url_for('static',filename='styles.css')}}" rel="stylesheet">
-	<!-- Put this back
-    <link href="{{url_for('static',filename='styles.css')}}" rel="stylesheet">
--->
-<title>Account Creation (Step 1 of 4)</title>
-</head>
-<body>
+{% extends "/Web_Development/base.html" %}
+{% block content %}
+
 	<div class="navbar-wrapper">
 		<div class="container" id="navigation_bar">
 			<nav class="navbar navbar-inverse navbar-static-top">
@@ -194,5 +176,5 @@
         });
     });
 </script>
-</body>
-</html>
+{% endblock %}
+
