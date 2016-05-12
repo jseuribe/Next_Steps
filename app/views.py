@@ -42,12 +42,12 @@ def index():
 @app.route('/')
 @app.route('/contacts_page')
 def return_contact():
-	return render_template('Web_Development/contact_us.html')
+	return render_template('Web_Development/contact_us.html', title='Contact Us')
 
 @app.route('/')
 @app.route('/about')
 def return_about():
-	return render_template('Web_Development/about.html')
+	return render_template('Web_Development/about.html', title='About')
 
 @app.route('/')
 @app.route('/account_setup')
