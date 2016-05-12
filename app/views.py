@@ -78,7 +78,7 @@ def return_account_setup_4():
 @app.route('/')
 @app.route('/return_log')
 def return_log():
-	return render_template('Web_Development/login.html')
+	return render_template('Web_Development/login.html', title='Login')
 
 @app.route('/settings')
 @login_required
@@ -366,7 +366,7 @@ def account_setup_0():
 @app.route('/account_setup_1', methods=['GET'])
 @login_required
 def return_account_setup_1():
-	return render_template('/Web_Development/account_setup_1.html')
+	return render_template('/Web_Development/account_setup_1.html', title='Account Setup (Step 2 of 4)')
 
 @app.route('/')
 @app.route('/account_setup_1/confirm', methods=['POST'])
