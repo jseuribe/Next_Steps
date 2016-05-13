@@ -44,6 +44,13 @@ body {
 		margin-right: auto;
 	}
 
+	/* CUSTOMIZE THE JUMBOTRON
+	-------------------------------------------------- */
+	.jumbotron-transparent {
+		background-color: rgba(255,255,255,0.5);
+		padding: 10px;
+	}
+
 	/* CUSTOMIZE THE CAROUSEL
 	-------------------------------------------------- */
 	/* Carousel base class */
@@ -118,6 +125,10 @@ body {
 		letter-spacing: -1px;
 	}
 
+	.profile-picture {
+		width: 105px;
+	}
+
 	/* RESPONSIVE CSS
 	-------------------------------------------------- */
 	@media (min-width: 768px) {
@@ -149,10 +160,18 @@ body {
 		.featurette-heading {
 			font-size: 50px;
 		}
+
+		.profile-picture {
+			width: 100px;
+		}
 	}
 	@media (min-width: 992px) {
 		.featurette-heading {
 			margin-top: 10px;
+		}
+
+		.profile-picture {
+			width: auto;
 		}
 	}
 	li {
@@ -160,7 +179,7 @@ body {
 		margin-left: 40px;
 	}
 	.container-no-carousel {
-		padding-top: 70px;
+		padding-top: 50px;
 	}
 	.img-circle {
 		background-color: lightgrey;
