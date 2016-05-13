@@ -29,7 +29,7 @@
 </style>
 <title>Next Step</title>
 </head>
-<body>
+<body style="background-image: url('img/background_post_login.png'); background-size: 30%;">
 	<div class="navbar-wrapper">
 		<div class="container" id="navigation_bar">
 			<nav class="navbar navbar-inverse navbar-static-top">
@@ -64,50 +64,52 @@
 	</div><!-- /.navbar-wrapper -->
 
 	<div class="container container-no-carousel">
-		<div class="page-header">
+		<div class="page-header" style="color: white;">
 			<h2>Homepage</h2>
 		</div> <!-- /.page-header -->
 		<div class="row">
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-				<div class="jumbotron" style="padding: 30px; padding-top: 10px;">
-					<h2 style="text-align: center;">Bob Billy</h2>
-					<img class="img-thumbnail img-responsive center-block" src="img/default_profile_pic.png" alt="Generic placeholder image">
-					<div class="row text-center" style="padding: 5px; padding-bottom: 10px;">
-						<a class="btn btn-sm btn-primary" href="login.html" role="button">Log off</a>
-					</div>
-					<div class="row" style="padding: 2px;">
-						<a class="btn btn-sm btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12" href="user_profile.html" role="button" style="background-color: transparent;">View Full Profile</a>
-					</div>
-					<div class="row" style="padding: 2px;">
-						<a class="btn btn-sm btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12" href="#" role="button" style="background-color: transparent;">View Bookmarked Schools</a>
-					</div>
-					<div class="row" style="padding: 2px;">
-						<a class="btn btn-sm btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12" href="#" role="button" style="background-color: transparent;">More Buttons</a>
-					</div>
-					<div class="row" style="padding: 2px;">
-						<a class="btn btn-sm btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12" href="#" role="button" style="background-color: transparent;">Even More Buttons!</a>
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<div class="well" style="padding: 30px; padding-top: 10px; padding-bottom: 10px;">
+					<div class="row text-center">
+						<div class="col-lg-12 col-md-12 col-sm-3 col-xs-4">
+							<h2 class="hidden-sm hidden-xs" style="text-align: center;">Bob Billy</h2>
+							<img class="img-thumbnail img-responsive center-block profile-picture" src="img/default_profile_pic.png" alt="Generic placeholder image">
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-9 col-xs-8">
+							<div class="row" style="padding: 5px; padding-bottom: 10px;">
+								<a class="btn btn-sm btn-primary col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-12 col-xs-12" href="login.html" role="button">Log off</a>
+							</div>
+							<div class="row" style="padding: 2px;">
+								<a class="btn btn-sm btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12" href="user_profile.html" role="button" style="background-color: transparent;">View Full Profile</a>
+							</div>
+							<div class="row" style="padding: 2px;">
+								<a class="btn btn-sm btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12" href="bookmarked_schools.html" role="button" style="background-color: transparent;">View Bookmarked Schools</a>
+							</div>
+						</div>
 					</div>
 				</div> <!-- /.jumbotron -->
 			</div> <!-- /.col -->
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<div class="jumbotron" style="padding: 20px;">
+			<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+				<div class="well" style="padding: 20px;">
 					<div class="panel panel-default">
-						<div class="panel-heading" style="padding: 0px;">
-							<div id="mycarousel" class="carousel slide" data-ride="carousel">
-								<div class="carousel-inner">
-									<div class="item active">
-										<div class="slidemaster" style="background-image: url('img/college_stony_brook.png');"></div>
-										<div class="container">
-											<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
-												<div class="desc">
-													<h5>Stony Brook University</h5>
-												</div>
-											</div> <!-- /.carousel-caption -->
+						<a href="#">
+							<div class="panel-heading" style="padding: 0px;">
+								<div id="mycarousel" class="carousel slide" data-ride="carousel">
+									<div class="carousel-inner">
+										<div class="item active">
+											<div class="slidemaster" style="background-image: url('img/college_stony_brook.png');"></div>
+											<div class="container">
+												<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
+													<div class="desc">
+														<h5>Stony Brook University</h5>
+													</div>
+												</div> <!-- /.carousel-caption -->
+											</div>
 										</div>
-									</div>
-								</div> <!-- /.item active -->
+									</div> <!-- /.item active -->
+								</div>
 							</div>
-						</div>
+						</a>
 						<div class="panel-body">
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 								<p class="bg-success">Fit-Number: +100</p>
@@ -118,22 +120,24 @@
 						</div>
 					</div>
 					<div class="panel panel-default">
-						<div class="panel-heading" style="padding: 0px;">
-							<div id="mycarousel" class="carousel slide" data-ride="carousel">
-								<div class="carousel-inner">
-									<div class="item active">
-										<div class="slidemaster" style="background-image: url('img/college_hunter.png');"></div>
-										<div class="container">
-											<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
-												<div class="desc">
-													<h5>Hunter College</h5>
-												</div>
-											</div> <!-- /.carousel-caption -->
+						<a href="#">
+							<div class="panel-heading" style="padding: 0px;">
+								<div id="mycarousel" class="carousel slide" data-ride="carousel">
+									<div class="carousel-inner">
+										<div class="item active">
+											<div class="slidemaster" style="background-image: url('img/college_hunter.png');"></div>
+											<div class="container">
+												<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
+													<div class="desc">
+														<h5>Hunter College</h5>
+													</div>
+												</div> <!-- /.carousel-caption -->
+											</div>
 										</div>
-									</div>
-								</div> <!-- /.item active -->
+									</div> <!-- /.item active -->
+								</div>
 							</div>
-						</div>
+						</a>
 						<div class="panel-body">
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 								<p class="bg-danger">Fit-Number: -100</p>
@@ -144,22 +148,24 @@
 						</div>
 					</div>
 					<div class="panel panel-default">
-						<div class="panel-heading" style="padding: 0px;">
-							<div id="mycarousel" class="carousel slide" data-ride="carousel">
-								<div class="carousel-inner">
-									<div class="item active">
-										<div class="slidemaster" style="background-image: url('img/school_skyline.png');"></div>
-										<div class="container">
-											<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
-												<div class="desc">
-													<h5>Enter School Name here</h5>
-												</div>
-											</div> <!-- /.carousel-caption -->
+						<a href="#">
+							<div class="panel-heading" style="padding: 0px;">
+								<div id="mycarousel" class="carousel slide" data-ride="carousel">
+									<div class="carousel-inner">
+										<div class="item active">
+											<div class="slidemaster" style="background-image: url('img/school_skyline.png');"></div>
+											<div class="container">
+												<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
+													<div class="desc">
+														<h5>Enter School Name here</h5>
+													</div>
+												</div> <!-- /.carousel-caption -->
+											</div>
 										</div>
-									</div>
-								</div> <!-- /.item active -->
+									</div> <!-- /.item active -->
+								</div>
 							</div>
-						</div>
+						</a>
 						<div class="panel-body">
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 								<p class="bg-warning">Fit-Number: 0</p>
@@ -171,8 +177,8 @@
 						</div>
 					</div>
 				</div> <!-- /.col -->
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-					<div class="jumbotron" style="padding: 15px;">
+				<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+					<div class="well" style="padding: 15px;">
 						<div class="panel-group">
 							<div class="panel panel-primary">
 								<div class="panel-heading" style="padding: 5px; padding-bottom: 0px;">
@@ -207,7 +213,7 @@
 			</div> <!-- /.row -->
 
 			<!-- FOOTER -->
-			<footer>
+			<footer style="color: white;">
 				<p class="pull-right"><a href="#">Back to top</a></p>
 				<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
 			</footer>
