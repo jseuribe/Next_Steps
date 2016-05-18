@@ -119,6 +119,28 @@
 								</div>
 								<div class="col-lg-10 col-lg-offset-1">
 									<label>Preferred Majors</label>
+										<section class="container">
+    										<div>
+        										<select id="leftValues" size="5" multiple></select>
+    										</div>
+    										<div>
+        										<input type="button" id="btnLeft" onclick="leftClick()" value="&lt;&lt;" />
+        										<input type="button" id="btnRight" onclick="rightClick()" value="&gt;&gt;" />
+        										<input type="button" id="btnInput" onclick="inputClick()" value="&lt;" />
+    										</div>
+    										<div>
+        										<select id="rightValues" size="4" multiple></select>
+											<div>
+        		
+            									<input type="text" id="txtRight" list="search" />
+													<datalist id ="search">
+            											<option>ComputerScience</option>
+            											<option>Homelessness</option>
+            											<option>Math</option>
+            											<option>Pastafarian</option>
+            											<option>LiberalArts</option>
+													</datalist>
+        									</div>
 
 									<div class="form-group">
 										<label>Preferred Degree</label>
@@ -261,6 +283,66 @@
 	$('.numericonly').bind('keyup blur',function(){ 
 		$(this).val( $(this).val().replace(/[^0-9]/g,'') );
 	});
+</script>
+<script>
+	var majors = ["ComputerScience", "Homelessness","Math","Pastafarian","LiberalArts"];
+	majors.sort();
+	var appendList = document.getElementById("rightValues");
+	for(var i = 0; i < majors.length; i++){
+		var opt = document.createElement("option");
+		opt.text = majors[i];
+		appendList.appendChild(opt);
+	}
+	function leftClick(){
+        var selectedValue = document.getElementById("rightValues");
+        var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
+        var insertValue = document.getElementById("leftValues");
+        var option = document.createElement("option");
+        option.text = selectedItem;
+        insertValue.add(option);          
+        selectedValue.remove(selectedValue.selectedIndex);  
+		}
+
+		function rightClick(){
+		    var selectedValue = document.getElementById("leftValues");
+		    var selectedItem = selectedValue.options[selectedValue.selectedIndex].text;
+		    var insertValue = document.getElementById("rightValues");
+		    var option = document.createElement("option");
+		    option.text = selectedItem;
+		    insertValue.add(option);			
+		    selectedValue.remove(selectedValue.selectedIndex);
+		}					
+		function inputClick(){
+			var getText = document.getElementById("txtRight").value;
+            var inputLeft = document.getElementById("leftValues");
+            var inputRight = document.getElementById("rightValues");
+            var txt = document.createElement("option");
+
+            for(var i = 0; i < majors.length; i++){
+              	if(getText == majors[i]){
+              		txt.text = majors[i];
+              		document.getElementById("txtRight").value = ''; //deletes text from input
+
+              		ParseRight:
+              		for(var j = 0; j < inputRight.options.length; j++ ){
+
+				for(var k = 0; k < inputLeft.options.length; k++){
+					if(inputLeft.options[k].innerHTML == getText){
+						alert("Selection already exists!");
+						break ParseRight;
+					}
+				}
+              			if(inputRight.options[j].innerHTML == getText){
+              				inputLeft.appendChild(txt);
+              				inputRight.selectedIndex = j;
+              				inputRight.remove(inputRight.selectedIndex);
+              				break;
+              			}
+              		}
+              		break;
+              	}
+              }
+		}
 </script>
 </body>
 </html>
