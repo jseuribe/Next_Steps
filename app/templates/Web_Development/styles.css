@@ -180,8 +180,72 @@ body {
 		letter-spacing: -1px;
 	}
 
+	/* Profile Panel
+	-------------------------------------------------- */
+	.profile-name {
+		text-align: center;
+	}
+
 	.profile-picture {
 		width: 105px;
+	}
+
+	.profile-button {
+		padding: 2px;
+	}
+
+	.profile-logoff-button {
+		padding: 5px;
+		padding-bottom: 10px;
+	}
+
+	.well-profile-panel {
+		padding: 30px;
+		padding-top: 10px; 
+		padding-bottom: 10px;
+	}
+
+	/* School Panel
+	-------------------------------------------------- */
+	.well-school-panel {
+		padding: 20px;
+		padding-bottom: 0px;
+	}
+
+	.panel-heading-school {
+		padding: 0px;
+	}
+
+	.carousel-caption-school {
+		bottom: 0;
+		width: 100%;
+		padding: 0px;
+		left: 0;
+		text-align: left;
+		text-indent: 50px;
+	}
+
+	/* School Panel
+	-------------------------------------------------- */
+	.well-ranking-list {
+		padding: 15px;
+		padding-bottom: 0px;
+	}
+
+	.panel-heading-ranking-list {
+		padding: 5px;
+		padding-bottom: 0px;
+	}
+
+	.panel-body-ranking-list {
+		padding-top: 0px;
+		padding-bottom: 0px;
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+
+	.ol-ranking-list {
+		padding: 0px;
 	}
 
 	/* RESPONSIVE CSS
