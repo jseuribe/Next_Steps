@@ -2,7 +2,7 @@ from functools import wraps
 from app import db, lm
 from flask import redirect, session, flash, url_for
 from .forms import LoginForm
-from models import User
+from models import User, Schools
 from bcrypt import hashpw, gensalt
 from flask.ext.login import login_user, logout_user
 

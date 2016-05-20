@@ -4,33 +4,56 @@ from app import db, lm
 from bcrypt import hashpw, gensalt
 from flask.ext.login import UserMixin
 from utils import normalize_from_unicode
-from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
 
 '''
-class Comment(db.EmbeddedDocument):
-	created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
-	body = db.StringField(verbose_name="Comment", required=True)
-	author = db.StringField(verbose_name="Name", max_length=255, required=True)
+Here's where the school class goes
+'''
+
+class Schools(db.Document):
+	id_num = db.StringField(max_length=255, required=False)
+	actenmid = db.StringField(max_length=255, required=False)
+	stabbr = db.StringField(max_length=255, required=False)
+	adm_rate = db.FloatField(min_value=0, max_value=1.0)
+	locale = db.IntField(min_value=0, max_value=255)
+	numbranch = db.StringField(max_length=255, required=False)
+	sat_avg = db.FloatField(min_value=0, required=False)
+	actwr75 = db.FloatField(min_value=0, required=False)
+	actcm25 = db.FloatField(min_value=0, required=False)
+	ccsizset = db.FloatField(min_value=0, required=False)
+	sat_avg_all = db.FloatField(min_value=0, required=False)
+	opeid6 = db.FloatField(min_value=0, required=False)
+	actwrmid = db.FloatField(min_value=0, required=False)
+	control = db.FloatField(min_value=0, required=False)
+	hcm2 = db.FloatField(min_value=0, required=False)
+	preddeg = db.FloatField(min_value=0, required=False)
+	adm_rate_all = db.FloatField(min_value=0, max_value=1.0, required=False)
+	npcurl = db.StringField(max_length=255, required=False)
+	satmtmid = db.FloatField(min_value=0, required=False)
+	satmt75 = db.FloatField(min_value=0, required=False)
+	instnm = db.StringField(max_length=255, required=False)
+	satvr75 = db.FloatField(min_value=0, required=False)
+	acten75 = db.FloatField(min_value=0, required=False)
+	main = db.FloatField(min_value=0, required=False)
+	insturl = db.StringField(max_length=255, required=False)
+	actcm75 = db.FloatField(min_value=0, required=False)
+	satvr25 = db.FloatField(min_value=0, required=False)
+	actwr25 = db.FloatField(min_value=0, required=False)
+	actmt75 = db.FloatField(min_value=0, required=False)
+	actcmmid = db.FloatField(min_value=0, required=False)
+	satmt25 = db.FloatField(min_value=0, required=False)
+	satwr75 = db.FloatField(min_value=0, required=False)
+	city = db.StringField(max_length=255, required=False)
+	satvrmid = db.FloatField(min_value=0, required=False)
+	ccbasic = db.FloatField(min_value=0, required=False)
+	satwr25 = db.FloatField(min_value=0, required=False)
+	accredAgency = db.StringField(min_value=255, required=False)
+	region = db.FloatField(min_value=0, required=False)
+	acten25 = db.FloatField(min_value=0, required=False)
+	ccugprof = db.FloatField(min_value=0, required=False)
 	
-class Post(db.Document):
-	created_at = db.DateTimeField(default=datetime.datetime.now, required= True)
-	title = db.StringField(max_length=255, required=True)
-	slug = db.StringField(max_length=255, required=True)
-	body = db.StringField(required=True)
-	comments = db.ListField(db.EmbeddedDocumentField('Comment'))
-
-	def get_absolute_url(self):
-		return url_for('post', kwargs={"slug": self.slug})
-
-	def __unicode__(self):
-		return self.title
-
-	meta = {
-		'allow_inheritance': True,
-		'indexes': ['-created_at', 'slug'],
-		'ordering': ['-created_at']
+	meta = {#To declare admin users
+		'allow_inheritance': True
 	}
-'''
 
 class User(db.Document):
 	user_id = db.IntField(min_value=0, max_value=9001)#this should be set by mongo to keep it incrementing and such
@@ -75,25 +98,3 @@ class User(db.Document):
 			return unicode(self.username)
 		except NameError:
 			return normalize_from_unicode(self.username)
-
-	'''
-	def generate_auth_token(self, expiration = 600):
-		s = Serializer(app.config["SECRET_KEY"], expires_in = expiration)
-		return s.dumps({'id': self.username})
-
-	@staticmethod
-	def verify_auth_token(token):
-		s = Serializer(app.config['SECRET_KEY'])
-		try:
-			data = s.loads(token)
-		except SignatureExpired:
-			return None #valid token that has expired
-		except BadSignature:
-			return None #invalid token
-		user = User.query.get
-	#Eventually, we should add some other fields here (grades, other parameters, etc.)
-	'''
-
-'''
-Here's where the school class goes
-'''

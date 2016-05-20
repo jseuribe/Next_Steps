@@ -50,7 +50,7 @@ def gradient_descent_runner(points, start_s, start_b, start_m, start_r, learning
 def run():
 	points = [[.80, .9, .56], [.85, .8, .50], [.76, .77, .59], [.81, 1, .423]]
 	avg_points = [3.4, 380000, 34]
-	learning_rate = .05
+	learning_rate = .04
 
 	initial_s = 0#y intercept (?)
 	initial_b = 0

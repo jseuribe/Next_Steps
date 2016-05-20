@@ -1,11 +1,9 @@
 from app import app, db
 from flask import g, request, url_for, render_template, flash, redirect, session
 from .forms import LoginForm, RegisterForm
-from models import User
 from auth import *
-from utils import normalize_from_unicode#for the pesky unicode stuff
+from utils import normalize_from_unicode, pull_random_schools#for the pesky unicode stuff
 from flask.ext.login import current_user
-
 @app.before_request
 def before_request():
 	g.user = current_user
@@ -448,6 +446,13 @@ def account_setup_3():
 	user_obj.save()
 	return return_account_setup_4()
 
+@app.route('/')
+@app.route('/randumb')
+def randumb():
+	school_obj = Schools()
+	school_obj = pull_random_schools()
+	print(school_obj.instnm)
+	return render_template('Web_Development/school_temp.html')
 '''
 @app.route('/api/token')
 @auth.login_required
