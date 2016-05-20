@@ -8,37 +8,43 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width = device-width, initial-scale = 1">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<title>Contact us</title>
+
+	<!-- CSS files -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<!-- Put this back
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}">
--->
-<!-- Custom styles for this template -->
-<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}"> -->
+	<!-- Custom styles for this template -->
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	<!-- Put this back
-    <link href="{{url_for('static',filename='styles.css')}}" rel="stylesheet">
--->
-<title>Contact us</title>
+	<link href="{{url_for('static',filename='styles.css')}}" rel="stylesheet"> -->
 </head>
-<body style="background-image: url('img/background_contact_us.png'); background-size: 100%;">
+<body class="background-sky">
+	<!-- Navigation Bar -->
 	<div class="navbar-wrapper">
 		<div class="container" id="navigation_bar">
 			<nav class="navbar navbar-inverse navbar-static-top">
 				<div class="container-fluid">
 					<div class="navbar-header">
+						<!-- Dropdown Menu Button -->
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 							<span class="sr-only"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
+						<!-- Next Step Logo in the Navigation Bar -->
 						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="img/next_step_logo.png"></a>
 					</div> <!-- /.navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<!-- Row of Buttons in the Navigation Bar -->
 						<ul class="nav navbar-nav">
 							<li><a href="homepage.html"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home</a></li>
 							<li><a href="about.html"><span class="glyphicon glyphicon-info-sign hidden-sm" aria-hidden="true"></span> About</a></li>
 							<li class="active"><a href="contact_us.html"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us<span class="sr-only">(current)</span></a></li>
 							<li><a href="login.html"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Login</a></li>
 						</ul>
+						<!-- Search Form in the Navigation Bar -->
 						<form class="navbar-form navbar-right" role="search">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							<div class="form-group">
@@ -52,73 +58,82 @@
 		</div><!-- /.container -->
 	</div><!-- /.navbar-wrapper -->
 
-	<!--<img class="img-responsive" src="img/powerpuff_group_with_brizan.png" style="padding-bottom: 50px; display: block; margin-left: auto; margin-right: auto;">-->
-	<div class="container container-no-carousel" style="padding-top: 100px;">
+	<!-- Header Picture If you want it back -->
+	<!-- <img class="img-responsive header-picture" src="img/powerpuff_group_with_brizan.png"> -->
+
+	<!-- Page Contents -->
+	<div class="container container-with-jumbotron">
 		<div class="jumbotron jumbotron-transparent" style="padding: 50px; padding-bottom: 15px; padding-top: 35px;">
+			<!-- Greetings Message -->
 			<div class="row well">
-				<div class="col-lg-12">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<h1 class="page-header">Contact Us!
 						<small>We'd love to hear from you!</small>
 					</h1>
 					<p>If you have any questions, comments, or concerns feel free to email us.</p>
 					<p>Email Address: <a href="mailto:csNextStep@gmail.com">csNextStep@gmail.com</a></p>
-				</div> <!-- /.col -->
+				</div> <!-- /.colume control-->
 			</div> <!-- /.row well -->
+			<!-- Our Team -->
 			<div class="row well">
 				<div class="col-lg-12">
 					<h2 class="page-header">Our Team</h2>
-				</div> <!-- /.col-lg-12 -->
+				</div> <!-- /.column control -->
+				<!-- Yong Yi's Profile -->
 				<div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2 col-sm-6 text-center">
 					<img class="img-circle img-center" src="img/powerpuff_yong.png" alt="Generic placeholder image" width="140" height="140">
 					<h2>Yong Yi Kong</h2>
 					<h4><small>Server Manager</small></h4>
 					<p>[Insert Description Here]</p>
-					<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-				</div><!-- /.col-lg-4 -->
+					<p><a class="btn btn-default" href="https://www.linkedin.com/in/yong-yi-kong-767b8bb3" role="button">View details &raquo;</a></p>
+				</div> <!-- /.column control -->
+				<!-- Joanne Lin's Profile -->
 				<div class="col-lg-4 col-md-4 col-sm-6 text-center">
 					<img class="img-circle img-center" src="img/powerpuff_joanne.png" alt="Generic placeholder image" width="140" height="140">
 					<h2>Joanne Lin</h2>
 					<h4><small>Database Manager</small></h4>
 					<p>[Insert Description Here]</p>
-					<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-				</div><!-- /.col-lg-4 -->
+					<p><a class="btn btn-default" href="https://www.linkedin.com/in/joanne-lin-022359a7" role="button">View details &raquo;</a></p>
+				</div> <!-- /.column control-->
+				<!-- Jose Uribe's Profile -->
 				<div class="col-lg-4 col-md-4 col-sm-6 text-center">
 					<img class="img-circle img-center" src="img/powerpuff_jose.png" alt="Generic placeholder image" width="140" height="140">
 					<h2>Jose Uribe</h2>
 					<h4><small>Back-end Developer</small></h4>
 					<p>[Insert Desciription Here]</p>
-					<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-				</div><!-- /.col-lg-4 -->
-
+					<p><a class="btn btn-default" href="https://www.linkedin.com/in/jose-uribe-554618112" role="button">View details &raquo;</a></p>
+				</div> <!-- /.column control -->
+				<!-- Justin Wu's Profile -->
 				<div class="col-lg-4 col-md-4 col-sm-6 text-center">
 					<img class="img-circle img-center" src="img/powerpuff_justin.png" alt="Generic placeholder image" width="140" height="140">
 					<h2>Justin Wu</h2>
 					<h4><small>Web Programmer</small></h4>
 					<p>[Insert Description Here]</p>
-					<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-				</div><!-- /.col-lg-4 -->
+					<p><a class="btn btn-default" href="https://www.linkedin.com/in/wjustinu" role="button">View details &raquo;</a></p>
+				</div> <!-- /.column control -->
+				<!-- David Zhou's Profile -->
 				<div class="col-lg-4 col-md-4 col-sm-12 text-center">
 					<img class="img-circle img-center" src="img/powerpuff_david.png" alt="Generic placeholder image" width="140" height="140">
 					<h2>David Zhou</h2>
 					<h4><small>Front-end Developer</small></h4>
 					<p>[Insert Description Here]</p>
-					<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-				</div><!-- /.col-lg-4 -->
-			</div><!-- /.row -->
-		</div>
-	</div> <!-- container-jumbotron -->
-	<div class="container">
-		<!-- FOOTER -->
+					<p><a class="btn btn-default" href="https://www.linkedin.com/in/dzhou1" role="button">View details &raquo;</a></p>
+				</div> <!-- /.colume control -->
+			</div> <!-- /.row /.well -->
+		</div> <!-- /.jumbotron -->
+	</div> <!-- /.container-with-jumbotron -->
+	<!-- FOOTER -->
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<footer>
 			<p class="pull-right"><a href="#">Back to top</a></p>
 			<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
 		</footer>
-	</div>
+	</div> <!-- /.column control
 
+	<!-- JS Files -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<!-- Put this back!
-	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
--->
+	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>-->
 </body>
 </html>
