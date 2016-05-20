@@ -98,7 +98,9 @@ def register():
 @app.route('/dashboard')
 @login_required
 def return_dash():
-	school_obj = Schools()
+	school_obj1 = Schools()
+	school_obj2 = Schools()
+	school_obj3 = Schools()
 	school_obj = pull_random_schools()
 	return render_template('Web_Development/post_login.html', title='Dashboard', school=school_obj)
 	
