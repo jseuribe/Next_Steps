@@ -92,8 +92,8 @@
 								<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
 									<div class="form-group">
 										<label>Tuition Limit</label>
-										<select class="form-control">
-											<option value="tuition_limit_empty">&nbsp;</option>
+										<select id="inputTuition" name="Tuition" class="form-control">
+											<option value="tuition_limit_empty"></option>
 											<option value="tuition_limit_5000">$5,000</option>
 											<option value="tuition_limit_10000">$10,000</option>
 											<option value="tuition_limit_20000">$20,000</option>
@@ -102,6 +102,7 @@
 											<option value="tuition_limit_100000">$100,000</option>
 											<option value="tuition_limit_no_pref">No Preference</option>
 										</select>
+										<span class="error">Please choose your tuition limit</span>
 									</div> <!-- /.form-group -->
 								</div> <!-- /.column control -->
 
@@ -111,17 +112,18 @@
 										<label>Do you have a preference of which state you'd like to attend college?</label>
 										<br>
 										<label class="radio-inline">
-											<input type="radio" name="in-state_preference" value="true">Yes
+											<input class ="prefbtn"type="radio" name="Pref" value="true">Yes
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="in_state_preference" value="false">No
+											<input class ="prefbtn"type="radio" id ="inputPref2" name="Pref" value="false">No
+											<span class = "error">Please select one</span>
 										</label>
 									</div>
 
 									<div class="form-group">
 										<!-- Preferred State(s) -->
 										<label>Which State would you like to attend school?</label>
-										<select class="form-control">
+										<select id="inputState" name="State"class="form-control">
 											<option value="state_empty">&nbsp;</option>
 											<option value="alabama">AL</option>
 											<option value="alaska">AK</option>
@@ -174,6 +176,7 @@
 											<option value="wisconsin">WI</option>
 											<option value="wyoming">WY</option>
 										</select>
+										<span class="error">Please select a State</span>
 									</div> <!-- form-group -->
 
 									<!-- Cost Preference -->
@@ -181,19 +184,20 @@
 										<label>Cost Preference</label>
 										<br>
 										<label class="radio-inline">
-											<input type="radio" name="cost_preference" value="1">1
+											<input class="costbtn" type="radio" name="Cost" value="1">1
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="cost_preference" value="2">2
+											<input class="costbtn" type="radio" name="Cost" value="2">2
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="cost_preference" value="3">3
+											<input class="costbtn" type="radio" name="Cost" value="3">3
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="cost_preference" value="4">4
+											<input class="costbtn" type="radio" name="Cost" value="4">4
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="cost_preference" value="5">5
+											<input class="costbtn" type="radio" id="inputCost2" name="Cost" value="5">5
+											<span class = "error">Please select one</span>
 										</label>
 									</div> <!-- /.form-group -->
 
@@ -202,19 +206,20 @@
 										<label>Distance Preference</label>
 										<br>
 										<label class="radio-inline">
-											<input type="radio" name="distance_preference" value="1">1
+											<input class="distbtn" type="radio" name="Dist" value="1">1
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="distance_preference" value="2">2
+											<input class="distbtn" type="radio" name="Dist" value="2">2
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="distance_preference" value="3">3
+											<input class="distbtn" type="radio" name="Dist" value="3">3
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="distance_preference" value="4">4
+											<input class="distbtn" type="radio" name="Dist" value="4">4
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="distance_preference" value="5">5
+											<input class="distbtn" type="radio" id="inputDist2"name="Dist" value="5">5
+											<span class = "error">Please select one</span>
 										</label>
 									</div> <!-- /.form-group -->
 
@@ -223,19 +228,20 @@
 										<label>Academic Preference</label>
 										<br>
 										<label class="radio-inline">
-											<input type="radio" name="academic_preference" value="1">1
+											<input class="acadbtn" type="radio" name="Acad" value="1">1
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="academic_preference" value="2">2
+											<input class="acadbtn" type="radio" name="Acad" value="2">2
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="academic_preference" value="3">3
+											<input class="acadbtn" type="radio" name="Acad" value="3">3
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="academic_preference" value="4">4
+											<input class="acadbtn" type="radio" name="Acad" value="4">4
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="academic_preference" value="5">5
+											<input class="acadbtn" type="radio" id="inputAcad2" name="Acad" value="5">5
+											<span class = "error">Please select one</span>
 										</label>
 									</div> <!-- /.form-group -->
 								</div> <!-- /.column control -->
@@ -248,7 +254,7 @@
 				<a href="account_setup_2.html" class="btn btn-primary pull-left" role="button"><span class="glyphicon glyphicon-arrow-left hidden-sm" aria-hidden="true"></span> Previous</a>
 
 				<!-- Next Button -->
-				<a id="submitPage3" href="account_setup_4.html" class="btn btn-primary pull-right" role="button">Submit <span class="glyphicon glyphicon-ok hidden-sm" aria-hidden="true"></span></a>
+				<a id="submitPage2" href="account_setup_4.html" class="btn btn-primary pull-right" role="button">Submit <span class="glyphicon glyphicon-ok hidden-sm" aria-hidden="true"></span></a>
 			</div> <!-- /.column control -->
 		</div> <!-- /.row -->
 
