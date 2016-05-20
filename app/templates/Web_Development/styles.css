@@ -44,11 +44,29 @@ body {
 		margin-right: auto;
 	}
 
+	/* CUSTOMIZE BACKGROUND
+	-------------------------------------------------- */
+	.background-chalkboard {
+		background-image: url('img/background_post_login.png'); background-size: 30%;
+	}
+
+	/* CUSTOMIZE BACKGROUND
+	-------------------------------------------------- */
+	.footer-white {
+		color: white;
+	}
+
 	/* CUSTOMIZE THE JUMBOTRON
 	-------------------------------------------------- */
 	.jumbotron-transparent {
 		background-color: rgba(255,255,255,0.4);
 		padding: 10px;
+	}
+
+	/* CUSTOMIZE THE LIST GROUP ITEM 
+	-------------------------------------------------- */
+	.list-group-item {
+		display: list-item;
 	}
 
 	/* CUSTOMIZE THE CAROUSEL
