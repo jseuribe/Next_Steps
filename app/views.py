@@ -23,8 +23,8 @@ def serve_html_page():
 '''
 
 '''
-Home page links! Anything that you can get to from the homepage is here
-Includes: Homepage, Contacts, About, and Account_Setup.
+Home page links! Anything that renders a template is here. Most things here return a page, instead of acting as an interstitial
+method that flask requires for an action (form completion, login, etc.)g
 '''
 @app.route('/')
 @app.route('/index')
@@ -109,7 +109,7 @@ login(), login_confirm(), logout()
 @app.route('/login', methods=['GET'])
 def login():
 	form = LoginForm()
-	response = render_template('login.html', title='title', form=form)
+	response = render_template('Web_Development/login.html', title='title', form=form)
 	return response
 
 @app.route('/')
