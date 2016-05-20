@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name = "description" content = "This is the contact us page."/>
-	<meta name = "keyword" content =  "nextstep account"/>
-	<meta name = "robots" content = "noindex, nofollow"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width = device-width, initial-scale = 1">
-<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/bootstrap.css')}}">	<!-- Custom styles for this template -->
-    <link href="{{url_for('static',filename='styles.css')}}" rel="stylesheet">
-	<title>Contact us</title>
-</head>
-<body>
+{% extends "/Web_Development/base.html" %}
+{% block content %}
 	<div class="navbar-wrapper">
 		<div class="container" id="navigation_bar">
 			<nav class="navbar navbar-inverse navbar-static-top">
@@ -23,14 +11,19 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand pull-left" href="{{url_for('index')}}" aria-hidden="true"><img src="{{ url_for('static',filename='img/next_step_logo.png')}}"></a>
+						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="{{ url_for('static',filename='img/next_step_logo.png')}}"></a>
 					</div> <!-- /.navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<li><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
 							<li><a href="{{url_for('return_about')}}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</a></li>
 							<li class="active"><a href="{{url_for('return_contact')}}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact us<span class="sr-only">(current)</span></a></li>
-							<li><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
+							{% if not session.logged_in %}
+								<li><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
+							{% else %}
+								<li><a href='{{url_for("logout")}}'><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log-out </a></li>
+
+							{% endif %}
 						</ul>
 						<form class="navbar-form navbar-right" role="search">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -44,8 +37,8 @@
 			</nav>
 		</div><!-- /.container -->
 	</div><!-- /.navbar-wrapper -->
+	<img class="img-responsive" src="{{url_for('static', filename='img/powerpuff_group_with_brizan.png')}}" style="padding-bottom: 50px; display: block; margin-left: auto; margin-right: auto;">
 
-	<img class="img-responsive img-center" src="{{url_for('static',filename='img/powerpuff_group.png')}}" style="padding-bottom: 50px;">
 	<div class="container jumbotron" style="padding-left: 50px; padding-right: 50px; padding-top: 40px;">
 		<div class="row well">
 			<div class="col-lg-12">
@@ -109,8 +102,4 @@
 			<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
 		</footer>
 	</div> <!-- container-jumbotron -->
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="{{ url_for( 'static',filename='js/bootstrap.min.js' ) }}"></script>
-</body>
-</html>
+{% endblock %}

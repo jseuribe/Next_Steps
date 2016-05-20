@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name = "description" content = "This is the homepage."/>
-	<meta name = "keyword" content =  "nextstep account"/>
-	<meta name = "robots" content = "noindex, nofollow"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width = device-width, initial-scale = 1">
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='bootstrap.css')}}">
-	<!-- Custom styles for this template -->
-	<link rel="stylesheet" href="{{ url_for('static',filename='styles.css')}}" >
-	<title>About Next Step</title>
-</head>
-<body>
+{% extends "/Web_Development/base.html" %}
+{% block content %}
+<body style="background-color: black;">
+
 	<div class="navbar-wrapper">
 		<div class="container" id="navigation_bar">
 			<nav class="navbar navbar-inverse navbar-static-top">
@@ -31,7 +20,12 @@
 							<li class="active"><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home<span class="sr-only">(current)</span></a></li>
 							<li><a href="{{url_for('return_about')}}"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
 							<li><a href="{{url_for('return_contact')}}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact us</a></li>
-							<li><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
+							{% if not session.logged_in %}
+								<li><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
+							{% else %}
+								<li><a href='{{url_for("logout")}}'><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log-out </a></li>
+
+							{% endif %}
 						</ul>
 						<form class="navbar-form navbar-right" role="search">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -98,9 +92,15 @@
 			<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
 		</footer>
 	</div> <!-- /.container -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="{{ url_for( 'static',filename='js/bootstrap.min.js' ) }}"></script>
-
 <a href='/playground'>PLAYGROUND_DEBUG_</a>
-</body>
-</html>
+{% with messages = get_flashed_messages() %}
+  	{% if messages %}
+    	<ul class=flashes>
+    	{% for message in messages %}
+      	<li>{{ message }}</li>
+    	{% endfor %}
+    	</ul>
+  	{% endif %}
+{% endwith %}
+<a href='{{url_for("logout")}}'>LogOut</a>
+{% endblock %}

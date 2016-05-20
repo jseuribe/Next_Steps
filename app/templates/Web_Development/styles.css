@@ -48,7 +48,8 @@ body {
 	-------------------------------------------------- */
 	/* Carousel base class */
 	.carousel {
-		height: 600px;
+		height: auto;
+		/*height: 600px;*/
 		/*margin-bottom: 60px;*/
 	}
 	/* Since positioning the image, we need to help out the caption */
@@ -59,26 +60,26 @@ body {
 	}
 	/* Declare heights because of positioning of img element */
 	.carousel .item {
-		height: 600px;
+		height: auto;
 		background-color: #777;
 	}
 	.slide1{
-		background-image: url('graduates_success.png');
-		height: 600px;
+		background-image: url('img/graduates_success.png');
+		height: 700px;
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
 	}
 	.slide2{
-		background-image: url('arms_up.png');
-		height: 600px;
+		background-image: url('img/arms_up.png');
+		height: 700px;
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
 	}
 	.slide3{
-		background-image: url('next_step_slogan.png');
-		height: 600px;
+		background-image: url('img/next_step_slogan.png');
+		height: 700px;
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
@@ -163,3 +164,20 @@ body {
 		-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 		*/
 	}
+
+	/*Justin Stuff*/
+	.error{
+		display: none;
+		margin-left: 10px;
+	}
+	.errorShow{
+		color: red;
+		margin-left: 10px;
+	}
+	input.invalid, textarea.invalid{
+		border: 2px solid red;
+	}
+	
+	input.valid, textarea.valid{
+		border: 2px solid green;
+	}	
