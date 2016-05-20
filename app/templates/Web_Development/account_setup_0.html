@@ -7,38 +7,43 @@
 	<meta name = "robots" content = "noindex, nofollow"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width = device-width, initial-scale = 1">
+	<title>Account Creation (Step 1 of 4)</title>
+
+	<!-- CSS Files -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<!-- Put this back
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}">
--->
-<!-- Custom styles for this template -->
-<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}"> -->
+	<!-- Custom styles for this template -->
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	<!-- Put this back
-    <link href="{{url_for('static',filename='styles.css')}}" rel="stylesheet">
--->
-<title>Account Creation (Step 1 of 4)</title>
+	<link href="{{url_for('static',filename='styles.css')}}" rel="stylesheet"> -->
 </head>
 <body>
+	<!-- Navigation Bar -->
 	<div class="navbar-wrapper">
 		<div class="container" id="navigation_bar">
 			<nav class="navbar navbar-inverse navbar-static-top">
 				<div class="container-fluid">
 					<div class="navbar-header">
+						<!-- Dropdown Menu Button -->
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 							<span class="sr-only"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="img/next_step_logo.png"></a>
+						<!-- Next Step Logo in the Navigation Bar -->
+						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="img/next_step_logo.png" alt="Next step logo"></a>
 					</div> <!-- /.navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<!-- Row of Buttons in the Navigation Bar -->
 						<ul class="nav navbar-nav">
 							<li><a href="homepage.html"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home</a></li>
 							<li><a href="about.html"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
 							<li><a href="contact_us.html"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
 							<li class="active"><a href="login.html"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Login<span class="sr-only">(current)</span></a></li>
 						</ul>
+						<!-- Search Form in the Navigation Bar -->
 						<form class="navbar-form navbar-right" role="search">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							<div class="form-group">
@@ -51,73 +56,90 @@
 			</nav>
 		</div><!-- /.container -->
 	</div><!-- /.navbar-wrapper -->
+
+	<!-- Page Contents -->
 	<div class="container container-no-carousel" id="contents">
+		<!-- Page Header -->
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="page-header" id="page-header">
 					<h2>User Account Creation Page</h2>
 				</div> <!-- /.page-header -->
-			</div> <!-- /.col-lg-12 -->
+			</div> <!-- /.column control -->
 		</div> <!-- /.row -->
+
+		<!-- Account Setup Panel -->
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+				<!-- Panel -->
 				<div class="panel panel-default">
+					<!-- Pannel Heading -->
 					<div class="panel-heading">
 						Please fill out the following:
 					</div>  <!-- /.panel-heading -->
 					<div class="panel-body">
+						<!-- Progress Bar -->
 						<div class="panel-body">
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-								0%
+									0%
+								</div>
 							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
-							<form role="form" id="page0">
-								<div class="form-group">
-									<label for="inputEmail">User ID (e-mail address)</label>
-									<input class="form-control" id="inputEmail" type="email" placeholder="E-mail address" name="Email"></input>
-									<span class="error">Please provide a valid email</span>
-								</div> <!-- /.form-group -->
-								<div class="form-group">
-									<label for="inputPassword">Password</label>
-									<input class="form-control" type="password" id="inputPassword" name="Password"placeholder="******** (must be at least 3 characters long)"></input>
-									<span class="error">Password does not match!</span>
-								</div> <!-- /.form-group -->
-		
-								<div class="form-group">
-									<label for="inputRepassword">Verify Password</label>
-									<input class="form-control" type="password" id="inputRepassword" name="Repassword" placeholder="********"></input>
-									<span class="error">Password does not match!</span>
-								</div> <!-- /.form-group -->
-							</form>
-						</div> <!-- /.col-lg-8 -->
-					</div> <!-- /.row -->
-				</div> <!-- /.panel-body -->
-			</div> <!-- /.panel -->
-<!-- 			<nav>
-				<ul id = "submitPage0" class="pager">
-					<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
-					<li class="next"><a href="account_setup_1.html">Next <span aria-hidden="true">&rarr;</span></a></li>
-				</ul>
-				</nav> -->
-			<button id="submitPage0" type="submit" class="btn btn-default">Next</button>				
-		</div> <!-- /.col-lg-8 -->
-	</div> <!-- /.row -->
-	<!-- FOOTER -->
-	<footer>
-		<p class="pull-right"><a href="#">Back to top</a></p>
-		<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-	</footer>
-</div> <!-- /container -->
+						</div> <!-- /.progress bar -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script src="js/page0.js"></script>
+						<!-- Forms -->
+						<div class="row">
+							<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+								<form role="form" id="page0">
+									<!-- User ID -->
+									<div class="form-group">
+										<label for="inputEmail">User ID (e-mail address)</label>
+										<input class="form-control" id="inputEmail" type="email" placeholder="E-mail address" name="Email"></input>
+										<span class="error">Please provide a valid email</span>
+									</div> <!-- /.form-group -->
+									<!-- Password -->
+									<div class="form-group">
+										<label for="inputPassword">Password</label>
+										<input class="form-control" type="password" id="inputPassword" name="Password"placeholder="******** (must be at least 3 characters long)"></input>
+										<span class="error">Password does not match!</span>
+									</div> <!-- /.form-group -->
+									<!-- Verify Password -->
+									<div class="form-group">
+										<label for="inputRepassword">Verify Password</label>
+										<input class="form-control" type="password" id="inputRepassword" name="Repassword" placeholder="********"></input>
+										<span class="error">Password does not match!</span>
+									</div> <!-- /.form-group -->
+								</form>
+							</div> <!-- /.col-lg-8 -->
+						</div> <!-- /.forms -->
+					</div> <!-- /.panel-body -->
+				</div> <!-- /.panel -->
+
+				<!-- Pagination Stuff -->
+				<!-- <nav>
+					<ul id = "submitPage0" class="pager">
+						<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+						<li class="next"><a href="account_setup_1.html">Next <span aria-hidden="true">&rarr;</span></a></li>
+					</ul>
+				</nav> -->
+				<button id="submitPage0" type="submit" class="btn btn-default pull-right">Next</button>
+			</div> <!-- /.column control -->
+		</div> <!-- /.row -->
+
+		<!-- FOOTER -->
+		<footer class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+		</footer>
+	</div> <!-- /container -->
+
+	<!-- JS Files -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/page0.js"></script>
 	<!-- Put this back!
-	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
--->
+	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>-->
+	<!-- Put this back!
+	<script src="{{ url_for('static',filename='js/page0.js')}}"></script>-->
 </body>
 </html>
