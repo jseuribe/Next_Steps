@@ -93,7 +93,7 @@
 									<div class="form-group">
 										<label>Tuition Limit</label>
 										<select id="inputTuition" name="Tuition" class="form-control">
-											<option value="tuition_limit_empty"></option>
+											<option value="tuition_limit_empty">&nbsp;</option>
 											<option value="tuition_limit_5000">$5,000</option>
 											<option value="tuition_limit_10000">$10,000</option>
 											<option value="tuition_limit_20000">$20,000</option>
@@ -112,10 +112,10 @@
 										<label>Do you have a preference of which state you'd like to attend college?</label>
 										<br>
 										<label class="radio-inline">
-											<input class ="prefbtn"type="radio" name="Pref" value="true">Yes
+											<input class ="prefbtn" type="radio" name="Pref" value="true">Yes
 										</label>
 										<label class="radio-inline">
-											<input class ="prefbtn"type="radio" id ="inputPref2" name="Pref" value="false">No
+											<input class ="prefbtn" type="radio" id ="inputPref2" name="Pref" value="false">No
 											<span class = "error">Please select one</span>
 										</label>
 									</div>
@@ -123,7 +123,7 @@
 									<div class="form-group">
 										<!-- Preferred State(s) -->
 										<label>Which State would you like to attend school?</label>
-										<select id="inputState" name="State"class="form-control">
+										<select id="inputState" name="State" class="form-control">
 											<option value="state_empty">&nbsp;</option>
 											<option value="alabama">AL</option>
 											<option value="alaska">AK</option>
@@ -251,10 +251,10 @@
 				</div> <!-- /.panel -->
 
 				<!-- Previous Button -->
-				<a href="account_setup_2.html" class="btn btn-primary pull-left" role="button"><span class="glyphicon glyphicon-arrow-left hidden-sm" aria-hidden="true"></span> Previous</a>
+				<a href="account_setup_2.html" class="btn btn-primary pull-left" role="button"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Previous</a>
 
 				<!-- Next Button -->
-				<a id="submitPage3" href="account_setup_4.html" class="btn btn-primary pull-right" role="button">Submit <span class="glyphicon glyphicon-ok hidden-sm" aria-hidden="true"></span></a>
+				<a id="submitPage3" href="account_setup_4.html" class="btn btn-primary pull-right" role="button">Submit <span class="glyphicon glyphicon-check" aria-hidden="true"></span></a>
 			</div> <!-- /.column control -->
 		</div> <!-- /.row -->
 
@@ -273,5 +273,7 @@
 
 	<!-- Put this back!
 	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>-->
+	<!-- Put this back!
+	<script src="{{ url_for('static',filename='js/page3.js')}}"></script>-->
 </body>
 </html>
