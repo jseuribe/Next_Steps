@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name = "description" content = "This is the homepage."/>
-	<meta name = "keyword" content =  "nextstep account"/>
+	<meta name = "description" content = "This is the user profile page."/>
+	<meta name = "keyword" content =  "nextstep user profile"/>
 	<meta name = "robots" content = "noindex, nofollow"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width = device-width, initial-scale = 1">
 	<title>Full User Profile</title>
 
-	<!-- CSS files -->
+	<!-- CSS Files -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<!-- Put this back
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}"> -->
@@ -33,7 +33,7 @@
 							<span class="icon-bar"></span>
 						</button>
 						<!-- Next Step Logo in the Navigation Bar -->
-						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="img/next_step_logo.png"></a>
+						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="img/next_step_logo.png" alt="Next Step Logo"></a>
 					</div> <!-- /.navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<!-- Row of Buttons in the Navigation Bar -->
@@ -74,26 +74,26 @@
 							<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
 								<!-- User First Name -->
 								<div class="form-group">
-									<label for ="inputFirst">First Name</label>
-									<input class="form-control alphaonly" id="inputFirst" type="text" name="First" placeholder="John"></input>
+									<label for="inputFirst">First Name</label>
+									<input class="form-control alphaonly" id="inputFirst" type="text" name="First" placeholder="John">
 									<span class ="error">Please enter your first name</span>
 								</div> <!-- /.form-group -->
 								<!-- User Middle Name -->
 								<div class="form-group">
-									<label for ="inputMiddle">Middle</label>
-									<input class="form-control alphaonly valid" id="inputMiddle" type="text" name="Middle"></input>
+									<label for="inputMiddle">Middle</label>
+									<input class="form-control alphaonly valid" id="inputMiddle" type="text" name="Middle">
 								</div> <!-- /.form-group -->
 								<!-- User Last Name -->
 								<div class="form-group">
-									<label for "inputLast">Last Name</label>
-									<input class="form-control alphaonly" id="inputLast" type="text" name="Last"placeholder="Doe"></input>
+									<label for="inputLast">Last Name</label>
+									<input class="form-control alphaonly" id="inputLast" type="text" name="Last" placeholder="Doe">
 									<span class ="error">Please enter your last name</span>
 								</div> <!-- /.form-group -->
 								<hr>
 								<!-- User Address -->
 								<div class="form-group">
 									<label for="inputStreet">Street</label>
-									<input class="form-control" id="inputStreet" type="text" name="Street" placeholder="742 EverGreen Terrace"></input>
+									<input class="form-control" id="inputStreet" type="text" name="Street" placeholder="742 EverGreen Terrace">
 									<span class ="error">Please enter your address</span>
 								</div> <!-- /.form-group -->
 							</div> <!-- /.column control -->
@@ -108,7 +108,7 @@
 								<div class="form-group">
 									<label>State</label>
 									<select class="form-control">
-										<option value="state_empty"></option>
+										<option value="state_empty">&nbsp;</option>
 										<option value="alabama">AL</option>
 										<option value="alaska">AK</option>
 										<option value="arizona">AZ</option>
@@ -217,7 +217,7 @@
 								<div class="form-group">
 									<label>Preferred Degree</label>
 									<select class="form-control">
-										<option value="degree_empty"></option>
+										<option value="degree_empty">&nbsp;</option>
 										<option value="degree_associate">Associate</option>
 										<option value="degree_bachelor">Bachelor</option>
 										<option value="degree_master">Master</option>
@@ -231,7 +231,7 @@
 								<div class="form-group">
 									<label>Tuition Limit</label>
 									<select class="form-control">
-										<option value="tuition_limit_empty"></option>
+										<option value="tuition_limit_empty">&nbsp;</option>
 										<option value="tuition_limit_5000">$5,000</option>
 										<option value="tuition_limit_10000">$10,000</option>
 										<option value="tuition_limit_20000">$20,000</option>
@@ -256,7 +256,7 @@
 								<div class="form-group">
 									<label>Which State would you like to attend school?</label>
 									<select class="form-control">
-										<option value="state_empty"></option>
+										<option value="state_empty">&nbsp;</option>
 										<option value="alabama">AL</option>
 										<option value="alaska">AK</option>
 										<option value="arizona">AZ</option>
