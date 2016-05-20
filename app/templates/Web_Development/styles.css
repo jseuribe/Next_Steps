@@ -88,6 +88,12 @@ body {
 		background-color: rgba(255,255,255,0.4);
 	}
 
+	/* CUSTOMIZE THE WELL
+	-------------------------------------------------- */
+	.well-trim-bottom {
+		padding-bottom: 3px;
+	}
+
 	/* CUSTOMIZE THE LIST GROUP ITEM 
 	-------------------------------------------------- */
 	.list-group-item {
@@ -178,6 +184,12 @@ body {
 		font-weight: 300;
 		line-height: 1;
 		letter-spacing: -1px;
+	}
+
+	/* Login Panel
+	-------------------------------------------------- */
+	.indent-username {
+		text-indent: 20px;
 	}
 
 	/* Profile Panel
