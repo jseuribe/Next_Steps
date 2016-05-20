@@ -144,6 +144,12 @@ def randumb():
 	print(school_obj.instnm)
 	return render_template('Web_Development/school_temp.html')
 
+@app.route('/')
+@app.route('/param_test')
+@app.route('/param_test/<string:school_name>')
+def param_test(school_name=None):
+	return render_template('Web_Development/school_temp.html', school_n=school_name)
+
 from sign_up_views import *
 from auth_conf import *
 
