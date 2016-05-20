@@ -64,8 +64,12 @@ body {
 		background-image: url('img/background_contact_us.png'); background-size: 100%;
 	}
 
-	/* CUSTOMIZE THE HEADER PICTURE
+	/* CUSTOMIZE THE HEADER
 	-------------------------------------------------- */
+	div.page-header-white {
+		color: white;
+	}
+
 	.header-picture {
 		display: block;
 		margin-left: auto;
@@ -136,6 +140,17 @@ body {
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
+	}
+
+	/* Carousel Transparent Descrption */
+	div.description-transparent{
+		background-color: #000;
+		bottom: 0;
+		color: #fff;
+		left: 0;
+		opacity: 0.7;
+		position: absolute;
+		width: 100%;
 	}
 
 	/* MARKETING CONTENT
