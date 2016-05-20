@@ -92,6 +92,8 @@
 			</div> <!-- /.col -->
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<div class="jumbotron" style="padding: 20px;">
+					{% for school in school_list %}
+					
 					<div class="panel panel-default">
 						<div class="panel-heading" style="padding: 0px;">
 							<div id="mycarousel" class="carousel slide" data-ride="carousel">
@@ -118,58 +120,8 @@
 							</div>
 						</div>
 					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" style="padding: 0px;">
-							<div id="mycarousel" class="carousel slide" data-ride="carousel">
-								<div class="carousel-inner">
-									<div class="item active">
-										<div class="slidemaster" style="background-image: url('img/college_hunter.png');"></div>
-										<div class="container">
-											<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
-												<div class="desc">
-													<h5>Hunter College</h5>
-												</div>
-											</div> <!-- /.carousel-caption -->
-										</div>
-									</div>
-								</div> <!-- /.item active -->
-							</div>
-						</div>
-						<div class="panel-body">
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-								<p class="bg-danger">Fit-Number: -100</p>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-								<p class="bg-info">Bookmarks: 0</p>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" style="padding: 0px;">
-							<div id="mycarousel" class="carousel slide" data-ride="carousel">
-								<div class="carousel-inner">
-									<div class="item active">
-										<div class="slidemaster" style="background-image: url('img/school_skyline.png');"></div>
-										<div class="container">
-											<div class="carousel-caption" style="bottom: 0; width: 100%; padding: 0px; left: 0; text-align: left; text-indent: 50px;">
-												<div class="desc">
-													<h5>Enter School Name here</h5>
-												</div>
-											</div> <!-- /.carousel-caption -->
-										</div>
-									</div>
-								</div> <!-- /.item active -->
-							</div>
-						</div>
-						<div class="panel-body">
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-								<p class="bg-warning">Fit-Number: 0</p>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-								<p class="bg-info">Bookmarks: 0</>
-								</div>
-							</div>
-						</div>
+					{% endfor %}
+
 					</div>
 				</div> <!-- /.col -->
 				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
