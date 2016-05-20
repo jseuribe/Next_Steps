@@ -1,5 +1,9 @@
 from app import app
-from views import login_required
+from flask import g, request, url_for, render_template, flash, redirect, session
+from views import login_required, return_account_setup, return_account_setup_2, return_account_setup_3, return_account_setup_4
+from utils import normalize_from_unicode
+from models import User
+from auth import *
 '''
 If the html page that uses the action "account_setup"
 calls this method with the form:
