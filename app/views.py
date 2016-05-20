@@ -36,6 +36,9 @@ def index():
 	else:
 		flash('Not logged in')
 
+	if 'logged_in' in session:
+		return redirect(url_for('return_dash'))
+
 	return render_template('Web_Development/homepage.html', title='Home')
 
 @app.route('/')

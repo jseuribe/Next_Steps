@@ -84,18 +84,4 @@ def register_confirm():
 		login_user(new_user, remember='no')
 		flash("Logged in for the first time!", category='success')
 
-	#Begin bad validation
-	user = {'nickname': retrieved_name} #display a new name!
-	posts = [
-		{
-			'author': {'nickname': 'John'},
-			'body':	'Beautiful day in portland!'
-		},
-
-		{
-			'author': {'nickname': 'Susan'},
-			'body': 'The Avengers movie was so cool! Shame about BvS!'
-		}
-	]
-	#End bad validation
-	return render_template('index.html', title='LoggedIn', user=user, post=posts)
+	return render_template('index.html', title='LoggedIn')
