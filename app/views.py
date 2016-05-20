@@ -98,7 +98,9 @@ def register():
 @app.route('/dashboard')
 @login_required
 def return_dash():
-	return render_template('Web_Development/post_login.html')
+	school_obj = Schools()
+	school_obj = pull_random_schools()
+	return render_template('Web_Development/post_login.html', title='Dashboard', school=school_obj)
 	
 '''
 Beyond this point are the //LOGOUT FUNCTIONS//
