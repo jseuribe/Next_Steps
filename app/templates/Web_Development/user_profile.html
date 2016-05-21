@@ -72,17 +72,20 @@
 					<div class="panel-body">
 						<form role="form" id="page1">
 							<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
+
 								<!-- User First Name -->
 								<div class="form-group">
 									<label for="inputFirst">First Name</label>
 									<input class="form-control alphaonly" id="inputFirst" type="text" name="First" placeholder="John">
 									<span class ="error">Please enter your first name</span>
 								</div> <!-- /.form-group -->
+
 								<!-- User Middle Name -->
 								<div class="form-group">
 									<label for="inputMiddle">Middle</label>
 									<input class="form-control alphaonly valid" id="inputMiddle" type="text" name="Middle">
 								</div> <!-- /.form-group -->
+
 								<!-- User Last Name -->
 								<div class="form-group">
 									<label for="inputLast">Last Name</label>
@@ -90,6 +93,7 @@
 									<span class ="error">Please enter your last name</span>
 								</div> <!-- /.form-group -->
 								<hr>
+
 								<!-- User Address -->
 								<div class="form-group">
 									<label for="inputStreet">Street</label>
@@ -97,13 +101,16 @@
 									<span class ="error">Please enter your address</span>
 								</div> <!-- /.form-group -->
 							</div> <!-- /.column control -->
+
+							<!-- The City the user lives in -->
 							<div class="col-lg-6 col-lg-offset-1 col-md-6 col-sm-6">
 								<div class="form-group">
 									<label>City</label>
 									<input class="form-control" type="text">
 								</div> <!-- /. form-group -->
 							</div> <!-- /.column control -->
-							<!-- User Preferred States -->
+
+							<!-- The State the user lives in -->
 							<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
 								<div class="form-group">
 									<label>State</label>
@@ -162,6 +169,7 @@
 									</select>
 								</div> <!-- /.form-group -->
 							</div> <!-- /.column control-->
+
 							<!-- User ZIP Code -->
 							<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
 								<div class="form-group">
@@ -169,7 +177,9 @@
 									<input class="form-control" type="number">
 								</div> <!-- /.form-group -->
 							</div> <!-- /. column control -->
+
 							<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12"><hr></div>
+
 							<!-- User Grade Average -->
 							<div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-6">
 								<div class="form-group">
@@ -177,6 +187,7 @@
 									<input class="form-control" type="number" min="0" max="100" onchange="limitGrade(this);">
 								</div> <!-- /.form-group -->
 							</div> <!-- /.column control -->
+
 							<!-- User ACT Score -->
 							<div class="col-lg-5 col-md-6 col-sm-6">
 								<div class="form-group">
@@ -184,6 +195,7 @@
 									<input class="form-control" type="number" placeholder="Leave blank if unavailable" min="0" max="36">
 								</div> <!-- /. form-group -->
 							</div> <!-- /.column control -->
+
 							<!-- User SAT Scores -->
 							<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
 								<label>SAT Scores:</label>
@@ -210,7 +222,9 @@
 									</div> <!-- /.input-group -->
 								</div> <!-- /.column control -->
 							</div>
+
 							<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12"><hr></div>
+
 							<!-- Preffered Majors -->
 							<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
 								<label>Preferred Majors</label>
@@ -225,8 +239,11 @@
 									</select>
 								</div> <!-- /.form-group -->
 							</div> <!-- /.column control -->
+
 							<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12"><hr></div>
+
 							<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
+
 								<!-- User Tuition Limit -->
 								<div class="form-group">
 									<label>Tuition Limit</label>
@@ -241,74 +258,65 @@
 										<option value="tuition_limit_no_pref">No Preference</option>
 									</select>
 								</div> <!-- /.form-group -->
-								<!-- User Location Preference -->
-								<div class="form-group">
-									<label>Do you have a preference of which state you'd like to attend college?</label>
-									<br>
-									<label class="radio-inline">
-										<input type="radio" name="in-state_preference" value="true">Yes
-									</label>
-									<label class="radio-inline">
-										<input type="radio" name="in_state_preference" value="false">No
-									</label>
-								</div> <!-- /.form-group -->
+
 								<!-- User Preferred States -->
 								<div class="form-group">
-									<label>Which State would you like to attend school?</label>
-									<select class="form-control">
-										<option value="state_empty">&nbsp;</option>
-										<option value="alabama">AL</option>
-										<option value="alaska">AK</option>
-										<option value="arizona">AZ</option>
-										<option value="arkansas">AR</option>
-										<option value="california">CA</option>
-										<option value="colorado">CO</option>
-										<option value="connecticut">CT</option>
-										<option value="delaware">DE</option>
-										<option value="florida">FL</option>
-										<option value="georgia">GA</option>
-										<option value="hawaii">HI</option>
-										<option value="idaho">ID</option>
-										<option value="illinois">IL</option>
-										<option value="indiana">IN</option>
-										<option value="iowa">IA</option>
-										<option value="kansas">KS</option>
-										<option value="kentucky">KY</option>
-										<option value="louisiana">LA</option>
-										<option value="maine">ME</option>
-										<option value="maryland">MD</option>
-										<option value="massachusetts">MA</option>
-										<option value="michigan">MI</option>
-										<option value="minnesota">MN</option>
-										<option value="mississippi">MS</option>
-										<option value="missouri">MO</option>
-										<option value="montana">MT</option>
-										<option value="nebraska">NE</option>
-										<option value="nevada">NV</option>
-										<option value="new_hampshire">NH</option>
-										<option value="new_jersey">NJ</option>
-										<option value="new_mexico">NM</option>
-										<option value="new_york">NY</option>
-										<option value="north_carolina">NC</option>
-										<option value="north_dakota">ND</option>
-										<option value="ohio">OH</option>
-										<option value="oklahoma">OK</option>
-										<option value="oregon">OR</option>
-										<option value="pennsylvania">PA</option>
-										<option value="rhode_island">RI</option>
-										<option value="south_carolina">SC</option>
-										<option value="south_dakota">SD</option>
-										<option value="tennessee">TN</option>
-										<option value="texas">TX</option>
-										<option value="utah">UT</option>
-										<option value="vermont">VT</option>
-										<option value="virginia">VA</option>
-										<option value="washington">WA</option>
-										<option value="west_virginia">WV</option>
-										<option value="wisconsin">WI</option>
-										<option value="wyoming">WY</option>
+									<label>Which State(s) would you like to attend school?<br><small>(Hold ctrl, shift, or &#8984; cmd to select more. If you do not have a preference, leave it as it is)</small></label>
+									<select Multiple id="inputState" name="State" class="form-control">
+										<option value="alabama">Alabama (AL)</option>
+										<option value="alaska">Alaska (AK)</option>
+										<option value="arizona">Arizona (AZ)</option>
+										<option value="arkansas">Arkansas (AR)</option>
+										<option value="california">California (CA)</option>
+										<option value="colorado">Colorado (CO)</option>
+										<option value="connecticut">Connecticut (CT)</option>
+										<option value="delaware">Delaware (DE)</option>
+										<option value="florida">Florida (FL)</option>
+										<option value="georgia">Gerogia (GA)</option>
+										<option value="hawaii">Hawaii (HI)</option>
+										<option value="idaho">Idaho (ID)</option>
+										<option value="illinois">Illinois (IL)</option>
+										<option value="indiana">Indiana (IN)</option>
+										<option value="iowa">Iowa (IA)</option>
+										<option value="kansas">Kansas (KS)</option>
+										<option value="kentucky">Kentucky (KY)</option>
+										<option value="louisiana">Louisiana (LA)</option>
+										<option value="maine">Maine (ME)</option>
+										<option value="maryland">Maryland (MD)</option>
+										<option value="massachusetts">Massachusetts (MA)</option>
+										<option value="michigan">Michigan (MI)</option>
+										<option value="minnesota">Minnesota (MN)</option>
+										<option value="mississippi">Mississippi (MS)</option>
+										<option value="missouri">Missouri (MO)</option>
+										<option value="montana">Montana (MT)</option>
+										<option value="nebraska">Nebraska (NE)</option>
+										<option value="nevada">Nevada (NV)</option>
+										<option value="new_hampshire">New Hampshire (NH)</option>
+										<option value="new_jersey">New Jersey (NJ)</option>
+										<option value="new_mexico">New Mexico (NM)</option>
+										<option value="new_york">New York (NY)</option>
+										<option value="north_carolina">North Carolina (NC)</option>
+										<option value="north_dakota">North Dakota (ND)</option>
+										<option value="ohio">Ohio (OH)</option>
+										<option value="oklahoma">Oklahoma (OK)</option>
+										<option value="oregon">Oregon (OR)</option>
+										<option value="pennsylvania">Pennsylvania (PA)</option>
+										<option value="rhode_island">Rhode Island (RI)</option>
+										<option value="south_carolina">South Carolina (SC)</option>
+										<option value="south_dakota">South Dakota (SD)</option>
+										<option value="tennessee">Tennessee (TN)</option>
+										<option value="texas">Texas (TX)</option>
+										<option value="utah">Utah (UT)</option>
+										<option value="vermont">Vermont (VT)</option>
+										<option value="virginia">Virginia (VA)</option>
+										<option value="washington">Washington (WA)</option>
+										<option value="west_virginia">West Virginia (WV)</option>
+										<option value="wisconsin">Wisconsin (WI)</option>
+										<option value="wyoming">Wyoming (WY)</option>
 									</select>
-								</div> <!-- /.form-group -->
+									<span class="error">Please select a State</span>
+								</div> <!-- form-group -->
+
 								<!-- User Cost Preference -->
 								<div class="form-group">
 									<label>Cost Preference</label>
@@ -329,6 +337,7 @@
 										<input type="radio" name="cost_preference" value="5">5
 									</label>
 								</div> <!-- /.form-group -->
+
 								<!-- User Distance Preference -->
 								<div class="form-group">
 									<label>Distance Preference</label>
@@ -349,6 +358,7 @@
 										<input type="radio" name="distance_preference" value="5">5
 									</label>
 								</div> <!-- /.form-group -->
+
 								<!-- User Academic Preference -->
 								<div class="form-group">
 									<label>Academic Preference</label>
@@ -370,8 +380,9 @@
 									</label>
 								</div> <!-- /.form-group -->
 							</div> <!-- /.column control -->
+
 							<!-- Submit Changes Button -->
-							<a class="btn btn-sm btn-primary pull-right" href="post_login.html" role="button">Submit Changes</a>
+							<input type="submit" class="btn btn-primary btn-sm pull-right" value="Submit Changes &#9745;">
 						</form>
 					</div> <!-- /.panel-body -->
 				</div> <!-- /.panel -->
