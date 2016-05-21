@@ -12,13 +12,13 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="img/next_step_logo.png"></a>
+						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="{{url_for('static',filename='img/next_step_logo.png')}}"></a>
 					</div> <!-- /.navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<li><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home</a></li>
 							<li><a href="{{url_for('return_about')}}"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
-							<li><a href="{{url_for('return_contact')}}}"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
+							<li><a href="{{url_for('return_contact')}}"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
 							{% if not session.logged_in %}
 								<li><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
 							{% else %}
@@ -68,8 +68,8 @@
 			</div> <!-- /.panel -->
 			<nav>
 				<ul class="pager">
-					<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
-					<li class="next"><a href="post_login.html">Continue <span aria-hidden="true">&rarr;</span></a></li>
+					<li class="previous disabled"><a href="{{url_for('return_account_setup_3')}}"><span aria-hidden="true">&larr;</span> Previous</a></li>
+					<li class="next"><a href="{{url_for('return_dash')}}">Continue <span aria-hidden="true">&rarr;</span></a></li>
 				</ul>
 			</nav>
 		</div> <!-- /.col-lg-8 -->

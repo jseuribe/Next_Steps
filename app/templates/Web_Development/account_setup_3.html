@@ -12,7 +12,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="img/next_step_logo.png"></a>
+						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="{{url_for('static',filename='img/next_step_logo.png')}}"></a>
 					</div> <!-- /.navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
@@ -61,7 +61,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<form action='/account_setup_3/confirm' method='POST'>
+							<form role="form" action="/account_setup_3/confirm" method="post">
 								<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
 
 									<div class="form-group">
@@ -84,10 +84,10 @@
 										<label>Do you have a preference of which state you'd like to attend college?</label>
 										<br>
 										<label class="radio-inline">
-											<input type="radio" name="in-state_preference" value="true" type="text">Yes
+											<input type="radio" value="true" type="text" name="state_pref">Yes
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="in_state_preference" value="false" type="text">No
+											<input type="radio" value="false" type="text" name="state_pref">No
 										</label>
 									</div>
 									<div class="form-group">
@@ -209,8 +209,8 @@
 
 									<div class="col-lg-8 col-lg-offset-2">
 									<div class="container">
-										<a href="#" class="btn btn-info" role="button">Link Button</a>
-										<input type="submit" class="btn btn-info" value="Submit Button" id="submitPage2">
+										<a href="{{url_for('return_account_setup_2')}}" class="btn btn-info" role="button">Link Button</a>
+										<input type="submit" class="btn btn-info" value="Submit Button">
 									</div>
 
 							</form>

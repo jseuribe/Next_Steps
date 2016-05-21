@@ -86,12 +86,15 @@ def account_setup_0():
 
 		#print("the input: ", n_username, n_)
 		if not n_username and not n_email and not n_passw and not n_v_passw:
+			print('Checks have failed')
 			flash("error, please do not leave any field blank")
 			return return_account_setup()
 		elif n_passw != n_v_passw:
+			print('Mismatching passwords')
 			flash("Passwords do not match, re-enter both")
 			return return_account_setup()
 		else:
+			print('all checks made, creating a new user')
 			new_user = User()
 			new_user.email = n_email
 			new_user.username = n_username#Not sure if we'll implement a separate username. this should suffice for now, though
@@ -99,14 +102,18 @@ def account_setup_0():
 			new_user.save()
 			does_user_exist_now = User.objects(username=n_username)
 			if not does_user_exist_now:
+				print('user was not found')
 				flash('Something went wrong; please try again.')
 				return return_account_setup()
 			else:#The object is correct!
+				print(does_user_exist_now[0].email)
 				unicode_vessel = normalize_from_unicode(does_user_exist_now[0].username)
 				retrieved_name = unicode_vessel
 				login_user(new_user, remember='no')
+				print('new user is logged in')
 				flash("Logged in for the first time!, category='success'")
 	session['logged_in'] = True
+	print("Registration is a success")
 	return return_account_setup_1()
 
 @app.route('/')
@@ -123,6 +130,8 @@ def account_setup_1():
 	n_m_name = normalize_from_unicode(request.form['Middle'])
 	n_l_name = normalize_from_unicode(request.form['Last'])
 	n_street = normalize_from_unicode(request.form['Street'])
+	n_state = normalize_from_unicode(request.form['state'])
+
 
 	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
 
@@ -137,6 +146,7 @@ def account_setup_1():
 	user_obj.m_name = n_m_name
 	user_obj.l_name = n_l_name
 	user_obj.street = n_street
+	user_obj.street_state = n_state
 	user_obj.save()
 	return return_account_setup_2()
 
@@ -149,7 +159,7 @@ def account_setup_2():
 	n_math = int(normalize_from_unicode(request.form['Math']))
 	n_write = int(normalize_from_unicode(request.form['Write']))
 	n_degree = normalize_from_unicode(request.form['degree'])
-
+	n_act = int(normalize_from_unicode(request.form['ACT_Score']))
 	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
 
 	user_q = User.objects(username=u_name_look_up) #get the object
@@ -164,6 +174,7 @@ def account_setup_2():
 	user_obj.SAT_math = n_math
 	user_obj.SAT_write = n_write
 	user_obj.degree = n_degree
+	user_obj.ACT_Score = n_act
 	user_obj.save()
 	return redirect(url_for('return_account_setup_3'))
 
@@ -172,7 +183,7 @@ def account_setup_2():
 @login_required
 def account_setup_3():
 	n_tuition = float(normalize_from_unicode(request.form['tuition']))
-	n_dorm_price = float(normalize_from_unicode(request.form['dorm_price']))
+	n_state_p = normalize_from_unicode(request.form['state_pref'])
 	n_state = normalize_from_unicode(request.form['state'])
 	n_distance_preference = float(normalize_from_unicode(request.form['distance_preference']))
 	n_academic_preference = float(normalize_from_unicode(request.form['academic_preference']))
@@ -187,11 +198,11 @@ def account_setup_3():
 
 	user_obj = user_q[0]#This should be the object what is the user.
 	user_obj.tuition = n_tuition
-	user_obj.dorm_price = n_dorm_price
-	user_obj.state = n_state
+	user_obj.state_preference = n_state
 	user_obj.distance_preference = n_distance_preference
 	user_obj.academic_preference = n_academic_preference
 	user_obj.cost_preference = n_cost_preference
+	user_obj.state_pref_bool = n_state_p
 	user_obj.save()
 	return return_account_setup_4()
 

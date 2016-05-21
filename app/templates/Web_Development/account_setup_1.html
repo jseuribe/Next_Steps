@@ -12,7 +12,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="img/next_step_logo.png"></a>
+						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="{{url_for('static',filename='img/next_step_logo.png')}}"></a>
 					</div> <!-- /.navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
@@ -61,7 +61,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<form role="form" id="page1">
+							<form role="form" action="/account_setup_1/confirm" method="post" id="page1">
 								<div class="col-lg-8 col-lg-offset-2">
 									<div class="form-group">
 										<label for ="inputFirst">First Name</label>
@@ -92,7 +92,7 @@
 								</div> <!-- /.col-lg-6 -->
 								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
 		<div class="form-group">
-										<label>Which State would you like to attend school?</label>
+										<label>State</label>
 										<select class="form-control" name="state">
 											<option value="state_empty " type="text"></option>
 											<option value="alabama " type="text">AL</option>
@@ -154,16 +154,17 @@
 										<input class="form-control" type="number">
 									</div> <!-- /.form-group -->
 								</div>
+
+								 <div class="col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12">
+									<hr>
+									<!-- Next Button -->
+									<input id="submitPage1" type="submit" value="Submit"class="btn btn-primary pull-right" value="Next &rarr;">
+								</div>
 							</form>
 						</div> <!-- /.row -->
 					</div> <!-- /.panel-body -->
 				</div> <!-- /.panel -->
-				<nav>
-					<ul class="pager">
-						<li class="previous"><a href="account_setup_0.html"><span aria-hidden="true">&larr;</span> Previous</a></li>
-						<li class="next" id ="submitPage1"><a href="account_setup_2.html">Next <span aria-hidden="true">&rarr;</span></a></li>
-					</ul>
-				</nav>
+				<!-- Previous Button -->
 			</div> <!-- /.col-lg-8 -->
 		</div> <!-- /.row -->
 		<!-- FOOTER -->
