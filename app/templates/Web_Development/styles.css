@@ -57,11 +57,13 @@ body {
 	/* CUSTOMIZE THE BACKGROUND
 	-------------------------------------------------- */
 	.background-chalkboard {
-		background-image: url('img/background_post_login.png'); background-size: 30%;
+		background-image: url('img/background_post_login.png');
+		background-size: 30%;
 	}
 
 	.background-sky {
-		background-image: url('img/background_contact_us.png'); background-size: 100%;
+		background-image: url('img/background_contact_us.png');
+		background-size: 100%;
 	}
 
 	/* CUSTOMIZE THE HEADER
@@ -331,9 +333,11 @@ body {
 		margin-left: 10px;
 	}
 	input.invalid, textarea.invalid, select.invalid{
-		border: 2px solid red;
+		box-shadow: 0 0 3px red;
+		border: 1px solid red;
 	}
 	
 	input.valid, textarea.valid, select.valid{
-		border: 2px solid green;
+		box-shadow: 0 0 2px green;
+		border: 1px solid green;
 	}	
