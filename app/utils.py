@@ -42,6 +42,10 @@ def transform_to_School_obj(school_cursor):
 		#new_school.tuition = 
 	return new_school
 
+def find_school_by_name(s_name):#Debugging purposes?
+	school_cursor = pymon.db.school.find({"INSTM" : s_name})
+	return transform_to_School_obj(school_cursor)
+
 def resolve_school_objid(school_obj_id):
 	from models import Schools
 	print("Find school by id")

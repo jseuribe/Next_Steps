@@ -2,7 +2,7 @@ from app import app, db
 from flask import g, request, url_for, render_template, flash, redirect, session
 from .forms import LoginForm, RegisterForm
 from auth import *
-from utils import normalize_from_unicode, pull_random_schools, resolve_school_objid#for the pesky unicode stuff
+from utils import normalize_from_unicode, pull_random_schools, resolve_school_objid, find_school_by_name#for the pesky unicode stuff
 from flask.ext.login import current_user
 
 @app.before_request
