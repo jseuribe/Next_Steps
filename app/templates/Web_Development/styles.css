@@ -333,11 +333,11 @@ body {
 		margin-left: 10px;
 	}
 	input.invalid, textarea.invalid, select.invalid{
-		box-shadow: 0 0 3px red;
-		border: 1px solid red;
+		box-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+		border: 1px solid rgba(255, 51, 51, 0.5);
 	}
 	
 	input.valid, textarea.valid, select.valid{
-		box-shadow: 0 0 2px green;
-		border: 1px solid green;
+		box-shadow: 0 0 10px rgba(0, 70, 0, 0.3);
+		border: 1px solid rgba(0, 70, 0, 0.5);
 	}	
