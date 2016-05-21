@@ -30,6 +30,7 @@ def login_confirm():
 	if validate_login(form_password, normalize_from_unicode(the_hash), user):#determine if the login is correct!
 		login_user(user, remember='no')
 		session['logged_in'] = True
+		session['username'] = form_user_name
 		flash("Logged in successfully", category='success')
 		return redirect(url_for('index'))
 
@@ -43,6 +44,7 @@ def login_confirm():
 def logout():
 	logout_user()
 	session['logged_in'] = False
+	session['username'] = None
 	return redirect(url_for('index'))
 
 @app.route('/register/confirm', methods=['GET', 'POST'])

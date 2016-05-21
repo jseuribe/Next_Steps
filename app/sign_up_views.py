@@ -113,6 +113,7 @@ def account_setup_0():
 				print('new user is logged in')
 				flash("Logged in for the first time!, category='success'")
 	session['logged_in'] = True
+	session['username'] = email
 	print("Registration is a success")
 	return return_account_setup_1()
 

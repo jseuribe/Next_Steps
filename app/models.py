@@ -62,6 +62,7 @@ class User(db.Document):
 	username = db.StringField(max_length=255, required=True)
 	#slug = db.StringField(max_length=255, required=True)#????
 	hashed_pass = db.StringField(max_length=255, required=True)
+	bookmarks =  db.ListField(db.ListField(db.StringField(max_length=255)))
 
 	#name and address
 	f_name = db.StringField(max_length=255, required=False)
