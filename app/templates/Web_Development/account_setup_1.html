@@ -56,63 +56,123 @@
 						<div class="panel-body">
 							<div class="progress">
 								<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
-								25%
+									25%
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-8 col-lg-offset-2">
-							<form role="form" action="/account_setup_1/confirm" method='POST' id="page1" >
-								<div class="form-group">
-									<label for ="inputFirst">First Name</label>
-									<input class="form-control alphaonly" id="inputFirst" type="text" name="First" placeholder="John"></input>
-									<span class ="error">Please enter your first name</span>
-								</div> <!-- /.form-group -->
-								<div class="form-group">
-									<label for ="inputMiddle">Middle</label>
-									<input class="form-control alphaonly valid" id="inputMiddle" type="text" name="Middle"></input>
-								</div> <!-- /.form-group -->
-								<div class="form-group">
-									<label for "inputLast">Last Name</label>
-									<input class="form-control alphaonly" id="inputLast" type="text" name="Last"placeholder="Doe"></input>
-									<span class ="error">Please enter your last name</span>
-								</div> <!-- /.form-group -->
-								<div class="form-group">
-									<label for="inputStreet">Street</label>
-									<input class="form-control" id="inputStreet" type="text" name="Street" placeholder="742 EverGreen Terrace"></input>
-									<span class ="error">Please enter your address</span>
-								</div> <!-- /.form-group -->
-							<div class="container">
-							<a href="#" class="btn btn-info" role="button">Link Button</a>
-							<input type="submit" class="btn btn-info" value="Submit Button" id="submitPage1">
-							</div>
+						<div class="row">
+							<form role="form" id="page1">
+								<div class="col-lg-8 col-lg-offset-2">
+									<div class="form-group">
+										<label for ="inputFirst">First Name</label>
+										<input class="form-control alphaonly" id="inputFirst" type="text" name="First" placeholder="John"></input>
+										<span class ="error">Please enter your first name</span>
+									</div> <!-- /.form-group -->
+									<div class="form-group">
+										<label for ="inputMiddle">Middle</label>
+										<input class="form-control alphaonly valid" id="inputMiddle" type="text" name="Middle"></input>
+									</div> <!-- /.form-group -->
+									<div class="form-group">
+										<label for "inputLast">Last Name</label>
+										<input class="form-control alphaonly" id="inputLast" type="text" name="Last"placeholder="Doe"></input>
+										<span class ="error">Please enter your last name</span>
+									</div> <!-- /.form-group -->
+									<hr>
+									<div class="form-group">
+										<label for="inputStreet">Street</label>
+										<input class="form-control" id="inputStreet" type="text" name="Street" placeholder="742 EverGreen Terrace"></input>
+										<span class ="error">Please enter your address</span>
+									</div> <!-- /.form-group -->
+								</div> <!-- /.col-lg-8 -->
+								<div class="col-lg-4 col-lg-offset-2 col-md-6 col-sm-6">
+									<div class="form-group">
+										<label>City</label>
+										<input class="form-control" type="text">
+									</div>
+								</div> <!-- /.col-lg-6 -->
+								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+		<div class="form-group">
+										<label>Which State would you like to attend school?</label>
+										<select class="form-control" name="state">
+											<option value="state_empty " type="text"></option>
+											<option value="alabama " type="text">AL</option>
+											<option value="alaska " type="text">AK</option>
+											<option value="arizona " type="text">AZ</option>
+											<option value="arkansas " type="text">AR</option>
+											<option value="california " type="text">CA</option>
+											<option value="colorado " type="text">CO</option>
+											<option value="connecticut " type="text">CT</option>
+											<option value="delaware " type="text">DE</option>
+											<option value="florida " type="text">FL</option>
+											<option value="georgia " type="text">GA</option>
+											<option value="hawaii " type="text">HI</option>
+											<option value="idaho " type="text">ID</option>
+											<option value="illinois " type="text">IL</option>
+											<option value="indiana " type="text">IN</option>
+											<option value="iowa " type="text">IA</option>
+											<option value="kansas " type="text">KS</option>
+											<option value="kentucky " type="text">KY</option>
+											<option value="louisiana " type="text">LA</option>
+											<option value="maine " type="text">ME</option>
+											<option value="maryland " type="text">MD</option>
+											<option value="massachusetts " type="text">MA</option>
+											<option value="michigan " type="text">MI</option>
+											<option value="minnesota " type="text">MN</option>
+											<option value="mississippi " type="text">MS</option>
+											<option value="missouri " type="text">MO</option>
+											<option value="montana " type="text">MT</option>
+											<option value="nebraska " type="text">NE</option>
+											<option value="nevada " type="text">NV</option>
+											<option value="new_hampshire " type="text">NH</option>
+											<option value="new_jersey " type="text">NJ</option>
+											<option value="new_mexico " type="text">NM</option>
+											<option value="new_york " type="text">NY</option>
+											<option value="north_carolina " type="text">NC</option>
+											<option value="north_dakota " type="text">ND</option>
+											<option value="ohio " type="text">OH</option>
+											<option value="oklahoma " type="text">OK</option>
+											<option value="oregon " type="text">OR</option>
+											<option value="pennsylvania " type="text">PA</option>
+											<option value="rhode_island " type="text">RI</option>
+											<option value="south_carolina " type="text">SC</option>
+											<option value="south_dakota " type="text">SD</option>
+											<option value="tennessee " type="text">TN</option>
+											<option value="texas " type="text">TX</option>
+											<option value="utah " type="text">UT</option>
+											<option value="vermont " type="text">VT</option>
+											<option value="virginia " type="text">VA</option>
+											<option value="washington " type="text">WA</option>
+											<option value="west_virginia " type="text">WV</option>
+											<option value="wisconsin " type="text">WI</option>
+											<option value="wyoming " type="text">WY</option>
+										</select>
+									</div> <!-- /.form-group -->
+								</div> <!-- /.col-lg-2 -->
+								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+									<div class="form-group">
+										<label>ZIP</label>
+										<input class="form-control" type="number">
+									</div> <!-- /.form-group -->
+								</div>
 							</form>
-						</div> <!-- /.col-lg-8 -->
-					</div> <!-- /.row -->
-				</div> <!-- /.panel-body -->
-			</div> <!-- /.panel -->
-			<nav>
-								<!--
-								<nav>
-				<ul id = "submitPage0" class="pager">
-					<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
-					<li class="next"> <input type='submit'>Next</input> <span aria-hidden="true">&rarr;</span></a></li>
-				</ul>
-								</nav>
-			-->
+						</div> <!-- /.row -->
+					</div> <!-- /.panel-body -->
+				</div> <!-- /.panel -->
+				<nav>
+					<ul class="pager">
+						<li class="previous"><a href="account_setup_0.html"><span aria-hidden="true">&larr;</span> Previous</a></li>
+						<li class="next" id ="submitPage1"><a href="account_setup_2.html">Next <span aria-hidden="true">&rarr;</span></a></li>
+					</ul>
+				</nav>
+			</div> <!-- /.col-lg-8 -->
+		</div> <!-- /.row -->
+		<!-- FOOTER -->
+		<footer>
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+		</footer>
+	</div> <!-- /container -->
 
-			</nav>
-		</div> <!-- /.col-lg-8 -->
-	</div> <!-- /.row -->
-	<!-- FOOTER -->
-	<footer>
-		<p class="pull-right"><a href="#">Back to top</a></p>
-		<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-	</footer>
-</div> <!-- /container -->
-	<!-- Put this back!
-	<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
--->
 <script>
 	$(document).ready(function(){
 		<!--First name must contain a character-->
@@ -173,8 +233,8 @@
 		
 		<!--Class limits to alphabets only-->
 		$('.alphaonly').bind('keyup blur',function(){ 
-    		$(this).val( $(this).val().replace(/[^A-Za-z]/g,'') );
-    	});
+			$(this).val( $(this).val().replace(/[^A-Za-z]/g,'') );
+		});
 	});
 </script>
 {% endblock %}

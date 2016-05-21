@@ -84,6 +84,12 @@ body {
 		background-position: center;
 		background-size: cover;
 	}
+	.slidemaster{
+		height: 150px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+	}
 
 	/* MARKETING CONTENT
 	-------------------------------------------------- */
@@ -158,6 +164,8 @@ body {
 	}
 	.img-circle {
 		background-color: lightgrey;
+		width: 250px;
+		height: 250px;
 		/* Adds Shadow
 		box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 		-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
