@@ -62,6 +62,7 @@ $(document).ready(function(){
 	$("#submitPage2").click(function(event){
 		var formData=$("#page2").serializeArray();
 		var zeroErrors=true;
+
 		for (var input in formData){
 			var element=$("#input"+formData[input]['name']);
 			var valid=element.hasClass("valid");
@@ -74,6 +75,20 @@ $(document).ready(function(){
 			else{
 				errorAt.removeClass("errorShow").addClass("error");
 			}
+		}
+
+		var checkSATM= $("#inputSATM").hasClass("invalid");
+		var checkSATR= $("#inputSATR").hasClass("invalid");
+		var checkSATW= $("#inputSATW").hasClass("invalid");
+		if(checkSATM || checkSATR || checkSATW){
+			var sat = $('#inputSAT');
+			var satError = $("span", sat.parent());
+			satError.removeClass("error").addClass("errorShow");
+		}
+		else{
+			var sat = $('#inputSAT');
+			var satError = $("span", sat.parent());
+			satError.removeClass("errorShow").addClass("error");
 		}
 		if (!zeroErrors){
 			event.preventDefault(); 
