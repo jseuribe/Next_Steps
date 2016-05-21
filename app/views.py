@@ -157,6 +157,35 @@ def param_test(school_objid=None):
 from sign_up_views import *
 from auth_conf import *
 
+@app.route('/')
+@app.route('/addbookmark/<string:school_objid>')
+@login_required
+def add_bookmark(school_objid=None):
+	current_user_cursor = User.objects(username=session['username'])
+	if not current_user_cursor:
+		return render_template(url_for('return_dash'))
+	else:
+		current_user = current_user_cursor[0] #obtain the user
+		the_list = current_user.bookmarks #retrieve a simple thing of lists from the mongo user document
+
+		print(the_list)
+		school_query = resolve_school_objid(school_objid)#Find the school object (existence verification)
+
+		if not school_query:#Verify that our school is in our database
+			print('school not found!')
+			return render_template(url_for('param_test', school_objid))#redirect the user to the school page they were on.
+		else:
+			school_name = school_query.id_num #Obtain the id for storage
+			acceptance_status = 'NoR'#Set default status No-Reply (Pre acceptance/notification from school)
+			pair = []
+			pair.append(school_name)
+			pair.append(acceptance_status)
+
+			the_list.append(pair)#Add to the pair, the next step will be adding to the mongoDB
+			current_user.bookmarks = the_list
+			current_user.save()
+	return render_template('Web_Development/school_temp.html')
+
 '''
 
 PROTOTYPE FUNCTIONS. THESE ARE NOT FOR FINAL USE. MERELY A TEST
