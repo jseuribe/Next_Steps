@@ -2,7 +2,7 @@ from app import app, db
 from flask import g, request, url_for, render_template, flash, redirect, session
 from .forms import LoginForm, RegisterForm
 from auth import *
-from utils import normalize_from_unicode, pull_random_schools#for the pesky unicode stuff
+from utils import normalize_from_unicode, pull_random_schools, resolve_school_objid#for the pesky unicode stuff
 from flask.ext.login import current_user
 
 @app.before_request
@@ -147,10 +147,12 @@ def randumb():
 	return render_template('Web_Development/school_temp.html')
 
 @app.route('/')
-@app.route('/param_test')
-@app.route('/param_test/<string:school_name>')
-def param_test(school_name=None):
-	return render_template('Web_Development/school_temp.html', school_n=school_name)
+@app.route('/schoolpage')
+@app.route('/schoolpage/<string:school_objid>')
+def param_test(school_objid=None):
+	print(school_objid)
+	school_object = resolve_school_objid(school_objid)
+	return render_template('Web_Development/school_profile.html', school=school_object)
 
 from sign_up_views import *
 from auth_conf import *
