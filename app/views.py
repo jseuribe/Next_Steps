@@ -134,6 +134,9 @@ def do_playground_stuff():#This does some stuff
 
 	return render_template('/Web_Development/playground.html')
 
+'''
+Test functions for checking how flask's parameter sending works.
+'''
 
 @app.route('/')
 @app.route('/randumb')
@@ -175,4 +178,8 @@ def p_index():
 
 !!DEBUG ZONE!! Everything here is a toy and is probably super useless
 No documentation will probably ever be written for this stuff
+'''
+
+'''
+Mongo find_by_id db.user.find({"_id" : ObjectId("573fdc635aeffc16e6ca6c83"}).pretty()
 '''
