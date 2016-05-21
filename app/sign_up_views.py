@@ -56,7 +56,7 @@ def register_n():
 		new_user.hashed_pass = hashpw(password, gensalt())
 		new_user.save()#Save the user after populating it with the new information
 
-		does_user_exist_now = User.objects(username=normalized_name)
+		does_user_exist_now = User.objects(username=email)
 		retrieved_name = ''
 		if not does_user_exist_now:#Not sure when this could happen. But good to check otherwise
 			print("CATASTROPHIC ERROR")
