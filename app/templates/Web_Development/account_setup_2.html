@@ -108,7 +108,8 @@
 
 								<!-- SAT Scores -->
 								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
-									<label>SAT Scores</label>
+									<label id="inputSAT" name = "SAT">SAT Scores</label>
+									<span class="error">Please fill in all SAT Scores</span>
 								</div> <!-- /.col-lg-10 -->
 								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
 									<!-- SAT READING -->
@@ -116,7 +117,6 @@
 										<div class="input-group input-group-md">
 											<label class="input-group-addon">Reading</label>
 											<input class="form-control numericonly" id="inputSATR" name="SATR" type="number" min="0" max="800" onchange="limitSAT(this);">
-											<!-- <span class ="error">Please enter your Reading Score</span> -->
 										</div> <!-- /.input-group -->
 									</div> <!-- /.column control -->
 									<!-- SAT WRITING -->
@@ -124,7 +124,6 @@
 										<div class="input-group input-group-md">
 											<label class="input-group-addon" style="text-indent: 8px;">Writing</label>
 											<input class="form-control numericonly" id="inputSATW" name="SATW" type="number" min="0" max="800" onchange="limitSAT(this);">
-											<!-- <span class ="error">Please enter your Writing Score</span> -->
 										</div> <!-- /.input-group -->
 									</div> <!-- /.column control -->
 									<!-- SAT MATH -->
@@ -132,7 +131,6 @@
 										<div class="input-group input-group-md">
 											<label class="input-group-addon" style="text-indent: 20px;">Math</label>
 											<input class="form-control numericonly" id="inputSATM" name="SATM" type="number" min="0" max="800" onchange="limitSAT(this);">
-											<!-- <span class ="error">Please enter your Math Score</span> -->
 										</div> <!-- /.input-group -->
 									</div> <!-- /.column control -->
 								</div> <!-- /.column control -->
