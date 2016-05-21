@@ -29,17 +29,16 @@ method that flask requires for an action (form completion, login, etc.)g
 @app.route('/')
 @app.route('/index')
 def index():
-	is_log = None
 	if 'user_id' in session:
 		print(session['user_id'])
 		flash("Hello: ", normalize_from_unicode(session['user_id']))
 	else:
 		flash('Not logged in')
 
-	if 'logged_in' in session:
+	if not 'logged_in' in session or session['logged_in']:
 		return redirect(url_for('return_dash'))
-
-	return render_template('Web_Development/homepage.html', title='Home')
+	else:
+		return render_template('Web_Development/homepage.html', title='Home')
 
 @app.route('/')
 @app.route('/contacts_page')
