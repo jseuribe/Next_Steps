@@ -4,22 +4,28 @@ import numpy as np
 
 # x passes in the name and value of the normalized value
 # coll passes in the collection where to find x
-def normalize(x, coll):
-	print("hello")
-	list_of_all_possible_values = coll.find({}, {x[0]:1})
-	value_list = []
+def normalize(name, value, coll):
+	if str(value) not in "NULL":
+		list_of_all_possible_values = coll.find({}, {name: 1})
+		value_list = []
 
-	for item in list_of_all_possible_values:
-		print(item[x[0]])
-		value_list.append(int(item[x[0]]))
+		for item in list_of_all_possible_values:
+			#print(item[name])
+			if str(item[name]) not in "NULL": 
+				value_list.append(item[name])
 
-	max_value = max(value_list)
-	min_value = min(value_list)
-	print(max_value)
-	print(min_value)
-	print(x[1])
+		#value_list.remove(unicode("NULL"))
 
-	normalized_num = x[1]-min_value
-	normalized_den = max_value-min_value
+		max_value = int(max(value_list))
+		min_value = int(min(value_list))
+		'''print("Printing values")
+		print(max_value)
+		print(min_value)
+		print(value)'''
 
-	return (normalized_num/normalized_den)
+		normalized_num = int(value)-min_value
+		normalized_den = max_value-min_value
+
+		return (normalized_num/normalized_den)
+	else:
+		return None
