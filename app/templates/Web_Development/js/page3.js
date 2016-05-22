@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	<!--GPA must contain a value-->
+	<!--Tuition must contain a value-->
 	$('#inputTuition').on('input', function() {
 		var input=$(this);
 		var tuition=input.val();
@@ -11,15 +11,15 @@ $(document).ready(function(){
 		}
 	});		
 
-	<!--State must contain a value-->
+	<!--State-->
 	$('#inputState').on('input', function() {
 		var input=$(this);
 		var state=input.val();
-		if(state && state != "state_empty"){
-			input.removeClass("invalid").addClass("valid");
+		if(state && state != ""){
+			input.addClass("valid");
 		}
 		else{
-			input.removeClass("valid").addClass("invalid");
+			input.removeClass("valid");
 		}
 	});	
 
