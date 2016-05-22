@@ -66,6 +66,16 @@ body {
 		background-size: 100%;
 	}
 
+	.background-rain {
+		background-image: url('img/background_rain.png');
+		background-size: 30%;
+	}
+
+	.background-space {
+		background-image: url('img/background_space.png');
+		background-size: 45%;
+	}
+
 	/* CUSTOMIZE THE HEADER
 	-------------------------------------------------- */
 	div.page-header-white {
