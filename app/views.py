@@ -97,12 +97,14 @@ def register():
 @app.route('/dashboard')
 @login_required
 def return_dash():
+	print("returning dashboard")
 	school_obj1 = Schools()
 	school_obj2 = Schools()
 	school_obj3 = Schools()
 	school_obj1 = find_school_by_name("CUNY Hunter College")
 	school_obj2 = find_school_by_name("Columbia University in the City of New York")
 	school_obj3 = find_school_by_name("Stony Brook University")
+	print(school_obj1.instnm)
 	s_list = [school_obj1, school_obj2, school_obj3]
 	return render_template('Web_Development/post_login.html', title='Dashboard', school_list=s_list)
 	
