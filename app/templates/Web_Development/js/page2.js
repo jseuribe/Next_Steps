@@ -46,6 +46,19 @@ $(document).ready(function(){
 			input.removeClass("valid").addClass("invalid");
 		}
 	});		
+
+	<!--Major-->
+	$('#inputMajor').on('input', function() {
+		var input=$(this);
+		var major=input.val();
+		if(major && major != ""){
+			input.addClass("valid");
+		}
+		else{
+			input.removeClass("valid");
+		}
+	});	
+
 	<!--Degree must be selected-->
 	$('#inputDegree').on('input', function() {
 		var input=$(this);
