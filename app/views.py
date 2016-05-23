@@ -4,6 +4,7 @@ from .forms import LoginForm, RegisterForm
 from auth import *
 from utils import normalize_from_unicode, pull_random_schools, resolve_school_objid, find_school_by_name#for the pesky unicode stuff
 from flask.ext.login import current_user
+import string
 
 @app.before_request
 def before_request():
@@ -161,6 +162,25 @@ def param_test(school_objid=None):
 from sign_up_views import *
 from auth_conf import *
 
+def isbookmarked(string_objid, bookmark_list):
+	norm_test_objid = normalize_from_unicode(string_objid)
+	norm_test_objid = ''.join(filter(lambda c: c in string.printable, norm_test_objid))
+	for item in bookmark_list:
+		current_objid = item[0]#Get the current bookmark
+		norm_item_objid = normalize_from_unicode(current_objid)
+		norm_item_objid = ''.join(filter(lambda c: c in string.printable, norm_item_objid))
+
+		print("checking", norm_item_objid, " against: ", norm_test_objid)
+		print("length of item: ", len(norm_item_objid), "  len of query: ", len(norm_test_objid))
+		print(type(norm_test_objid), type(norm_test_objid))
+		if norm_item_objid is norm_test_objid:
+			print("in your bookmarks")
+			return True
+		elif not norm_test_objid is norm_item_objid:
+			print("Not in your bookmarks")
+			continue
+	return False
+
 @app.route('/')
 @app.route('/addbookmark/<string:school_objid>')
 @login_required
@@ -170,24 +190,28 @@ def add_bookmark(school_objid=None):
 		return render_template(url_for('return_dash'))
 	else:
 		current_user = current_user_cursor[0] #obtain the user
-		the_list = current_user.bookmarks #retrieve a simple thing of lists from the mongo user document
+		user_bookmarks = current_user.bookmarks #retrieve a simple thing of lists from the mongo user document
 
-		print(the_list)
-		school_query = resolve_school_objid(school_objid)#Find the school object (existence verification)
+		if not isbookmarked(school_objid, user_bookmarks):
 
-		if not school_query:#Verify that our school is in our database
-			print('school not found!')
-			return render_template(url_for('param_test', school_objid))#redirect the user to the school page they were on.
+			school_query = resolve_school_objid(school_objid)#Find the school object (existence verification)
+
+			if not school_query:#Verify that our school is in our database
+				print('school not found!')
+				return render_template(url_for('param_test', school_objid))#redirect the user to the school page they were on.
+			else:
+				school_name = school_query.id_num #Obtain the id for storage
+				acceptance_status = 'NoR'#Set default status No-Reply (Pre acceptance/notification from school)
+				pair = []
+				pair.append(school_name)
+				pair.append(acceptance_status)
+
+				user_bookmarks.append(pair)#Add to the pair, the next step will be adding to the mongoDB
+				current_user.bookmarks = user_bookmarks
+				current_user.save()
 		else:
-			school_name = school_query.id_num #Obtain the id for storage
-			acceptance_status = 'NoR'#Set default status No-Reply (Pre acceptance/notification from school)
-			pair = []
-			pair.append(school_name)
-			pair.append(acceptance_status)
-
-			the_list.append(pair)#Add to the pair, the next step will be adding to the mongoDB
-			current_user.bookmarks = the_list
-			current_user.save()
+			print("Already bookmarked!")
+			return render_template('Web_Development/school_temp.html')
 	return render_template('Web_Development/school_temp.html')
 
 '''

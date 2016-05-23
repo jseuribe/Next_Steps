@@ -64,6 +64,10 @@ def resolve_school_objid(school_obj_id):
 	print("Find school by id")
 	print(school_obj_id)
 	cursor_list = pymon.db.school.find({"_id": ObjectId(school_obj_id) })
+	query_result = cursor_list.count()
+	if query_result == 0:
+		print("Error! No school")
+		return None
 	new_school = Schools()
 	for record in cursor_list:
 		print("A school has been found")
@@ -89,6 +93,4 @@ def resolve_school_objid(school_obj_id):
 		#new_school.avg_income = 
 		#new_school.tuition = 
 	return new_school
-
-
 	
