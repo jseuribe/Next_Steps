@@ -112,6 +112,10 @@ body {
 		display: list-item;
 	}
 
+	.remove-button {
+		padding: 3px;
+	}
+
 	/* CUSTOMIZE THE CAROUSEL
 	-------------------------------------------------- */
 	/* Carousel base class */
