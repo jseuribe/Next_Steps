@@ -1,0 +1,241 @@
+{% extends "/Web_Development/base.html" %}
+{% block content %}
+
+	<div class="navbar-wrapper">
+		<div class="container" id="navigation_bar">
+			<nav class="navbar navbar-inverse navbar-static-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="{{url_for('static',filename='img/next_step_logo.png')}}"></a>
+					</div> <!-- /.navbar-header -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home</a></li>
+							<li><a href="{{url_for('return_about')}}"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
+							<li><a href="{{url_for('return_contact')}}"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
+							{% if not session.logged_in %}
+								<li><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
+							{% else %}
+								<li><a href='{{url_for("logout")}}'><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log-out </a></li>
+
+							{% endif %}
+						</ul>
+						<form class="navbar-form navbar-right" role="search">
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Search">
+							</div> <!-- /.navbar-form navbar-right -->
+							<button type="submit" class="btn btn-default">Submit</button>
+						</form>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+		</div><!-- /.container -->
+	</div><!-- /.navbar-wrapper -->
+	<div class="container container-no-carousel" id="contents">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="page-header" id="page-header">
+					<h2>User Account Creation Page</h2>
+				</div> <!-- /.page-header -->
+			</div> <!-- /.col-lg-12 -->
+		</div> <!-- /.row -->
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Please fill out the following:
+					</div>  <!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="panel-body">
+							<div class="progress">
+								<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
+									25%
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<form role="form" action="/account_setup_1/confirm" method="post" id="page1">
+								<div class="col-lg-8 col-lg-offset-2">
+									<div class="form-group">
+										<label for ="inputFirst">First Name</label>
+										<input class="form-control alphaonly" id="inputFirst" type="text" name="First" placeholder="John"></input>
+										<span class ="error">Please enter your first name</span>
+									</div> <!-- /.form-group -->
+									<div class="form-group">
+										<label for ="inputMiddle">Middle</label>
+										<input class="form-control alphaonly valid" id="inputMiddle" type="text" name="Middle"></input>
+									</div> <!-- /.form-group -->
+									<div class="form-group">
+										<label for "inputLast">Last Name</label>
+										<input class="form-control alphaonly" id="inputLast" type="text" name="Last"placeholder="Doe"></input>
+										<span class ="error">Please enter your last name</span>
+									</div> <!-- /.form-group -->
+									<hr>
+									<div class="form-group">
+										<label for="inputStreet">Street</label>
+										<input class="form-control" id="inputStreet" type="text" name="Street" placeholder="742 EverGreen Terrace"></input>
+										<span class ="error">Please enter your address</span>
+									</div> <!-- /.form-group -->
+								</div> <!-- /.col-lg-8 -->
+								<div class="col-lg-4 col-lg-offset-2 col-md-6 col-sm-6">
+									<div class="form-group">
+										<label>City</label>
+										<input class="form-control" type="text">
+									</div>
+								</div> <!-- /.col-lg-6 -->
+								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+		<div class="form-group">
+										<label>State</label>
+										<select class="form-control" name="state">
+											<option value="state_empty " type="text"></option>
+											<option value="alabama " type="text">AL</option>
+											<option value="alaska " type="text">AK</option>
+											<option value="arizona " type="text">AZ</option>
+											<option value="arkansas " type="text">AR</option>
+											<option value="california " type="text">CA</option>
+											<option value="colorado " type="text">CO</option>
+											<option value="connecticut " type="text">CT</option>
+											<option value="delaware " type="text">DE</option>
+											<option value="florida " type="text">FL</option>
+											<option value="georgia " type="text">GA</option>
+											<option value="hawaii " type="text">HI</option>
+											<option value="idaho " type="text">ID</option>
+											<option value="illinois " type="text">IL</option>
+											<option value="indiana " type="text">IN</option>
+											<option value="iowa " type="text">IA</option>
+											<option value="kansas " type="text">KS</option>
+											<option value="kentucky " type="text">KY</option>
+											<option value="louisiana " type="text">LA</option>
+											<option value="maine " type="text">ME</option>
+											<option value="maryland " type="text">MD</option>
+											<option value="massachusetts " type="text">MA</option>
+											<option value="michigan " type="text">MI</option>
+											<option value="minnesota " type="text">MN</option>
+											<option value="mississippi " type="text">MS</option>
+											<option value="missouri " type="text">MO</option>
+											<option value="montana " type="text">MT</option>
+											<option value="nebraska " type="text">NE</option>
+											<option value="nevada " type="text">NV</option>
+											<option value="new_hampshire " type="text">NH</option>
+											<option value="new_jersey " type="text">NJ</option>
+											<option value="new_mexico " type="text">NM</option>
+											<option value="new_york " type="text">NY</option>
+											<option value="north_carolina " type="text">NC</option>
+											<option value="north_dakota " type="text">ND</option>
+											<option value="ohio " type="text">OH</option>
+											<option value="oklahoma " type="text">OK</option>
+											<option value="oregon " type="text">OR</option>
+											<option value="pennsylvania " type="text">PA</option>
+											<option value="rhode_island " type="text">RI</option>
+											<option value="south_carolina " type="text">SC</option>
+											<option value="south_dakota " type="text">SD</option>
+											<option value="tennessee " type="text">TN</option>
+											<option value="texas " type="text">TX</option>
+											<option value="utah " type="text">UT</option>
+											<option value="vermont " type="text">VT</option>
+											<option value="virginia " type="text">VA</option>
+											<option value="washington " type="text">WA</option>
+											<option value="west_virginia " type="text">WV</option>
+											<option value="wisconsin " type="text">WI</option>
+											<option value="wyoming " type="text">WY</option>
+										</select>
+									</div> <!-- /.form-group -->
+								</div> <!-- /.col-lg-2 -->
+								<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+									<div class="form-group">
+										<label>ZIP</label>
+										<input class="form-control" type="number">
+									</div> <!-- /.form-group -->
+								</div>
+
+								 <div class="col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12">
+									<hr>
+									<!-- Next Button -->
+									<input id="submitPage1" type="submit" value="Submit"class="btn btn-primary pull-right" value="Next &rarr;">
+								</div>
+							</form>
+						</div> <!-- /.row -->
+					</div> <!-- /.panel-body -->
+				</div> <!-- /.panel -->
+				<!-- Previous Button -->
+			</div> <!-- /.col-lg-8 -->
+		</div> <!-- /.row -->
+		<!-- FOOTER -->
+		<footer>
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+		</footer>
+	</div> <!-- /container -->
+
+<script>
+	$(document).ready(function(){
+		<!--First name must contain a character-->
+		$('#inputFirst').on('input', function() {
+			var input=$(this);
+			var name=input.val();
+			if(name){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});		
+
+		<!--Last name must contain a character-->
+		$('#inputLast').on('input', function() {
+			var input=$(this);
+			var last=input.val();
+			if(last){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});				
+
+		<!--Address must contain a character-->
+		$('#inputStreet').on('input', function() {
+			var input=$(this);
+			var street=input.val();
+			if(street){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});		
+		<!--Check whole form -->
+		$("#submitPage1").submit(function(event){
+			var formData=$("#page1").serializeArray();
+			var zeroErrors=true;
+			for (var input in formData){
+				var element=$("#input"+formData[input]['name']);
+				var valid=element.hasClass("valid");
+				var errorAt=$("span", element.parent());
+				if (!valid){
+					errorAt.removeClass("error").addClass("errorShow");
+					zeroErrors=false;
+				}
+				else{
+					errorAt.removeClass("errorShow").addClass("error");
+				}
+			}
+			if (!zeroErrors){
+				event.preventDefault(); 
+			}
+		});
+		
+		<!--Class limits to alphabets only-->
+		$('.alphaonly').bind('keyup blur',function(){ 
+			$(this).val( $(this).val().replace(/[^A-Za-z]/g,'') );
+		});
+	});
+</script>
+{% endblock %}

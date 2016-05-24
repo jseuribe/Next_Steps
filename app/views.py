@@ -19,8 +19,8 @@ def serve_html_page():
 	#flash('') displays a message on the page 
 	if some_condition_not_met:
 		flash("message!") 
-		return render("/Web_Development/PAGE_NAME.html", var="", ...)
-	return render("/Web_Development/PAGE_NAME.html", var1="val", var2="val", ... )
+		return render("/PAGE_NAME.html", var="", ...)
+	return render("/PAGE_NAME.html", var1="val", var2="val", ... )
 '''
 
 '''
@@ -39,23 +39,23 @@ def index():
 	if not 'logged_in' in session or session['logged_in']:
 		return redirect(url_for('return_dash'))
 	else:
-		return render_template('Web_Development/homepage.html', title='Home')
+		return render_template('/homepage.html', title='Home')
 
 @app.route('/')
 @app.route('/contacts_page')
 def return_contact():
-	return render_template('Web_Development/contact_us.html', title='Contact Us')
+	return render_template('/contact_us.html', title='Contact Us')
 
 @app.route('/')
 @app.route('/about')
 def return_about():
-	return render_template('Web_Development/about.html', title='About')
+	return render_template('/about.html', title='About')
 
 @app.route('/')
 @app.route('/account_setup')
 def return_account_setup():
 	if 'user_id' not in session:
-		return render_template('Web_Development/account_setup_0.html', title='Account Setup (Step 1 of 4)')
+		return render_template('/account_setup_0.html', title='Account Setup (Step 1 of 4)')
 	else:
 		return redirect(url_for('return_account_setup_1'))
 
@@ -63,24 +63,24 @@ def return_account_setup():
 @app.route('/account_setup_2')
 @login_required
 def return_account_setup_2():
-	return render_template('Web_Development/account_setup_2.html', title="Account Setup (Step 3 of 4)")
+	return render_template('/account_setup_2.html', title="Account Setup (Step 3 of 4)")
 
 @app.route('/')
 @app.route('/account_setup_3')
 @login_required
 def return_account_setup_3():
-	return render_template('Web_Development/account_setup_3.html', title="Account Setup (Step 4 of 4)")
+	return render_template('/account_setup_3.html', title="Account Setup (Step 4 of 4)")
 
 @app.route('/')
 @app.route('/account_setup_4')
 @login_required
 def return_account_setup_4():
-	return render_template('Web_Development/account_setup_4.html', title="Account Setup Complete")
+	return render_template('/account_setup_4.html', title="Account Setup Complete")
 
 @app.route('/')
 @app.route('/return_log')
 def return_log():
-	return render_template('Web_Development/login.html', title='Login')
+	return render_template('/login.html', title='Login')
 
 @app.route('/settings')
 @login_required
@@ -107,10 +107,10 @@ def return_dash():
 	school_obj3 = find_school_by_name("Stony Brook University")
 	print(school_obj1.instnm)
 	s_list = [school_obj1, school_obj2, school_obj3]
-	return render_template('Web_Development/post_login.html', title='Dashboard', school_list=s_list)
+	return render_template('/post_login.html', title='Dashboard', school_list=s_list)
 	
 '''
-Beyond this point are the //LOGOUT FUNCTIONS//
+Beyond this point are the /LOGOUT FUNCTIONS/
 You'll find:
 login(), login_confirm(), logout()
 '''
@@ -118,13 +118,13 @@ login(), login_confirm(), logout()
 @app.route('/login', methods=['GET'])
 def login():
 	form = LoginForm()
-	response = render_template('Web_Development/login.html', title='title', form=form)
+	response = render_template('/login.html', title='title', form=form)
 	return response
 
 @app.route('/')
 @app.route('/playground', methods=['GET'])
 def get_playground():
-	return render_template('Web_Development/playground.html')
+	return render_template('/playground.html')
 
 @app.route('/')
 @app.route('/playground/activate', methods=['POST'])
@@ -133,11 +133,11 @@ def do_playground_stuff():#This does some stuff
 	print('This is your input: ', field1)
 	if field1 == 'TEST':
 		print("hello!")
-		return render_template('/Web_Development/playground.html')
+		return render_template('/playground.html')
 	else:
 		print("Whoops")
 
-	return render_template('/Web_Development/playground.html')
+	return render_template('/playground.html')
 
 '''
 Test functions for checking how flask's parameter sending works.
@@ -149,7 +149,7 @@ def randumb():
 	school_obj = Schools()
 	school_obj = pull_random_schools()
 	print(school_obj.instnm)
-	return render_template('Web_Development/school_temp.html')
+	return render_template('/school_temp.html')
 
 @app.route('/')
 @app.route('/schoolpage')
@@ -157,7 +157,7 @@ def randumb():
 def param_test(school_objid=None):
 	print(school_objid)
 	school_object = resolve_school_objid(school_objid)
-	return render_template('Web_Development/school_profile.html', school=school_object)
+	return render_template('/school_profile.html', school=school_object)
 
 from sign_up_views import *
 from auth_conf import *
@@ -211,34 +211,5 @@ def add_bookmark(school_objid=None):
 				current_user.save()
 		else:
 			print("Already bookmarked!")
-			return render_template('Web_Development/school_temp.html')
-	return render_template('Web_Development/school_temp.html')
-
-'''
-
-PROTOTYPE FUNCTIONS. THESE ARE NOT FOR FINAL USE. MERELY A TEST
-@app.route('/')
-@app.route('/p_home')
-def p_index():
-	vessel = {'nickname': 'Miguel'} #fake user
-	posts = [
-		{
-			'author': {'nickname': 'John'},
-			'body':	'Beautiful day in portland!'
-		},
-
-		{
-			'author': {'nickname': 'Susan'},
-			'body': 'The Avengers movie was so cool! Shame about BvS!'
-		}
-	]
-	return render_template('index.html', title='Home', user=vessel, posts=posts)
-
-
-!!DEBUG ZONE!! Everything here is a toy and is probably super useless
-No documentation will probably ever be written for this stuff
-'''
-
-'''
-Mongo find_by_id db.user.find({"_id" : ObjectId("573fdc635aeffc16e6ca6c83"}).pretty()
-'''
+			return render_template('/school_temp.html')
+	return render_template('/school_temp.html')

@@ -1,0 +1,236 @@
+{% extends "/Web_Development/base.html" %}
+{% block content %}
+
+	<div class="navbar-wrapper">
+		<div class="container" id="navigation_bar">
+			<nav class="navbar navbar-inverse navbar-static-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand pull-left hidden-sm" href="homepage.html" aria-hidden="true"><img src="{{url_for('static',filename='img/next_step_logo.png')}}"></a>
+					</div> <!-- /.navbar-header -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home</a></li>
+							<li><a href="{{url_for('return_about')}}}"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
+							<li><a href="{{url_for('return_contact')}}}"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
+							{% if not session.logged_in %}
+								<li><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a></li>
+							{% else %}
+								<li><a href='{{url_for("logout")}}'><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log-out </a></li>
+
+							{% endif %}
+						</ul>
+						<form class="navbar-form navbar-right" role="search">
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Search">
+							</div> <!-- /.navbar-form navbar-right -->
+							<button type="submit" class="btn btn-default">Submit</button>
+						</form>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+		</div><!-- /.container -->
+	</div><!-- /.navbar-wrapper -->
+	<div class="container container-no-carousel" id="contents">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="page-header" id="page-header">
+					<h2>User Account Creation Page</h2>
+				</div> <!-- /.page-header -->
+			</div> <!-- /.col-lg-12 -->
+		</div> <!-- /.row -->
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Please fill out the following:
+					</div>  <!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="panel-body">
+							<div class="progress">
+								<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
+									75%
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<form role="form" action="/account_setup_3/confirm" method="post">
+								<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+
+									<div class="form-group">
+										<label>Tuition Limit</label>
+										<select class="form-control" name="tuition">
+											<option value="tuition_limit_empty"></option>
+											<option value="5000" type="number">$5,000</option>
+											<option value="10000" type="number">$10,000</option>
+											<option value="20000" type="number">$20,000</option>
+											<option value="30000" type="number">$30,000</option>
+											<option value="50000" type="number">$50,000</option>
+											<option value="100000" type="number">$100,000</option>
+											<option value="-1" type="number">No Preference</option>
+										</select>
+									</div> <!-- /.form-group -->
+
+								</div> <!-- /.col-lg-8 -->
+								<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+									<div class="form-group">
+										<label>Do you have a preference of which state you'd like to attend college?</label>
+										<br>
+										<label class="radio-inline">
+											<input type="radio" value="true" type="text" name="state_pref">Yes
+										</label>
+										<label class="radio-inline">
+											<input type="radio" value="false" type="text" name="state_pref">No
+										</label>
+									</div>
+									<div class="form-group">
+										<label>Which State would you like to attend school?</label>
+										<select class="form-control" name="state">
+											<option value="state_empty " type="text"></option>
+											<option value="alabama " type="text">AL</option>
+											<option value="alaska " type="text">AK</option>
+											<option value="arizona " type="text">AZ</option>
+											<option value="arkansas " type="text">AR</option>
+											<option value="california " type="text">CA</option>
+											<option value="colorado " type="text">CO</option>
+											<option value="connecticut " type="text">CT</option>
+											<option value="delaware " type="text">DE</option>
+											<option value="florida " type="text">FL</option>
+											<option value="georgia " type="text">GA</option>
+											<option value="hawaii " type="text">HI</option>
+											<option value="idaho " type="text">ID</option>
+											<option value="illinois " type="text">IL</option>
+											<option value="indiana " type="text">IN</option>
+											<option value="iowa " type="text">IA</option>
+											<option value="kansas " type="text">KS</option>
+											<option value="kentucky " type="text">KY</option>
+											<option value="louisiana " type="text">LA</option>
+											<option value="maine " type="text">ME</option>
+											<option value="maryland " type="text">MD</option>
+											<option value="massachusetts " type="text">MA</option>
+											<option value="michigan " type="text">MI</option>
+											<option value="minnesota " type="text">MN</option>
+											<option value="mississippi " type="text">MS</option>
+											<option value="missouri " type="text">MO</option>
+											<option value="montana " type="text">MT</option>
+											<option value="nebraska " type="text">NE</option>
+											<option value="nevada " type="text">NV</option>
+											<option value="new_hampshire " type="text">NH</option>
+											<option value="new_jersey " type="text">NJ</option>
+											<option value="new_mexico " type="text">NM</option>
+											<option value="new_york " type="text">NY</option>
+											<option value="north_carolina " type="text">NC</option>
+											<option value="north_dakota " type="text">ND</option>
+											<option value="ohio " type="text">OH</option>
+											<option value="oklahoma " type="text">OK</option>
+											<option value="oregon " type="text">OR</option>
+											<option value="pennsylvania " type="text">PA</option>
+											<option value="rhode_island " type="text">RI</option>
+											<option value="south_carolina " type="text">SC</option>
+											<option value="south_dakota " type="text">SD</option>
+											<option value="tennessee " type="text">TN</option>
+											<option value="texas " type="text">TX</option>
+											<option value="utah " type="text">UT</option>
+											<option value="vermont " type="text">VT</option>
+											<option value="virginia " type="text">VA</option>
+											<option value="washington " type="text">WA</option>
+											<option value="west_virginia " type="text">WV</option>
+											<option value="wisconsin " type="text">WI</option>
+											<option value="wyoming " type="text">WY</option>
+
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Cost Preference</label>
+										<br>
+										<label class="radio-inline">
+											<input type="radio" name="cost_preference" value="1">1
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="cost_preference" value="2">2
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="cost_preference" value="3">3
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="cost_preference" value="4">4
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="cost_preference" value="5">5
+										</label>
+									</div> <!-- /.form-group -->
+									<div class="form-group">
+										<label>Distance Preference</label>
+										<br>
+										<label class="radio-inline">
+											<input type="radio" name="distance_preference" value="1">1
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="distance_preference" value="2">2
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="distance_preference" value="3">3
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="distance_preference" value="4">4
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="distance_preference" value="5">5
+										</label>
+									</div> <!-- /.form-group -->
+									<div class="form-group">
+										<label>Academic Preference</label>
+										<br>
+										<label class="radio-inline">
+											<input type="radio" name="academic_preference" value="1">1
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="academic_preference" value="2">2
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="academic_preference" value="3">3
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="academic_preference" value="4">4
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="academic_preference" value="5">5
+										</label>
+									</div> <!-- /.form-group -->
+
+								</div> <!-- /.col-lg-8 -->
+
+									<div class="col-lg-8 col-lg-offset-2">
+									<div class="container">
+										<a href="{{url_for('return_account_setup_2')}}" class="btn btn-info" role="button">Link Button</a>
+										<input type="submit" class="btn btn-info" value="Submit Button">
+									</div>
+
+							</form>
+						</div> <!-- /.row -->
+					</div> <!-- /.panel-body -->
+				</div> <!-- /.panel -->
+				<!--
+				<nav>
+					<ul class="pager">
+						<li class="previous"><a href="account_setup_2.html"><span aria-hidden="true">&larr;</span> Previous</a></li>
+						<li class="next"><a href="account_setup_4.html">Submit <span aria-hidden="true">&rarr;</span></a></li>
+					</ul>
+				</nav>
+				-->
+			</div> <!-- /.col-lg-8 -->
+		</div> <!-- /.row -->
+		<!-- FOOTER -->
+		<footer>
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+		</footer>
+	</div> <!-- /container -->
+{% endblock %}

@@ -40,7 +40,6 @@ def login_confirm():
 
 @app.route('/')
 @app.route('/logout')
-@login_required
 def logout():
 	logout_user()
 	session['logged_in'] = False

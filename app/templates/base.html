@@ -1,27 +1,24 @@
-<html>
-	<head>
-		{% if title %}
-		<title> {{ title }} - microblog </title>
-		{% else %}
-		<title> Welcome to microblog </title>
-		{% endif %}
-	</head>
-	<body>
-		<div> Microblog: <a href="/login">Home</a></div>
-		<div> Register!  <a href='/register'>Home</a></div>
-		<div> Logged in users only: <a href='/settings'>Settings</a></div>
-		<div> LogOut <a href="/logout">LogOut </a></div>
-		<hr>
-		{% with messages =  get_flashed_messages() %}
-			{% if messages %}
-			<ul>
-			{% for message in messages %}
-				<li>{{ message }} </li>
-			{% endfor %}
-			</ul>
-			{% endif %}
-			{% endwith %}
-		{% block content %} {% endblock %}
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name = "description" content = "This is the homepage."/>
+	<meta name = "keyword" content =  "nextstep account"/>
+	<meta name = "robots" content = "noindex, nofollow"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width = device-width, initial-scale = 1">
+	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/bootstrap.css')}}">
+	<!-- Custom styles for this template -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles.css')}}" >
+	<title>{{ title }} - Next-Step</title>
+</head>
+
+<body>
+{% block content %}{% endblock %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{{ url_for( 'static',filename='js/bootstrap.min.js' ) }}"></script>
+
+</body>
 
 </html>
