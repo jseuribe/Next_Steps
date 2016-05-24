@@ -147,8 +147,6 @@ def account_setup_2():
 @login_required
 def account_setup_3():
 	n_tuition = float(normalize_from_unicode(request.form['tuition']))
-	n_state_p = normalize_from_unicode(request.form['state_pref'])
-	n_state = normalize_from_unicode(request.form['state'])
 	n_distance_preference = float(normalize_from_unicode(request.form['distance_preference']))
 	n_academic_preference = float(normalize_from_unicode(request.form['academic_preference']))
 	n_cost_preference = float(normalize_from_unicode(request.form['cost_preference']))
@@ -163,11 +161,9 @@ def account_setup_3():
 
 	user_obj = user_q[0]#This should be the object what is the user.
 	user_obj.tuition = n_tuition
-	user_obj.state_preference = n_state
 	user_obj.distance_preference = n_distance_preference
 	user_obj.academic_preference = n_academic_preference
 	user_obj.cost_preference = n_cost_preference
-	user_obj.state_pref_bool = n_state_p
 	user_obj.state_preference_list = form_state_list
 	user_obj.save()
 	return return_account_setup_4()
