@@ -56,6 +56,16 @@ def return_contact():
 @app.route('/about')
 def return_about():
 	return render_template('Web_Development/about.html', title='About')
+	
+@app.route('/')
+@app.route('/privacy')
+def return_privacy():
+	return render_template('Web_Development/privacy.html', title='Privacy Policy')
+
+@app.route('/')
+@app.route('/terms')
+def return_terms():
+	return render_template('Web_Development/terms.html', title='Terms of Service')
 
 @app.route('/')
 @app.route('/account_setup')
