@@ -73,7 +73,7 @@ class User(db.Document):
 	m_name = db.StringField(max_length=255, required=False)
 	l_name = db.StringField(max_length=255, required=False)
 	street = db.StringField(max_length=255, required=False)
-	street_state = db.StringField(max_length=255, required=False)
+	street_state = db.IntField(max_length=255, required=False)
 
 	#Grades and Scores, major preference. Registration Page 2
 	gpa = db.FloatField(min_value=0, max_value=100.0, required=False)
@@ -81,7 +81,7 @@ class User(db.Document):
 	SAT_read = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_write = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_math = db.IntField(min_value=0,max_value=800, required=False)
-	degree_preference_list = db.ListField(db.StringField(max_length=255, required=False))
+	major_preference_list = db.ListField(db.StringField(max_length=255, required=False))
 
 	#Tuition and Location. Registration Page 3
 	tuition = db.FloatField(min_value=0, max_value=100000, required=False)

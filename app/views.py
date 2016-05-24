@@ -45,7 +45,6 @@ def index():
 	else:
 		print('Not logged in at all!')
 		return render_template('Web_Development/homepage.html', title='Home')
-
 	return render_template('Web_Development/homepage.html', title='Home')
 @app.route('/')
 @app.route('/contacts_page')

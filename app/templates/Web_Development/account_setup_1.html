@@ -84,7 +84,7 @@
 
 						<!-- Forms -->
 						<div class="row">
-							<form role="form" action="/account_setup_1/confirm" method="post" id="page1">
+							<form role="form" action="/account_setup_1/confirm" method="POST" id="page1">
 								<div class="col-lg-8 col-lg-offset-2">
 									<!-- First Name -->
 									<div class="form-group">
@@ -123,58 +123,58 @@
 									<!-- State -->
 									<div class="form-group">
 										<label>State</label>
-										<select id="inputState" name="State" class="form-control">
-											<option value="state_empty">&nbsp;</option>
-											<option value="alabama">AL</option>
-											<option value="alaska">AK</option>
-											<option value="arizona">AZ</option>
-											<option value="arkansas">AR</option>
-											<option value="california">CA</option>
-											<option value="colorado">CO</option>
-											<option value="connecticut">CT</option>
-											<option value="delaware">DE</option>
-											<option value="florida">FL</option>
-											<option value="georgia">GA</option>
-											<option value="hawaii">HI</option>
-											<option value="idaho">ID</option>
-											<option value="illinois">IL</option>
-											<option value="indiana">IN</option>
-											<option value="iowa">IA</option>
-											<option value="kansas">KS</option>
-											<option value="kentucky">KY</option>
-											<option value="louisiana">LA</option>
-											<option value="maine">ME</option>
-											<option value="maryland">MD</option>
-											<option value="massachusetts">MA</option>
-											<option value="michigan">MI</option>
-											<option value="minnesota">MN</option>
-											<option value="mississippi">MS</option>
-											<option value="missouri">MO</option>
-											<option value="montana">MT</option>
-											<option value="nebraska">NE</option>
-											<option value="nevada">NV</option>
-											<option value="new_hampshire">NH</option>
-											<option value="new_jersey">NJ</option>
-											<option value="new_mexico">NM</option>
-											<option value="new_york">NY</option>
-											<option value="north_carolina">NC</option>
-											<option value="north_dakota">ND</option>
-											<option value="ohio">OH</option>
-											<option value="oklahoma">OK</option>
-											<option value="oregon">OR</option>
-											<option value="pennsylvania">PA</option>
-											<option value="rhode_island">RI</option>
-											<option value="south_carolina">SC</option>
-											<option value="south_dakota">SD</option>
-											<option value="tennessee">TN</option>
-											<option value="texas">TX</option>
-											<option value="utah">UT</option>
-											<option value="vermont">VT</option>
-											<option value="virginia">VA</option>
-											<option value="washington">WA</option>
-											<option value="west_virginia">WV</option>
-											<option value="wisconsin">WI</option>
-											<option value="wyoming">WY</option>
+										<select id="inputState" name="state" class="form-control">
+											<option value="-1">&nbsp;</option>
+											<option value="1" type="number">AL</option>
+											<option value="2" type="number">AK</option>
+											<option value="4"  type="number">AZ</option>
+											<option value="5"  type="number">AR</option>
+											<option value="6" type="number">CA</option>
+											<option value="8" type="number">CO</option>
+											<option value="9" type="number">CT</option>
+											<option value="10" type="number">DE</option>
+											<option value="12" type="number">FL</option>
+											<option value="13" type="number">GA</option>
+											<option value="15" type="number">HI</option>
+											<option value="16" type="number">ID</option>
+											<option value="17" type="number">IL</option>
+											<option value="18" type="number">IN</option>
+											<option value="19" type="number">IA</option>
+											<option value="20" type="number">KS</option>
+											<option value="21" type="number">KY</option>
+											<option value="22" type="number">LA</option>
+											<option value="23" type="number">ME</option>
+											<option value="24" type="number">MD</option>
+											<option value="25" type="number">MA</option>
+											<option value="26" type="number">MI</option>
+											<option value="27" type="number">MN</option>
+											<option value="28" type="number">MS</option>
+											<option value="29" type="number">MO</option>
+											<option value="30" type="number">MT</option>
+											<option value="31" type="number">NE</option>
+											<option value="32" type="number">NV</option>
+											<option value="33" type="number">NH</option>
+											<option value="34" type="number">NJ</option>
+											<option value="35" type="number">NM</option>
+											<option value="36" type="number">NY</option>
+											<option value="37" type="number">NC</option>
+											<option value="38" type="number">ND</option>
+											<option value="39" type="number">OH</option>
+											<option value="40" type="number">OK</option>
+											<option value="41" type="number">OR</option>
+											<option value="42" type="number">PA</option>
+											<option value="44" type="number">RI</option>
+											<option value="45" type="number">SC</option>
+											<option value="46" type="number">SD</option>
+											<option value="47" type="number">TN</option>
+											<option value="48" type="number">TX</option>
+											<option value="49" type="number">UT</option>
+											<option value="50" type="number">VT</option>
+											<option value="51" type="number">VA</option>
+											<option value="53" type="number">WA</option>
+											<option value="54" type="number">WV</option>
+											<option value="55" type="number">WI</option>
+											<option value="56" type="number">WY</option>
 										</select>
 										<span class ="error">Please enter your State</span>
 									</div> <!-- /.form-group -->
@@ -215,6 +215,6 @@
 	<!-- JS Files -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
-	<script type="text/javascript" src="{{ url_for('static',filename='js/page1.js')}}"></script>
+	<!---<script type="text/javascript" src="{{ url_for('static',filename='js/page1.js')}}"></script> -->
 </body>
 </html>

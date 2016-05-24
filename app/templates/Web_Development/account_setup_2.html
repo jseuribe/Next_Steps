@@ -89,7 +89,7 @@
 								<div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>Grade Average</label>
-										<input class="form-control numericonly" id="inputGPA" name="GPA" type="number" min="0" max="100" onchange="limitGrade(this);">
+										<input class="form-control numericonly" id="inputGPA" name="gpa" type="number" min="0" max="100" onchange="limitGrade(this);">
 										<span class ="error">Please enter your Grade Average</span>
 									</div> <!-- /.form-group -->
 								</div> <!-- /.column control -->
@@ -113,7 +113,7 @@
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 										<div class="input-group input-group-md">
 											<label class="input-group-addon">Reading</label>
-											<input class="form-control numericonly" id="inputSATR" name="SATR" type="number" min="0" max="800" name="Read" onchange="limitSAT(this);">
+											<input class="form-control numericonly" id="inputSATR" name="Read" type="number" min="0" max="800" name="Read" onchange="limitSAT(this);">
 										</div> <!-- /.input-group -->
 									</div> <!-- /.column control -->
 
@@ -121,7 +121,7 @@
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 										<div class="input-group input-group-md">
 											<label class="input-group-addon" style="text-indent: 8px;">Writing</label>
-											<input class="form-control numericonly" id="inputSATW" name="SATW" type="number" min="0" max="800" name="Write" onchange="limitSAT(this);">
+											<input class="form-control numericonly" id="inputSATW" name="Write" type="number" min="0" max="800" name="Write" onchange="limitSAT(this);">
 										</div> <!-- /.input-group -->
 									</div> <!-- /.column control -->
 
@@ -129,7 +129,7 @@
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 										<div class="input-group input-group-md">
 											<label class="input-group-addon" style="text-indent: 20px;">Math</label>
-											<input class="form-control numericonly" id="inputSATM" name="SATM" type="number" min="0" max="800" name="Math" onchange="limitSAT(this);">
+											<input class="form-control numericonly" id="inputSATM" name="Math" type="number" min="0" max="800" name="Math" onchange="limitSAT(this);">
 										</div> <!-- /.input-group -->
 									</div> <!-- /.column control -->
 								</div> <!-- /.column control -->
@@ -139,46 +139,47 @@
 									<!-- Preferred Major(s) -->
 									<div class="form-group">
 										<label>Which major(s) are you interested in?<br><small>(Hold ctrl, shift, or &#8984; cmd to select more. If you do not have a preference, leave it as it is)</small></label>
-										<select Multiple id="inputMajor" name="majors" class="form-control">
-											<option value="1">Agriculture, Agriculture Operations, and Related Sciences</option>
-											<option value="2">Architecture and Related Services</option>
-											<option value="3">Area, Ethnic, Cultural, Gender, and Group Studies</option>
-											<option value="4">Aviation</option>
-											<option value="5">Biological and Biomedical Sciences</option>
-											<option value="6">Business, Management, Marketing, and Related Support Services</option>
-											<option value="7">Communication, Journalism, and Related Programs</option>
-											<option value="8">Communications Technologies/technicians and Support Services</option>
-											<option value="9">Computer and Information Sciences and Support Services</option>
-											<option value="10">Construction Trades</option>
-											<option value="11">Education</option>
-											<option value="12">Engineering</option>
-											<option value="13">Engineering Technologies and Engineering-Related Fields</option>
-											<option value="14">English Language and Literature/letters</option>
-											<option value="15">Family and Consumer Sciences/human Sciences</option>
-											<option value="16">Foreign Languages, Literatures, and Linguistics</option>
-											<option value="17">Health Professions and Related Programs</option>
-											<option value="18">History</option>
-											<option value="19">Homeland Security, Law Enforcement, Firefighting</option>
-											<option value="20">Human Services</option>
-											<option value="21">Legal Professions and Studies</option>
-											<option value="22">Liberal Arts and Sciences Studies and Humanities</option>
-											<option value="23">Library Science</option>
-											<option value="24">Mathematics and Statistics</option>
-											<option value="25">Mechanic and Repair Technologies/technicians</option>
-											<option value="26">Military Technologies and Applied Sciences</option>
-											<option value="27">Multi/interdisciplinary Studies</option>
-											<option value="28">Natural Resources and Conservation</option>
-											<option value="29">Parks, Recreation, Leisure, and Fitness Studies</option>
-											<option value="30">Personal and Culinary Services</option>
-											<option value="31">Philosophy and Religious Studies</option>
-											<option value="32">Physical Sciences</option>
-											<option value="33">Precision Production</option>
-											<option value="34">Psychology</option>
-											<option value="35">Science Technologies/technicians</option>
-											<option value="36">Social Sciences</option>
-											<option value="37">Theology and Religious Vocations</option>
-											<option value="38">Transportation and Materials Moving</option>
-											<option value="39">Visual and Performing Arts</option>
+										<select multiple id="inputMajor" name="majors" class="form-control">
+											<option value="1" type="number">Agriculture, Agriculture Operations, and Related Sciences</option>
+											<option value="2" type="number">Architecture and Related Services</option>
+											<option value="3" type="number">Area, Ethnic, Cultural, Gender, and Group Studies</option>
+											<option value="4" type="number">Aviation</option>
+											<option value="5" type="number">Biological and Biomedical Sciences</option>
+											<option value="6" type="number">Business, Management, Marketing, and Related Support Services</option>
+											<option value="7" type="number">Communication, Journalism, and Related Programs</option>
+											<option value="8" type="number">Communications Technologies/technicians and Support Services</option>
+											<option value="9" type="number">Computer and Information Sciences and Support Services</option>
+											<option value="10" type="number">Construction Trades</option>
+											<option value="11" type="number">Education</option>
+											<option value="12" type="number">Engineering</option>
+											<option value="13" type="number">Engineering Technologies and Engineering-Related Fields</option>
+											<option value="14" type="number">English Language and Literature/letters</option>
+											<option value="15" type="number">Family and Consumer Sciences/human Sciences</option>
+											<option value="16" type="number">Foreign Languages, Literatures, and Linguistics</option>
+											<option value="17" type="number">Health Professions and Related Programs</option>
+											<option value="18" type="number">History</option>
+											<option value="19" type="number">Homeland Security, Law Enforcement, Firefighting</option>
+											<option value="20" type="number">Human Services</option>
+											<option value="21" type="number">Legal Professions and Studies</option>
+											<option value="22" type="number">Liberal Arts and Sciences Studies and Humanities</option>
+											<option value="23" type="number">Library Science</option>
+											<option value="24" type="number">Mathematics and Statistics</option>
+											<option value="25" type="number">Mechanic and Repair Technologies/technicians</option>
+											<option value="26" type="number">Military Technologies and Applied Sciences</option>
+											<option value="27" type="number">Multi/interdisciplinary Studies</option>
+											<option value="28" type="number">Natural Resources and Conservation</option>
+											<option value="29" type="number">Parks, Recreation, Leisure, and Fitness Studies</option>
+											<option value="30" type="number">Personal and Culinary Services</option>
+											<option value="31" type="number">Philosophy and Religious Studies</option>
+											<option value="32" type="number">Physical Sciences</option>
+											<option value="33" type="number">Precision Production</option>
+											<option value="34" type="number">Psychology</option>
+											<option value="35" type="number">Science Technologies/technicians</option>
+											<option value="36" type="number">Social Sciences</option>
+											<option value="37" type="number">Theology and Religious Vocations</option>
+											<option value="38" type="number">Transportation and Materials Moving</option>
+											<option value="39" type="number">Visual and Performing Arts</option>
+
 										</select>
 									</div> <!-- form-group -->
 
@@ -221,6 +222,6 @@
 	<!-- JS Files -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
-	<script type="text/javascript" src="{{ url_for('static',filename='js/page2.js')}}"></script>
+	<!-- <script type="text/javascript" src="{{ url_for('static',filename='js/page2.js')}}"></script> -->
 </body>
 </html>

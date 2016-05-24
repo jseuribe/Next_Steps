@@ -30,47 +30,6 @@ This can be easily expanded to receive other input as we see fit, or it can be s
 """
 
 @app.route('/')
-@app.route('/register_n', methods=['POST'])
-def register_n():
-	#Obtain some initial information from the request form
-
-	password = normalize_from_unicode(request.form['Password'])
-	verify_password = normalize_from_unicode(request.form['Repassword'])
-
-	email = normalize_from_unicode(request.form['Email'])
-
-	#f_name = normalize_from_unicode(request.form['f_name'])
-	#l_name = normalize_from_unicode(request.form['l_name'])
-	
-	#Other fields will probably be squeezed in here. Or perhaps in another function?
-
-	#include a check for if password == verify_password
-	if not password and not verify_password and not email:
-		print("CRITICAL ERROR")
-	else:
-		#normal execution
-		#Initialize the basic profile info to this other information
-		new_user = User()
-		new_user.username = email #Are user-names required?
-		new_user.email = email
-		new_user.hashed_pass = hashpw(password, gensalt())
-		new_user.save()#Save the user after populating it with the new information
-
-		does_user_exist_now = User.objects(username=email)
-		retrieved_name = ''
-		if not does_user_exist_now:#Not sure when this could happen. But good to check otherwise
-			print("CATASTROPHIC ERROR")
-			return redirect('{{url_for("account_setup.html")}}')
-		else:#The object is correct! Now create a new context and log the new user in
-			unicode_vessel = normalize_from_unicode(does_user_exist_now[0].username)
-			retrieved_name = unicode_vessel
-			login_user(new_user, remember='no')
-			flash("Logged in for the first time!", category='success')
-
-	return render_template('\Web_Development\account_setup_1.html')
-
-
-@app.route('/')
 @app.route('/account_setup_0/confirm', methods=['POST'])
 def account_setup_0():
 
@@ -131,7 +90,7 @@ def account_setup_1():
 	n_m_name = normalize_from_unicode(request.form['Middle'])
 	n_l_name = normalize_from_unicode(request.form['Last'])
 	n_street = normalize_from_unicode(request.form['Street'])
-	n_state = normalize_from_unicode(request.form['state'])
+	n_state = int(normalize_from_unicode(request.form['state']))
 
 
 	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
@@ -160,9 +119,11 @@ def account_setup_2():
 	n_math = int(normalize_from_unicode(request.form['Math']))
 	n_write = int(normalize_from_unicode(request.form['Write']))
 	n_degree = normalize_from_unicode(request.form['degree'])
-	n_act = int(normalize_from_unicode(request.form['ACT_Score']))
+	n_act = 1
+	if request.form['ACT_Score']:
+		n_act = int(normalize_from_unicode(request.form['ACT_Score']))
 	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
-
+	major_list = request.form.getlist('majors')
 	user_q = User.objects(username=u_name_look_up) #get the object
 
 	if not user_q:
@@ -175,7 +136,9 @@ def account_setup_2():
 	user_obj.SAT_math = n_math
 	user_obj.SAT_write = n_write
 	user_obj.degree = n_degree
+	print("Printing the ACT entry: ", n_act)
 	user_obj.ACT_Score = n_act
+	user_obj.major_preference_list = major_list
 	user_obj.save()
 	return redirect(url_for('return_account_setup_3'))
 
@@ -190,6 +153,7 @@ def account_setup_3():
 	n_academic_preference = float(normalize_from_unicode(request.form['academic_preference']))
 	n_cost_preference = float(normalize_from_unicode(request.form['cost_preference']))
 	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
+	form_state_list = request.form.getlist('state_list')
 
 	user_q = User.objects(username=u_name_look_up) #get the object
 
@@ -204,6 +168,7 @@ def account_setup_3():
 	user_obj.academic_preference = n_academic_preference
 	user_obj.cost_preference = n_cost_preference
 	user_obj.state_pref_bool = n_state_p
+	user_obj.state_preference_list = form_state_list
 	user_obj.save()
 	return return_account_setup_4()
 
