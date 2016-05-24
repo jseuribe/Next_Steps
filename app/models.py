@@ -6,7 +6,7 @@ from flask.ext.login import UserMixin
 from utils import normalize_from_unicode
 
 '''
-Here's where the school class goes
+School class used to retrieve School Documents from mongo
 '''
 
 class Schools(db.Document):
@@ -50,12 +50,16 @@ class Schools(db.Document):
 	region = db.FloatField(min_value=0, required=False)
 	acten25 = db.FloatField(min_value=0, required=False)
 	ccugprof = db.FloatField(min_value=0, required=False)
-	
+	bookmarks = db.IntField(min_value=0)
+	accepted_student_ids = db.ListField(db.StringField(max_length=255))
+	majors_list = db.ListField(db.IntField(min_value=0, max_value=39))
+
 	meta = {#To declare admin users
 		'allow_inheritance': True
 	}
 
 class User(db.Document):
+	#Sign up Parameters. Created at registration
 	user_id = db.IntField(min_value=0, max_value=9001)#this should be set by mongo to keep it incrementing and such
 	created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
 	email = db.EmailField(max_length=255, required=True)
@@ -64,22 +68,24 @@ class User(db.Document):
 	hashed_pass = db.StringField(max_length=255, required=True)
 	bookmarks =  db.ListField(db.ListField(db.StringField(max_length=255)))
 
-	#name and address
+	#name and address. Registration Page 1
 	f_name = db.StringField(max_length=255, required=False)
 	m_name = db.StringField(max_length=255, required=False)
 	l_name = db.StringField(max_length=255, required=False)
 	street = db.StringField(max_length=255, required=False)
 	street_state = db.StringField(max_length=255, required=False)
+
+	#Grades and Scores, major preference. Registration Page 2
 	gpa = db.FloatField(min_value=0, max_value=100.0, required=False)
 	ACT_Score = db.IntField(min_value=1, max_value=36, required=False)
 	SAT_read = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_write = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_math = db.IntField(min_value=0,max_value=800, required=False)
-	degree = db.StringField(max_length=255, required=False)
+	degree_preference_list = db.ListField(db.StringField(max_length=255, required=False))
+
+	#Tuition and Location. Registration Page 3
 	tuition = db.FloatField(min_value=0, max_value=100000, required=False)
-	dorm_price = db.FloatField(min_value=0, max_value=20000, required=False)
-	state_pref_bool = db.StringField(max_length=255, required=False)
-	state_preference = db.StringField(max_length=255, required=False)
+	state_preference_list = db.ListField(db.StringField(max_length=255, required=False))
 	cost_preference = db.FloatField(min_value=0, max_value=5, required=False)
 	distance_preference = db.FloatField(min_value=0, max_value=5, required=False)
 	academic_preference = db.FloatField(min_value=0, max_value=5, required=False)	

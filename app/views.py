@@ -27,20 +27,26 @@ def serve_html_page():
 Home page links! Anything that renders a template is here. Most things here return a page, instead of acting as an interstitial
 method that flask requires for an action (form completion, login, etc.)g
 '''
+
 @app.route('/')
 @app.route('/index')
 def index():
+	print("Determining which homepage to return")
 	if 'user_id' in session:
 		print(session['user_id'])
 		flash("Hello: ", normalize_from_unicode(session['user_id']))
 	else:
 		flash('Not logged in')
 
-	if not 'logged_in' in session or session['logged_in']:
-		return redirect(url_for('return_dash'))
+	if 'logged_in' in session:
+		print('checking if logged')
+		if session['logged_in']:
+			return redirect(url_for('return_dash'))
 	else:
+		print('Not logged in at all!')
 		return render_template('Web_Development/homepage.html', title='Home')
 
+	return render_template('Web_Development/homepage.html', title='Home')
 @app.route('/')
 @app.route('/contacts_page')
 def return_contact():
