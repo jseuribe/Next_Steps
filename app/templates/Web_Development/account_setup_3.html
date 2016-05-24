@@ -41,11 +41,11 @@
 							<li class="active"><a href="{{url_for('return_log')}}"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Login<span class="sr-only">(current)</span></a></li>
 						</ul>
 						<!-- Search Form in the Navigation Bar -->
-						<form class="navbar-form navbar-right" role="search">
+						<form class="navbar-form navbar-right" role="search" method="get" action="http://www.google.com/search">
+							<!-- Search Icon -->
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Search">
-							</div> <!-- /.navbar-form navbar-right -->
+							<!-- Search Input -->
+							<input type="text" name="q" class="form-control" placeholder="powered by Google">
 							<button type="submit" class="btn btn-default">Submit</button>
 						</form>
 					</div><!-- /.navbar-collapse -->
