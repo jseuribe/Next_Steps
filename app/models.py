@@ -93,6 +93,9 @@ class User(db.Document):
 		'allow_inheritance': True
 	}
 
+	#Recommended Schools
+	recommended_schools = db.DictField()
+
 	def is_authenticated(self):
 		return True
 
