@@ -104,7 +104,7 @@
 					<!-- Panel -->
 					<div class="panel panel-default">
 						<!-- School Details -->
-						<a href="school_profile.html">
+						<a href="{{url_for( 'param_test', school_objid=school.id_num)}}">
 							<div class="panel-heading panel-heading-school">
 								<div id="school_1" class="carousel slide" data-ride="carousel">
 									<div class="carousel-inner">
@@ -115,7 +115,7 @@
 											<div class="container">
 												<div class="carousel-caption carousel-caption-school">
 													<div class="description-transparent">
-														<h5>Stony Brook University</h5>
+														<h5>{{school.instnm}}</h5>
 													</div>
 												</div> <!-- /.carousel-caption -->
 											</div> <!-- /.container -->
@@ -136,8 +136,6 @@
 							</div>
 						</div> <!-- /.panel-body -->
 					</div> <!-- /.panel -->
-
-					<a href="{{url_for( 'param_test', school_objid=school.id_num)}}">{{school.instnm}}</a>
 					{% endfor %}
 
 				</div> <!-- /.well -->

@@ -82,6 +82,7 @@ class User(db.Document):
 	SAT_write = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_math = db.IntField(min_value=0,max_value=800, required=False)
 	major_preference_list = db.ListField(db.StringField(max_length=255, required=False))
+	pref_degree = db.IntField(min_value=0, max_value=5, required=False)
 
 	#Tuition and Location. Registration Page 3
 	tuition = db.FloatField(min_value=0, max_value=100000, required=False)
