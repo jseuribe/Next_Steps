@@ -2,7 +2,8 @@ from app import app, db
 from flask import g, request, url_for, render_template, flash, redirect, session
 from .forms import LoginForm, RegisterForm
 from auth import *
-from utils import normalize_from_unicode, pull_random_schools, resolve_school_objid, find_school_by_name, is_bookmarked#for the pesky unicode stuff
+from utils import normalize_from_unicode, pull_random_schools, resolve_school_objid, find_school_by_name, isbookmarked#for the pesky unicode stuff
+from utils import extract_bookmarks
 from flask.ext.login import current_user
 import string
 
@@ -189,6 +190,12 @@ def return_bookmarks():
 	user_obj = user_q[0]#This should be the object what is the user.
 	school_bookmarks = user_obj.bookmarks
 
+	school_list = extract_bookmarks(school_bookmarks)
+	print(school_list)
+	for school in school_list:
+		print(school.instnm)
+	return render_template('Web_Development/bookmarked_schools.html', bookmarks=school_list)
+
 from sign_up_views import *
 from auth_conf import *
 
@@ -225,6 +232,47 @@ def add_bookmark(school_objid=None):
 			print("Already bookmarked!")
 			return render_template('Web_Development/school_temp.html')
 	return render_template('Web_Development/school_temp.html')
+
+
+@app.route('/')
+@app.route('/accepted_to/<string:school_objid>')
+@login_required
+def accepted_to_school(school_objid=None):
+	from models import Schools
+
+	#Find the User
+	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
+	major_list = request.form.getlist('majors')
+
+	user_cursor = pymon.db.user.find({'username': u_name_look_up})
+	user_result = user_cursor.count()
+	user_id = ""
+	if user_result == 0:
+		print("Error! No user found?")
+		return redirect(url_for('index'))#Handle this later
+	else:
+		for record in user_cursor:
+			user_id = new_school.id_num = str(record[u'_id'])#obtain the user's object ID
+
+	#Find the School, obtain the list of accepted students, and add them to the list of accepted students
+	print("Find school by id")
+	print(school_obj_id)
+	cursor_list = pymon.db.school.find({"_id": ObjectId(school_obj_id) })
+	query_result = cursor_list.count()
+	if query_result == 0:
+		print("Error! No school")
+		return redirect(url_for('index'))#Handle this later
+	new_school = Schools()
+	accepted_list = []
+	for record in cursor_list:
+		if u'accepted_student_ids' in record:
+			accepted_list = record[u'accepted_student_ids']#obtain an object id for lookup purposes
+		accepted_list.append(user_id)#Append the student to the list.
+		pymon.db.school.update({u'_id': school_objid}, {u'accepted_student_ids': accepted_list})
+
+	return render_template(url_for('return_bookmarks'))
+
+
 
 '''
 Mongo find_by_id db.user.find({"_id" : ObjectId("573fdc635aeffc16e6ca6c83"}).pretty()

@@ -35,7 +35,7 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<!-- Row of Buttons in the Navigation Bar -->
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home<span class="sr-only">(current)</span></a></li>
+							<li class="active"><a href="#"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home<span class="sr-only">(current)</span></a></li>
 							<li><a href="{{url_for('return_about')}}"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
 							<li><a href="{{url_for('return_contact')}}"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
 							<li><a href="login.html"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Logout</a></li>
@@ -70,96 +70,18 @@
 						<form role="form" id="page1">
 							<!-- List of Bookmarked Schools -->
 							<ol class="list-group">
+								{% for school in bookmarks %}
 								<li class="list-group-item">
-									<small>University at Buffalo</small>
-									<a href="{{url_for('')}}" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove"></span></a>
+									{{school.instm}}
+									<small>{{school.instnm}}</small>
+									<a href="#" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove"></span></a>
 									<select class="form-control input-sm">
 										<option value="empty" selected disabled>Applied to this school?</option>
 										<option value="accepted">I got Accepted.</option>
 										<option value="rejected">Didn't get Accepted.</option>
 									</select>
 								</li>
-								<li class="list-group-item">
-									<small>Columbia University</small>
-									<a href="{{url_for('')}}" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove"></span></a>
-									<select class="form-control input-sm">
-										<option value="empty" selected disabled>Applied to this school?</option>
-										<option value="accepted">I got Accepted.</option>
-										<option value="rejected">Didn't get Accepted.</option>
-									</select>
-								</li>
-								<li class="list-group-item">
-									<small>Hunter College</small>
-									<a href="{{url_for('')}}" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove"></span></a>
-									<select class="form-control input-sm">
-										<option value="empty" selected disabled>Applied to this school?</option>
-										<option value="accepted">I got Accepted.</option>
-										<option value="rejected">Didn't get Accepted.</option>
-									</select>
-								</li>
-								<li class="list-group-item">
-									<small>More Colleges</small>
-									<a href="{{url_for('')}}" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove"></span></a>
-									<select class="form-control input-sm">
-										<option value="empty" selected disabled>Applied to this school?</option>
-										<option value="accepted">I got Accepted.</option>
-										<option value="rejected">Didn't get Accepted.</option>
-									</select>
-								</li>
-								<li class="list-group-item">
-									<small>Even More Colleges</small>
-									<a href="{{url_for('')}}" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove"></span></a>
-									<select class="form-control input-sm">
-										<option value="empty" selected disabled>Applied to this school?</option>
-										<option value="accepted">I got Accepted.</option>
-										<option value="rejected">Didn't get Accepted.</option>
-									</select>
-								</li>
-								<li class="list-group-item">
-									<small>Even More Colleges</small>
-									<a href="{{url_for('')}}" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove"></span></a>
-									<select class="form-control input-sm">
-										<option value="empty" selected disabled>Applied to this school?</option>
-										<option value="accepted">I got Accepted.</option>
-										<option value="rejected">Didn't get Accepted.</option>
-									</select>
-								</li>
-								<li class="list-group-item">
-									<small>Even More Colleges</small>
-									<a href="{{url_for('')}}" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove"></span></a>
-									<select class="form-control input-sm">
-										<option value="empty" selected disabled>Applied to this school?</option>
-										<option value="accepted">I got Accepted.</option>
-										<option value="rejected">Didn't get Accepted.</option>
-									</select>
-								</li>
-								<li class="list-group-item">
-									<small>Even More Colleges</small>
-									<a href="{{url_for('')}}" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove"></span></a>
-									<select class="form-control input-sm">
-										<option value="empty" selected disabled>Applied to this school?</option>
-										<option value="accepted">I got Accepted.</option>
-										<option value="rejected">Didn't get Accepted.</option>
-									</select>
-								</li>
-								<li class="list-group-item">
-									<small>Even More Colleges</small>
-									<a href="{{url_for('')}}" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove"></span></a>
-									<select class="form-control input-sm">
-										<option value="empty" selected disabled>Applied to this school?</option>
-										<option value="accepted">I got Accepted.</option>
-										<option value="rejected">Didn't get Accepted.</option>
-									</select>
-								</li>
-								<li class="list-group-item">
-									<small>Even More Colleges</small>
-									<a href="{{url_for('')}}" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove"></span></a>
-									<select class="form-control input-sm">
-										<option value="empty" selected disabled>Applied to this school?</option>
-										<option value="accepted">I got Accepted.</option>
-										<option value="rejected">Didn't get Accepted.</option>
-									</select>
-								</li>
+								{% endfor %}
 							</ol>
 							
 							<!-- Submit Changes Button -->

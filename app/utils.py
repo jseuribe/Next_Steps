@@ -90,6 +90,7 @@ def resolve_school_objid(school_obj_id):
 		new_school.instnm = normalize_from_unicode(record[u'INSTNM'])
 		new_school.city = normalize_from_unicode(record[u'CITY'])
 		'''
+		HTML Reference
 								<p class="lead">Website: </p>
 								<p class="lead">Address: </p>
 								<p class="lead">State: </p>
@@ -100,6 +101,7 @@ def resolve_school_objid(school_obj_id):
 								<p class="lead">Average Income of Student: </p>
 								<p class="lead">Tuition: </p>
 		'''
+		#Additional information that can be displayed
 		new_school.insturl = normalize_from_unicode(record[u'INSTURL'])
 		new_school.stabbr = normalize_from_unicode(record[u'STABBR'])
 		new_school.sat_avg_all = float(normalize_from_unicode(record[u'SAT_AVG_ALL']))
@@ -108,4 +110,16 @@ def resolve_school_objid(school_obj_id):
 		#new_school.avg_income = 
 		#new_school.tuition = 
 	return new_school
+
+def extract_bookmarks(school_id_list):
+	school_objects = []
+	for item in school_id_list:
+		current_school = resolve_school_objid(item[0])#Find by the bookmark's ID.
+		if not current_school:
+			continue
+		else:
+			school_objects.append(current_school)
+
+	return school_objects
+
 	
