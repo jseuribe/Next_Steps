@@ -119,9 +119,17 @@ def account_setup_2():
 	n_math = int(normalize_from_unicode(request.form['Math']))
 	n_write = int(normalize_from_unicode(request.form['Write']))
 	n_degree = normalize_from_unicode(request.form['degree'])
-	n_act = 1
-	if request.form['ACT_Score']:
-		n_act = int(normalize_from_unicode(request.form['ACT_Score']))
+	n_act_english = 1
+	n_act_writing = 1
+	n_act_math = 1
+	if request.form['ACT_English']:
+		n_act_english = int(normalize_from_unicode(request.form['ACT_English']))
+	if request.form['ACT_Writing']:
+		n_act_writing = int(normalize_from_unicode(request.form['ACT_Writing']))
+	if request.form['ACT_Math']:
+		n_act_math = int(normalize_from_unicode(request.form['ACT_Math']))
+
+
 	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
 	major_list = request.form.getlist('majors')
 	user_q = User.objects(username=u_name_look_up) #get the object
@@ -135,10 +143,11 @@ def account_setup_2():
 	user_obj.SAT_read = n_read
 	user_obj.SAT_math = n_math
 	user_obj.SAT_write = n_write
-	user_obj.degree = n_degree
-	print("Printing the ACT entry: ", n_act)
-	user_obj.ACT_Score = n_act
+	user_obj.pref_degree = n_degree
 	user_obj.major_preference_list = major_list
+	user_obj.ACT_English = n_act_english
+	user_obj.ACT_Writing = n_act_writing
+	user_obj.ACT_Math = n_act_math
 	user_obj.save()
 	return redirect(url_for('return_account_setup_3'))
 

@@ -58,6 +58,8 @@ def transform_to_School_obj(cursor):
 		new_school.sat_avg_all = float(normalize_from_unicode(record[u'SAT_AVG_ALL']))
 		new_school.actenmid = normalize_from_unicode(record[u'ACTENMID'])
 		new_school.adm_rate_all = float(normalize_from_unicode(record[u'ADM_RATE_ALL']))
+		new_school.longi = float(normalize_from_unicode(record[u'LONGITUDE']))
+		new_school.lati = float(normalize_from_unicode(record[u'LATITUDE']))
 		#new_school.avg_income = 
 		#new_school.tuition = 
 	return new_school

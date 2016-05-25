@@ -51,9 +51,11 @@ class Schools(db.Document):
 	acten25 = db.FloatField(min_value=0, required=False)
 	ccugprof = db.FloatField(min_value=0, required=False)
 	bookmarks = db.IntField(min_value=0)
-	accepted_student_ids = db.ListField(db.StringField(max_length=255))
+	accepted_students = db.ListField(db.StringField(max_length=255))
 	majors_list = db.ListField(db.IntField(min_value=0, max_value=39))
 
+	longi = db.FloatField()
+	lati = db.FloatField()
 	meta = {#To declare admin users
 		'allow_inheritance': True
 	}
@@ -77,7 +79,9 @@ class User(db.Document):
 
 	#Grades and Scores, major preference. Registration Page 2
 	gpa = db.FloatField(min_value=0, max_value=100.0, required=False)
-	ACT_Score = db.IntField(min_value=1, max_value=36, required=False)
+	ACT_Math = db.IntField(min_value=1, max_value=36, required=False)
+	ACT_English = db.IntField(min_value=1, max_value=36, required=False)
+	ACT_Writing = db.IntField(min_value=1, max_value=36, required=False)
 	SAT_read = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_write = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_math = db.IntField(min_value=0,max_value=800, required=False)
