@@ -174,6 +174,21 @@ def param_test(school_objid=None):
 	school_object = resolve_school_objid(school_objid)
 	return render_template('Web_Development/school_profile.html', school=school_object)
 
+@app.route('/')
+@app.route('/bookmarks')
+@login_required
+def return_bookmarks():
+	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
+
+	user_q = User.objects(username=u_name_look_up) #get the object
+
+	if not user_q:
+		flash("Error please try again - USER_NOT_FOUND")
+		return redirect(url_for('return_account_setup_1'))
+
+	user_obj = user_q[0]#This should be the object what is the user.
+	school_bookmarks = user_obj.bookmarks
+
 from sign_up_views import *
 from auth_conf import *
 
@@ -210,31 +225,6 @@ def add_bookmark(school_objid=None):
 			print("Already bookmarked!")
 			return render_template('Web_Development/school_temp.html')
 	return render_template('Web_Development/school_temp.html')
-
-'''
-
-PROTOTYPE FUNCTIONS. THESE ARE NOT FOR FINAL USE. MERELY A TEST
-@app.route('/')
-@app.route('/p_home')
-def p_index():
-	vessel = {'nickname': 'Miguel'} #fake user
-	posts = [
-		{
-			'author': {'nickname': 'John'},
-			'body':	'Beautiful day in portland!'
-		},
-
-		{
-			'author': {'nickname': 'Susan'},
-			'body': 'The Avengers movie was so cool! Shame about BvS!'
-		}
-	]
-	return render_template('index.html', title='Home', user=vessel, posts=posts)
-
-
-!!DEBUG ZONE!! Everything here is a toy and is probably super useless
-No documentation will probably ever be written for this stuff
-'''
 
 '''
 Mongo find_by_id db.user.find({"_id" : ObjectId("573fdc635aeffc16e6ca6c83"}).pretty()
