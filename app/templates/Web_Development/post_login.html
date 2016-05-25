@@ -20,7 +20,7 @@
 		// This function uses the Google Photo Places API.
 		// It retrieves a url of an image of a school based on a latitude and a longitude.
 		function writeImageUrl(a_latitude, a_longitude, college_name) {
-			var picture_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + a_latitude + "," + a_longitude + "&radius=100&type=college&name=" + college_name + "&key=AIzaSyCqenz7cYYbtekGNOthV0jm7ROx7NJKThc";
+			var picture_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + a_latitude + "," + a_longitude + "&radius=150&keyword=college&key=AIzaSyCqenz7cYYbtekGNOthV0jm7ROx7NJKThc";
 			$.getJSON(picture_url, function (json) {
 			    var photo_reference = json.results[0].photos[0].photo_reference;
 			    picture_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=" + photo_reference + "&key=AIzaSyCqenz7cYYbtekGNOthV0jm7ROx7NJKThc";
@@ -124,8 +124,9 @@
 									<div class="carousel-inner">
 										<div class="item active">
 											<!-- School Image -->
-											<div class="slidemaster" style="background-image: url('img/school_skyline.png');" id="{{school.instnm}}">
-												<script type="text/javascript"> writeImageUrl({{school.lati}}, {{school.longi}}, {{school.instnm}}); </script>
+
+											<div class="slidemaster" style="background-image: url('{{url_for('static',filename='img/school_skyline.png')}}'');" id="{{school.instnm}}">
+												<script type="text/javascript"> writeImageUrl("{{school.lati}}", "{{school.longi}}", "{{school.instnm}}"); </script>
 											</div>
 											<!-- School Name -->
 											<div class="container">
