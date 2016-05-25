@@ -87,7 +87,7 @@
 						<div class="row">
 							<form role="form" action="/account_setup_2/confirm" method="POST" id="page2">
 								<!-- Grade Average -->
-								<div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-6 col-xs-12">
+								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
 									<div class="form-group">
 										<label>Grade Average</label>
 										<input class="form-control numericonly" id="inputGPA" name="gpa" type="number" min="0" max="100" onchange="limitGrade(this);">
@@ -95,12 +95,36 @@
 									</div> <!-- /.form-group -->
 								</div> <!-- /.column control -->
 
-								<!-- ACT -->
-								<div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
-									<div class="form-group">
-										<label>ACT</label>
-										<input class="form-control numericonly valid" type="number" placeholder="Leave blank if unavailable" min="0" max="36" name="ACT_Score" onchange="limitACT(this);">
-									</div> <!-- /. form-group -->
+								<!-- ACT Scores -->
+								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
+									<label id="inputSAT">ACT Scores</label>
+									<span class="error">Please fill in all ACT Scores</span>
+								</div> <!-- /.col-lg-10 -->
+								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
+
+									<!-- ACT ENGLISH -->
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<div class="input-group input-group-md">
+											<label class="input-group-addon" style="text-indent: 6px;">English</label>
+											<input class="form-control numericonly" id="ACT_English" name="ACT_English" type="number" min="1" max="36">
+										</div> <!-- /.input-group -->
+									</div> <!-- /.column control -->
+
+									<!-- ACT WRITING -->
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<div class="input-group input-group-md">
+											<label class="input-group-addon" style="text-indent: 8px;">Writing</label>
+											<input class="form-control numericonly" id="ACT_Writing" name="ACT_Writing" type="number" min="1" max="36">
+										</div> <!-- /.input-group -->
+									</div> <!-- /.column control -->
+
+									<!-- ACT MATH -->
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<div class="input-group input-group-md">
+											<label class="input-group-addon" style="text-indent: 20px;">Math</label>
+											<input class="form-control numericonly" id="ACT_Math" name="ACT_Math" type="number" min="1" max="36">
+										</div> <!-- /.input-group -->
+									</div> <!-- /.column control -->
 								</div> <!-- /.column control -->
 
 								<!-- SAT Scores -->
@@ -180,7 +204,6 @@
 											<option value="37" type="number">Theology and Religious Vocations</option>
 											<option value="38" type="number">Transportation and Materials Moving</option>
 											<option value="39" type="number">Visual and Performing Arts</option>
-
 										</select>
 									</div> <!-- form-group -->
 
