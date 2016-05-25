@@ -1,4 +1,4 @@
-from app import app, db
+from app import app, db, pymon
 from flask import g, request, url_for, render_template, flash, redirect, session
 from .forms import LoginForm, RegisterForm
 from auth import *
@@ -6,6 +6,8 @@ from utils import normalize_from_unicode, pull_random_schools, resolve_school_ob
 from utils import extract_bookmarks
 from flask.ext.login import current_user
 import string
+from bson import ObjectId
+
 
 @app.before_request
 def before_request():
@@ -235,11 +237,12 @@ def add_bookmark(school_objid=None):
 
 
 @app.route('/')
+@app.route('/accepted_to')
 @app.route('/accepted_to/<string:school_objid>')
 @login_required
 def accepted_to_school(school_objid=None):
 	from models import Schools
-
+	print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa")
 	#Find the User
 	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
 	major_list = request.form.getlist('majors')
@@ -251,26 +254,40 @@ def accepted_to_school(school_objid=None):
 		print("Error! No user found?")
 		return redirect(url_for('index'))#Handle this later
 	else:
+		print("User id is found")
 		for record in user_cursor:
-			user_id = new_school.id_num = str(record[u'_id'])#obtain the user's object ID
+			user_id = str(record[u'_id'])#obtain the user's object ID
 
+	print('user id: ', user_id)
 	#Find the School, obtain the list of accepted students, and add them to the list of accepted students
 	print("Find school by id")
-	print(school_obj_id)
-	cursor_list = pymon.db.school.find({"_id": ObjectId(school_obj_id) })
+	print(school_objid)
+	cursor_list = pymon.db.school.find({"_id": ObjectId(school_objid) })
 	query_result = cursor_list.count()
 	if query_result == 0:
 		print("Error! No school")
 		return redirect(url_for('index'))#Handle this later
 	new_school = Schools()
-	accepted_list = []
+	accepted_list = []#Empty list.
 	for record in cursor_list:
-		if u'accepted_student_ids' in record:
-			accepted_list = record[u'accepted_student_ids']#obtain an object id for lookup purposes
-		accepted_list.append(user_id)#Append the student to the list.
-		pymon.db.school.update({u'_id': school_objid}, {u'accepted_student_ids': accepted_list})
+		print("User will now be added to the list of users")
+		if 'accepted_students' in record:#check if the school has a list of accepted students
+			print("Field exist")
+			accepted_list = record['accepted_students']#obtain an object id for lookup purposes
+		else:
+			print("Field does not exists")
+			pymon.db.school.update({u"_id": ObjectId(school_objid) }, {'$set' : {u'accepted_students': []}})
+		accepted_list.append(user_id)#Append the student to the list, either starting the list or adding to the list.
+		print("Printing new list")
+		print(accepted_list)
+		pymon.db.school.update({'_id': school_objid}, {'$push': {'accepted_students': user_id}})
 
-	return render_template(url_for('return_bookmarks'))
+	print("CONFIRMATION---------------------------")
+	confirm_list_cursor = pymon.db.school.find({"_id": ObjectId(school_objid) })
+	for record in confirm_list_cursor:
+		print(record)
+		print(record['accepted_students'])
+	return return_bookmarks()
 
 
 

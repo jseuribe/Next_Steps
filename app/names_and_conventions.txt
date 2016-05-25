@@ -1,0 +1,57 @@
+#Database names:
+#db: nextsteps
+#collections:
+#user, school
+#User class
+class User(db.Document):
+	#Sign up Parameters. Created at registration
+	user_id = db.IntField(min_value=0, max_value=9001)#this should be set by mongo to keep it incrementing and such
+	created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
+	email = db.EmailField(max_length=255, required=True)
+	username = db.StringField(max_length=255, required=True)
+	#slug = db.StringField(max_length=255, required=True)#????
+	hashed_pass = db.StringField(max_length=255, required=True)
+	bookmarks =  db.ListField(db.ListField(db.StringField(max_length=255)))
+
+	#name and address. Registration Page 1
+	f_name = db.StringField(max_length=255, required=False)
+	m_name = db.StringField(max_length=255, required=False)
+	l_name = db.StringField(max_length=255, required=False)
+	street = db.StringField(max_length=255, required=False)
+	street_state = db.IntField(max_length=255, required=False)
+
+	#Grades and Scores, major preference. Registration Page 2
+	gpa = db.FloatField(min_value=0, max_value=100.0, required=False)
+	ACT_Score = db.IntField(min_value=1, max_value=36, required=False)
+	SAT_read = db.IntField(min_value=0,max_value=800, required=False)
+	SAT_write = db.IntField(min_value=0,max_value=800, required=False)
+	SAT_math = db.IntField(min_value=0,max_value=800, required=False)
+	major_preference_list = db.ListField(db.StringField(max_length=255, required=False))
+
+	#Tuition and Location. Registration Page 3
+	tuition = db.FloatField(min_value=0, max_value=100000, required=False)
+	state_preference_list = db.ListField(db.StringField(max_length=255, required=False))
+	cost_preference = db.FloatField(min_value=0, max_value=5, required=False)
+	distance_preference = db.FloatField(min_value=0, max_value=5, required=False)
+	academic_preference = db.FloatField(min_value=0, max_value=5, required=False)	
+	meta = {#To declare admin users
+		'allow_inheritance': True
+	}
+
+	#Recommended Schools
+	recommended_schools = db.DictField()
+
+	def is_authenticated(self):
+		return True
+
+	def is_active(self):
+		return True
+
+	def is_anonymous(self):
+		return False
+
+	def get_id(self):
+		try:
+			return unicode(self.username)
+		except NameError:
+			return normalize_from_unicode(self.username)
