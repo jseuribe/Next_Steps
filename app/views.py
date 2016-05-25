@@ -2,7 +2,7 @@ from app import app, db
 from flask import g, request, url_for, render_template, flash, redirect, session
 from .forms import LoginForm, RegisterForm
 from auth import *
-from utils import normalize_from_unicode, pull_random_schools, resolve_school_objid, find_school_by_name#for the pesky unicode stuff
+from utils import normalize_from_unicode, pull_random_schools, resolve_school_objid, find_school_by_name, is_bookmarked#for the pesky unicode stuff
 from flask.ext.login import current_user
 import string
 
@@ -176,21 +176,6 @@ def param_test(school_objid=None):
 
 from sign_up_views import *
 from auth_conf import *
-
-def isbookmarked(string_objid, bookmark_list):
-	norm_test_objid = normalize_from_unicode(string_objid)
-	norm_test_objid = ''.join(filter(lambda c: c in string.printable, norm_test_objid))
-	for item in bookmark_list:
-		current_objid = item[0]#Get the current bookmark
-		norm_item_objid = normalize_from_unicode(current_objid)
-		norm_item_objid = ''.join(filter(lambda c: c in string.printable, norm_item_objid))
-		if norm_item_objid == norm_test_objid:
-			print("in your bookmarks")
-			return True
-		elif not norm_test_objid is norm_item_objid:
-			print("Not in your bookmarks")
-			continue
-	return False
 
 @app.route('/')
 @app.route('/addbookmark/<string:school_objid>')

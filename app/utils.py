@@ -5,6 +5,21 @@ from .forms import LoginForm, RegisterForm
 from flask.ext.login import current_user
 from bson import ObjectId
 
+def isbookmarked(string_objid, bookmark_list):
+	norm_test_objid = normalize_from_unicode(string_objid)
+	norm_test_objid = ''.join(filter(lambda c: c in string.printable, norm_test_objid))
+	for item in bookmark_list:
+		current_objid = item[0]#Get the current bookmark
+		norm_item_objid = normalize_from_unicode(current_objid)
+		norm_item_objid = ''.join(filter(lambda c: c in string.printable, norm_item_objid))
+		if norm_item_objid == norm_test_objid:
+			print("in your bookmarks")
+			return True
+		elif not norm_test_objid is norm_item_objid:
+			print("Not in your bookmarks")
+			continue
+	return False
+
 def normalize_from_unicode(inp_str):
 	unicode_vessel = unicodedata.normalize('NFKD', inp_str).encode('ascii', 'ignore')
 	return unicode_vessel
