@@ -4,13 +4,13 @@ from file_functions import parse_file
 client = MongoClient() #create connection to MongoDB
 
 db = client['nextsteps'] #selects 
-#user_coll = db.user
-#user_coll.remove()
-#user_file = open("sample_user.csv", "r")
-#user_list = list()
-#user_list = parse_file(user_file)
-#user_coll.insert(user_list)
-#user_file.close()
+user_coll = db.user
+user_coll.remove()
+user_file = open("sample_user.csv", "r")
+user_list = list()
+user_list = parse_file(user_file)
+user_coll.insert(user_list)
+user_file.close()
 
 
 school_coll = db.school

@@ -1,39 +1,39 @@
-smid,major name
-1,"Agriculture, Agriculture Operations, and Related Sciences"
-2,Natural Resources and Conservation
-3,Architecture and Related Services
-4,"Area, Ethnic, Cultural, Gender, and Group Studies"
-5,"Communication, Journalism, and Related Programs"
-6,Communications Technologies/Technicians and Support Services
-7,Computer and Information Sciences and Support Services
-8,Personal and Culinary Services
-9,Education
-10,Engineering
-11,Engineering Technologies and Engineering-Related Fields
-12,"Foreign Languages, Literatures, and Linguistics"
-13,Family and Consumer Sciences/Human Sciences
-14,Legal Professions and Studies
-15,English Language and Literature/Letters
-16,"Liberal Arts and Sciences, General Studies and Humanities"
-17,Library Science
-18,Biological and Biomedical Sciences
-19,Mathematics and Statistics
-20,Military Technologies and Applied Sciences
-21,Multi/Interdisciplinary Studies
-22,"Parks, Recreation, Leisure, and Fitness Studies"
-23,Philosophy and Religious Studies
-24,Theology and Religious Vocations
-25,Physical Sciences
-26,Science Technologies/Technicians
-27,Psychology
-28,"Homeland Security, Law Enforcement, Firefighting and Related Protective Services"
-29,Public Administration and Social Service Professions
-30,Social Sciences
-31,Construction Trades
-32,Mechanic and Repair Technologies/Technicians
-33,Precision Production
-34,Transportation and Materials Moving
-35,Visual and Performing Arts
-36,Health Professions and Related Programs
-37,"Business, Management, Marketing, and Related Support Services"
-38,History
+smid,variable name,major name
+1,PCIP01,"Agriculture, Agriculture Operations, and Related Sciences"
+2,PCIP03,Natural Resources and Conservation
+3,PCIP04,Architecture and Related Services
+4,PCIP05,"Area, Ethnic, Cultural, Gender, and Group Studies"
+5,PCIP09,"Communication, Journalism, and Related Programs"
+6,PCIP10,Communications Technologies/Technicians and Support Services
+7,PCIP11,Computer and Information Sciences and Support Services
+8,PCIP12,Personal and Culinary Services
+9,PCIP13,Education
+10,PCIP14,Engineering
+11,PCIP15,Engineering Technologies and Engineering-Related Fields
+12,PCIP16,"Foreign Languages, Literatures, and Linguistics"
+13,PCIP19,Family and Consumer Sciences/Human Sciences
+14,PCIP22,Legal Professions and Studies
+15,PCIP23,English Language and Literature/Letters
+16,PCIP24,"Liberal Arts and Sciences, General Studies and Humanities"
+17,PCIP25,Library Science
+18,PCIP26,Biological and Biomedical Sciences
+19,PCIP27,Mathematics and Statistics
+20,PCIP29,Military Technologies and Applied Sciences
+21,PCIP30,Multi/Interdisciplinary Studies
+22,PCIP31,"Parks, Recreation, Leisure, and Fitness Studies"
+23,PCIP38,Philosophy and Religious Studies
+24,PCIP39,Theology and Religious Vocations
+25,PCIP40,Physical Sciences
+26,PCIP41,Science Technologies/Technicians
+27,PCIP42,Psychology
+28,PCIP43,"Homeland Security, Law Enforcement, Firefighting and Related Protective Services"
+29,PCIP44,Public Administration and Social Service Professions
+30,PCIP45,Social Sciences
+31,PCIP46,Construction Trades
+32,PCIP47,Mechanic and Repair Technologies/Technicians
+33,PCIP48,Precision Production
+34,PCIP49,Transportation and Materials Moving
+35,PCIP50,Visual and Performing Arts
+36,PCIP51,Health Professions and Related Programs
+37,PCIP52,"Business, Management, Marketing, and Related Support Services"
+38,PCIP54,History
