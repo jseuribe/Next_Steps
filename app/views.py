@@ -184,11 +184,7 @@ def isbookmarked(string_objid, bookmark_list):
 		current_objid = item[0]#Get the current bookmark
 		norm_item_objid = normalize_from_unicode(current_objid)
 		norm_item_objid = ''.join(filter(lambda c: c in string.printable, norm_item_objid))
-
-		print("checking", norm_item_objid, " against: ", norm_test_objid)
-		print("length of item: ", len(norm_item_objid), "  len of query: ", len(norm_test_objid))
-		print(type(norm_test_objid), type(norm_test_objid))
-		if norm_item_objid is norm_test_objid:
+		if norm_item_objid == norm_test_objid:
 			print("in your bookmarks")
 			return True
 		elif not norm_test_objid is norm_item_objid:
@@ -207,7 +203,8 @@ def add_bookmark(school_objid=None):
 		current_user = current_user_cursor[0] #obtain the user
 		user_bookmarks = current_user.bookmarks #retrieve a simple thing of lists from the mongo user document
 
-		if not isbookmarked(school_objid, user_bookmarks):
+		is_marked = not isbookmarked(school_objid, user_bookmarks)
+		if is_marked:
 
 			school_query = resolve_school_objid(school_objid)#Find the school object (existence verification)
 
