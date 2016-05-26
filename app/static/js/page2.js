@@ -64,7 +64,7 @@ $(document).ready(function(){
 		var input=$(this);
 		var degree=input.val();
 
-		if(degree && degree != "degree_empty"){
+		if(degree && degree != "0"){
 			input.removeClass("invalid").addClass("valid");
 		}
 		else{
