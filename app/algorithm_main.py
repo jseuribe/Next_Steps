@@ -62,6 +62,16 @@ def calculate_users_fit_number():
 	plt.show()'''
 # compare both to calculate user-school fit number
 
+def extract_this_attribute(user_collection, attribute, username):
+	print('EXTRACTED ATTRIBUTE=======================================')
+	value_cursor = user_collection.find({'username': username}, {attribute: 1, '_id': 0})
+	value = None
+	for record in value_cursor:
+		print('EXTRACTED ATTRIBUTE=======================================')
+		print(record[attribute])
+		value = record[attribute]
+	return value
+
 def displayEveryFitSchools():
 	# Recalculate all Fit-Numbers
 	calculateAllFitNumbers()
@@ -81,47 +91,51 @@ def calculateAllFitNumbers():
 def getPredictedAcceptedValue(key, school):
 	predicted_value = 0.0
 	size = len(list(school["accepted_students"]))
-
+	print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa')
+	print(school['accepted_students'])
 	if (key == "SAT_read"):
 		if (school["SATVRMID"] != "NULL"):
 			predicted_value = int(school["SATVRMID"])
 		if school["accepted_students"]:
 			for each_accepted_students in school["accepted_students"]:
-				predicted_value += int(user_coll.find({"username": each_accepted_students}, {"SAT_read":1, "_id": 0}))
+				predicted_value += int(extract_this_attribute(user_coll, 'SAT_read', each_accepted_students))
 	elif (key == "SAT_math"):
 		if (school["SATMTMID"] != "NULL"):
 			predicted_value = int(school["SATMTMID"])
 		if school["accepted_students"]:
 			for each_accepted_students in school["accepted_students"]:
-				predicted_value += int(user_coll.find({"username": each_accepted_students}, {"SAT_math":1, "_id": 0}))
+				predicted_value += int(extract_this_attribute(user_coll, 'SAT_math', each_accepted_students))
 	elif (key == "SAT_write"):
 		if (school["SATWRMID"] != "NULL"):
 			predicted_value = int(school["SATWRMID"])
 		if school["accepted_students"]:
 			for each_accepted_students in school["accepted_students"]:
-				predicted_value += int(user_coll.find({"username": each_accepted_students}, {"SAT_write":1, "_id": 0}))
+				predicted_value += int(extract_this_attribute(user_coll, 'SAT_write', each_accepted_students))
 	elif (key == "ACT_English"):
 		if (school["ACTENMID"] != "NULL"):
 			predicted_value = int(school["ACTENMID"])
 		if school["accepted_students"]:
 			for each_accepted_students in school["accepted_students"]:
-				predicted_value += int(user_coll.find({"username": each_accepted_students}, {"ACT_English":1, "_id": 0}))
+				predicted_value += int(extract_this_attribute(user_coll, 'ACT_English', each_accepted_students))
 	elif (key == "ACT_Math"):
 		if (school["ACTMTMID"] != "NULL"):
 			predicted_value = int(school["ACTMTMID"])
 		if school["accepted_students"]:
 			for each_accepted_students in school["accepted_students"]:
-				predicted_value += int(user_coll.find({"username": each_accepted_students}, {"ACT_Math":1, "_id": 0}))
+				predicted_value += int(extract_this_attribute(user_coll, 'ACT_Math', each_accepted_students))
 	elif (key == "ACT_Reading"):
 		if (school["ACTWRMID"] != "NULL"):
 			predicted_value = int(school["ACTWRMID"])
 		if school["accepted_students"]:
 			for each_accepted_students in school["accepted_students"]:
-				predicted_value += int(user_coll.find({"username": each_accepted_students}, {"ACT_Reading":1, "_id": 0}))
+				predicted_value += int(extract_this_attribute(user_coll, 'ACT_Reading', each_accepted_students))
 	elif (key == "gpa"):
 		sum = 0
 		for each_accepted_students in school["accepted_students"]:
-			sum += int(user_coll.find({"username": each_accepted_students}, {"gpa":1, "_id": 0}))
+			print('HELLLLLLLLLOOOOOOOOOOOO')
+			print("--------Extracting Attribute----------------------------: ")
+
+			sum += int(extract_this_attribute(user_coll, 'gpa', each_accepted_students))
 		predicted_value = sum
 	
 	# Gets the average of all of the accepted student's value.
