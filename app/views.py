@@ -21,6 +21,11 @@ And the bulk of the user interface system
 def before_request():
 	g.user = current_user
 
+'''
+404 Request Not Found
+
+this is what the refrance: https://en.wikipedia.org/wiki/Super_Mario_Bros.
+'''
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('Web_Development/404.html'), 404
@@ -90,6 +95,8 @@ Some simple one line functions that handle html retrieval
 
 
 '''
+
+
 #Return contacts page
 @app.route('/')
 @app.route('/contacts_page')
