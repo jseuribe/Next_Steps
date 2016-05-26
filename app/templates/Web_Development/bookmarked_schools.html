@@ -38,7 +38,7 @@
 							<li class="active"><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home<span class="sr-only">(current)</span></a></li>
 							<li><a href="{{url_for('return_about')}}"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
 							<li><a href="{{url_for('return_contact')}}"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
-							<li><a href="login.html"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Logout</a></li>
+							<li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Logout</a></li>
 						</ul>
 						<!-- Search Form in the Navigation Bar -->
 						<form class="navbar-form navbar-right" role="search" method="get" action="http://www.google.com/search">
@@ -73,7 +73,7 @@
 								{% for school in bookmarks %}
 								<li class="list-group-item">
 									<small>{{school.instnm}}</small>
-									<a href="{{url_for('')}}" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Remove this Bookmark"></span></a>
+									<a href="#" class="btn btn-danger btn-sm pull-right remove-button" role="button"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Remove this Bookmark"></span></a>
 									<div class="row" style="padding-left: 16px;">
 										<a href="{{url_for('accepted_to_school', school_objid=school.id_num)}}" class="btn btn-success btn-sm  remove-button" role="button"><span class="glyphicon glyphicon-thumbs-up"></span> I got accepted to this school!</a>
 									</div>

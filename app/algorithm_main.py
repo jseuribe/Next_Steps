@@ -297,6 +297,7 @@ def run_fit():
 	#school_coll.update({}, {'$set':{"accepted_students": {}}}, multi=True)
 	#calculate_school_fit_number()
 	#construct_training_model()
+	print("this takes a while, please hold")
 	displayEveryFitSchools()
 
 

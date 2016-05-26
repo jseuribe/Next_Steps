@@ -258,7 +258,6 @@ def add_bookmark(school_objid=None):
 @login_required
 def accepted_to_school(school_objid=None):
 	from models import Schools
-	print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa")
 	#Find the User
 	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
 	major_list = request.form.getlist('majors')
@@ -296,7 +295,7 @@ def accepted_to_school(school_objid=None):
 		accepted_list.append(user_id)#Append the student to the list, either starting the list or adding to the list.
 		print("Printing new list")
 		print(accepted_list)
-		pymon.db.school.update({'_id': school_objid}, {'$addToSet': {'accepted_students': user_id}})
+		pymon.db.school.update({'_id': ObjectId(school_objid)}, {'$addToSet': {'accepted_students': user_id}})
 
 	print("CONFIRMATION---------------------------")
 	confirm_list_cursor = pymon.db.school.find({"_id": ObjectId(school_objid) })
