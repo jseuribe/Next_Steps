@@ -32,7 +32,7 @@ This can be easily expanded to receive other input as we see fit, or it can be s
 @app.route('/')
 @app.route('/account_setup_0/confirm', methods=['POST'])
 def account_setup_0():
-
+	session['completion'] = '1'
 	print("Registration Time")
 	if 'user_id' in session:
 		flash('You are logged in already!')
@@ -62,6 +62,7 @@ def account_setup_0():
 			new_user.email = n_email
 			new_user.username = n_username#Not sure if we'll implement a separate username. this should suffice for now, though
 			new_user.hashed_pass = hashpw(n_passw, gensalt())
+			new_user.progress_setup = False
 			new_user.save()
 			does_user_exist_now = User.objects(username=n_username)
 			if not does_user_exist_now:
@@ -112,6 +113,8 @@ def account_setup_1():
 	user_obj.street = n_street
 	user_obj.street_state = n_state
 	user_obj.save()
+	session['completion'] = '2'
+
 	return return_account_setup_2()
 
 @app.route('/')
@@ -153,6 +156,7 @@ def account_setup_2():
 	user_obj.ACT_Reading = n_act_writing
 	user_obj.ACT_Math = n_act_math
 	user_obj.save()
+	session['completion'] = '3'
 	return redirect(url_for('return_account_setup_3'))
 
 @app.route('/')
@@ -178,6 +182,8 @@ def account_setup_3():
 	user_obj.academic_preference = n_academic_preference
 	user_obj.cost_preference = n_cost_preference
 	user_obj.state_preference_list = form_state_list
+	user_obj.progress_setup = True
 	user_obj.save()
+	session['completion'] = 'complete'
 	return return_account_setup_4()
 

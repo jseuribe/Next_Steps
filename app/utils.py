@@ -149,4 +149,21 @@ def extract_bookmarks(school_id_list):
 
 	return school_objects
 
+def setup_complete(username):
+	setup_val = False
+	user_string_name = username
+	user_cursor = pymon.db.user.find({"username" : user_string_name})
+	query_count = user_cursor.count()
+	print("the count: ", query_count)
+	if query_count == 0:
+		print("No User found...")
+		return False
+	else:
+		for record in user_cursor:
+			setup_val = record['progress_setup']
+			return setup_val
+
+	return setup_val
+
+
 	

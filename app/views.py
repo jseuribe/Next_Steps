@@ -3,7 +3,7 @@ from flask import g, request, url_for, render_template, flash, redirect, session
 from .forms import LoginForm, RegisterForm
 from auth import *
 from utils import normalize_from_unicode, pull_random_schools, resolve_school_objid, find_school_by_name, isbookmarked#for the pesky unicode stuff
-from utils import extract_bookmarks
+from utils import extract_bookmarks, setup_complete
 from flask.ext.login import current_user
 import string
 from bson import ObjectId
@@ -45,12 +45,27 @@ def index():
 		flash('Not logged in')
 
 	if 'logged_in' in session:
+		if setup_complete(session['username']):
+			return redirect(url_for('return_dash'))
 		print('checking if logged')
 		if session['logged_in']:
-			return redirect(url_for('return_dash'))
+			if 'completion' in session:
+				if session['completion'] == '1':
+					return redirect(url_for('return_account_setup_1'))
+				elif session['completion'] == '2':
+					return redirect(url_for('return_account_setup_2'))
+				elif session['completion'] == '3':
+					return redirect(url_for('return_account_setup_3'))
+			elif not 'completion' in session:
+				if setup_complete(session['username']):
+					return redirect(url_for('return_dash'))
+				else:
+					return redirect(url_for('return_account_setup_1'))
+			elif session['completion'] == 'complete' or setup_complete():
+				return redirect(url_for('return_dash'))
 	else:
 		print('Not logged in at all!')
-		return render_template('Web_Development/homepage.html', title='Home')
+		return render_template('Web_Development/homepage.html', title='Home')		
 	return render_template('Web_Development/homepage.html', title='Home')
 @app.route('/')
 @app.route('/contacts_page')

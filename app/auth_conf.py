@@ -1,7 +1,7 @@
 from app import app
 from views import login_required, index
 from flask import g, request, url_for, render_template, flash, redirect, session
-from utils import normalize_from_unicode
+from utils import normalize_from_unicode, setup_complete
 from models import User
 from auth import *
 from algorithm_main import *
@@ -11,8 +11,6 @@ from normalize_func import *
 #The parameters under methods specify what HTML reponses to accept
 def login_confirm():
 
-	print("running fit algorithm!")
-	run_fit()
 
 	form_user_name = normalize_from_unicode(request.form['username'])
 	form_password = normalize_from_unicode(request.form['password'])
@@ -37,6 +35,12 @@ def login_confirm():
 		session['logged_in'] = True
 		session['username'] = form_user_name
 		flash("Logged in successfully", category='success')
+		if setup_complete(form_user_name):
+			pass
+		else:
+			return redirect(url_for('index'))
+		print("running fit algorithm!")
+		run_fit()#The fit number algorithm is executed here, located in algorithm_main
 		return redirect(url_for('index'))
 
 	flash("Wrong username or password", category='error')

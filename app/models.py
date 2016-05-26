@@ -94,7 +94,10 @@ class User(db.Document):
 	state_preference_list = db.ListField(db.StringField(max_length=255, required=False))
 	cost_preference = db.FloatField(min_value=0, max_value=5, required=False)
 	distance_preference = db.FloatField(min_value=0, max_value=5, required=False)
-	academic_preference = db.FloatField(min_value=0, max_value=5, required=False)	
+	academic_preference = db.FloatField(min_value=0, max_value=5, required=False)
+
+	#completion of setup
+	progress_setup = db.BooleanField(default=False, required=False)
 	meta = {#To declare admin users
 		'allow_inheritance': True
 	}
