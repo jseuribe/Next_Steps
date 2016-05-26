@@ -144,11 +144,14 @@ def calculateFitNumber(student, school):
 
 	# Check degree preference
 	pref_d_val = 0
-	d_pref_string = student[u"pref_degree"]
-	if isinstance(d_pref_string, str):
-		pref_d_val = 0
-	else:
-		pref_d_val = student[u'pref_degree']
+	print(student)
+	d_pref_string = None
+	if "pref_degree" in student:
+		d_pref_string = student["pref_degree"]
+		if isinstance(d_pref_string, str):
+			pref_d_val = 0
+		else:
+			pref_d_val = student['pref_degree']
 	if (pref_d_val != 0):
 		# If the student's preferred degree is greater than the school's highest awarded degree
 		if (int(pref_d_val) > int(school["HIGHDEG"])):
@@ -176,7 +179,11 @@ def calculateFitNumber(student, school):
 		general_changes += 1
 
 	# Check majors - school offers perfered major of the student's
-	for pref_major in student["major_preference_list"]:
+	major_list = []
+	if 'major_preference_list' in student:
+		major_list = student['major_preference_list']
+
+	for pref_major in major_list:
 		if pref_major not in "NO_PREFERENCE":
 			if major_coll.find({"smid": pref_major}):
 				general_value += 1
@@ -192,7 +199,10 @@ def calculateFitNumber(student, school):
 	distance_changes = 0.0
 
 	# Check users' preferred state
-	for pref_state in student["state_preference_list"]:
+	pref_state_list = []
+	if 'state_preference_list' in student:
+		pref_state_list = []
+	for pref_state in pref_state_list:
 		if pref_state == school["st_fips"]:
 			distance_value += 1
 			distance_changes += 1
@@ -208,49 +218,74 @@ def calculateFitNumber(student, school):
 	academic_changes = 0
 
 	# Check grades
-	if (student["gpa"] >= getPredictedAcceptedValue("gpa", school)):
+	gpa = 0
+	if 'gpa' in student:
+		gpa = student['gpa']
+	if (gpa >= getPredictedAcceptedValue("gpa", school)):
 		academic_value += 1
 	else:
 		academic_value -= 1
 	academic_changes += 1
 
+	ACT_English_s = 1
+	if 'ACT_English' in student:
+		ACT_English_s = student['ACT_English']
 	# Check ACT English
-	if (student["ACT_English"] >= getPredictedAcceptedValue("ACT_English", school)):
+	if (ACT_English_s >= getPredictedAcceptedValue("ACT_English", school)):
 		academic_value += 1
 	else:
 		academic_value -= 1
 	academic_changes += 1
 
 	# Check ACT Math
-	if (student["ACT_Math"] >= getPredictedAcceptedValue("ACT_Math", school)):
+	ACT_Math_s = 1
+	if 'ACT_Math' in student:
+		ACT_Math_s = student['ACT_English']
+	if (ACT_Math_s >= getPredictedAcceptedValue("ACT_Math", school)):
 		academic_value += 1
 	else:
 		academic_value -= 1
 	academic_changes += 1
 
 	# Check ACT Writing/ Reading
-	if (student["ACT_Reading"] >= getPredictedAcceptedValue("ACT_Reading", school)):
+	ACT_Reading_s = 1
+	if 'ACT_Reading' in student:
+		ACT_Reading_s = student['ACT_English']
+
+	if (ACT_Reading_s >= getPredictedAcceptedValue("ACT_Reading", school)):
 		academic_value += 1
 	else:
 		academic_value -= 1
 	academic_changes += 1
 
 	# Check SAT English
-	if (student["SAT_read"] >= getPredictedAcceptedValue("SAT_read", school)):
+	SAT_read = 200
+	if 'SAT_read' in student:
+		SAT_read = student['SAT_read']
+
+	if (SAT_read >= getPredictedAcceptedValue("SAT_read", school)):
 		academic_value += 1
 	else:
 		academic_value -= 1
 	academic_changes += 1
 
 	# Check SAT Math
-	if (student["SAT_math"] >= getPredictedAcceptedValue("SAT_math", school)):
+	SAT_math = 200
+	if 'SAT_math' in student:
+		SAT_math = student['SAT_math']
+
+	if (SAT_math >= getPredictedAcceptedValue("SAT_math", school)):
 		academic_value += 1
 	else:
 		academic_value -= 1
 	academic_changes += 1
 
 	# Check SAT Writing
-	if (student["SAT_write"] >= getPredictedAcceptedValue("SAT_write", school)):
+	SAT_write = 200
+	if 'SAT_write' in student:
+		SAT_write = student['SAT_write']
+
+	if (SAT_write >= getPredictedAcceptedValue("SAT_write", school)):
 		academic_value += 1
 	else:
 		academic_value -= 1
@@ -278,7 +313,10 @@ def calculateFitNumber(student, school):
 	cost_changes += 1
 
 	# Check tuition
-	if (student["tuition"] < school["COSTT4A"]):
+	tuition_student = 0
+	if 'tuition' in student:
+		tuition_student = student['tuition']
+	if (tuition_student < school["COSTT4A"]):
 		cost_value += 1
 	elif (school["COSTT4A"] == "NULL"):
 		pass
@@ -290,11 +328,21 @@ def calculateFitNumber(student, school):
 	cost_fit_number = cost_value/cost_changes * 100.0
 
 	# Calculate preferences
-	total_preferences = GENERAL_PREFERENCE_VALUE + int(student["distance_preference"]) + int(student["academic_preference"]) + int(student["cost_preference"])
+	dist_pref_s = 2
+	if 'distance_preference' in student:
+		dist_pref_s = student['distance_preference']
+	cost_pref_s = 2
+	if 'cost_preference' in student:
+		cost_pref_s = student['cost_preference']
+	acad_pref_s = 2
+	if 'distance_preference' in student:
+		acad_pref_s = student['academic_preference']
+
+	total_preferences = GENERAL_PREFERENCE_VALUE + int(dist_pref_s) + int(acad_pref_s) + int(cost_pref_s)
 	general_preference = GENERAL_PREFERENCE_VALUE / total_preferences
-	distance_preference = int(student["distance_preference"]) / total_preferences
-	academic_preference = int(student["academic_preference"]) / total_preferences
-	cost_preference = int(student["cost_preference"]) / total_preferences
+	distance_preference = int(dist_pref_s) / total_preferences
+	academic_preference = int(acad_pref_s) / total_preferences
+	cost_preference = int(cost_pref_s) / total_preferences
 
 	# Calculate the Final Fit Number
 	total_fit_number = (general_fit_number * general_preference) + (distance_fit_number * distance_preference) + (academic_fit_number * academic_preference) + (cost_fit_number * cost_preference)

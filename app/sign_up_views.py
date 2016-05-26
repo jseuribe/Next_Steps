@@ -78,6 +78,7 @@ def account_setup_0():
 				flash("Logged in for the first time!, category='success'")
 	session['logged_in'] = True
 	session['username'] = n_email
+	session['completion'] = '1'
 	print("Registration is a success")
 	return return_account_setup_1()
 
