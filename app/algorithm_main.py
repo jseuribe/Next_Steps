@@ -63,11 +63,9 @@ def calculate_users_fit_number():
 # compare both to calculate user-school fit number
 
 def extract_this_attribute(user_collection, attribute, username):
-	print('EXTRACTED ATTRIBUTE=======================================')
 	value_cursor = user_collection.find({'username': username}, {attribute: 1, '_id': 0})
 	value = None
 	for record in value_cursor:
-		print('EXTRACTED ATTRIBUTE=======================================')
 		print(record[attribute])
 		value = record[attribute]
 	return value
@@ -91,7 +89,6 @@ def calculateAllFitNumbers():
 def getPredictedAcceptedValue(key, school):
 	predicted_value = 0.0
 	size = len(list(school["accepted_students"]))
-	print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa')
 	print(school['accepted_students'])
 	if (key == "SAT_read"):
 		if (school["SATVRMID"] != "NULL"):
@@ -132,9 +129,6 @@ def getPredictedAcceptedValue(key, school):
 	elif (key == "gpa"):
 		sum = 0
 		for each_accepted_students in school["accepted_students"]:
-			print('HELLLLLLLLLOOOOOOOOOOOO')
-			print("--------Extracting Attribute----------------------------: ")
-
 			sum += int(extract_this_attribute(user_coll, 'gpa', each_accepted_students))
 		predicted_value = sum
 	

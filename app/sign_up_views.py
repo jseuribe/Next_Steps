@@ -1,6 +1,6 @@
 from app import app
 from flask import g, request, url_for, render_template, flash, redirect, session
-from views import login_required, return_account_setup, return_account_setup_2, return_account_setup_3, return_account_setup_4
+from views import login_required, return_account_setup, return_account_setup_2, return_account_setup_3, return_account_setup_4, return_log
 from utils import normalize_from_unicode
 from models import User
 from auth import *
@@ -42,6 +42,10 @@ def account_setup_0():
 		n_email = normalize_from_unicode(request.form['Email'])
 		n_passw = normalize_from_unicode(request.form['Password'])
 		n_v_passw = normalize_from_unicode(request.form['Repassword'])
+		existing_user = User.objects(username=n_username)
+		if existing_user:
+			flash('Username not available!')
+			return redirect(url_for('return_log'))
 
 		#print("the input: ", n_username, n_)
 		if not n_username and not n_email and not n_passw and not n_v_passw:

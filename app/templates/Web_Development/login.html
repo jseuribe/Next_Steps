@@ -101,5 +101,13 @@
 	<!-- JS Files -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
+	{% with messages = get_flashed_messages() %}
+		<ul class=flashes>
+		{% for message in messages %}
+    		<li> {{ message }} </li>
+    	{% endfor %}
+    	</ul>
+    {% endwith %}
+
 </body>
 </html>

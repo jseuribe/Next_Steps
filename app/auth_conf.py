@@ -59,7 +59,6 @@ def register_confirm():
 	new_user = User()
 
 	normalized_name = normalize_from_unicode(form.new_username.data)
-
 	new_user.username = form.new_username.data
 	'''
 	if not new_user.username:
