@@ -21,6 +21,10 @@ And the bulk of the user interface system
 def before_request():
 	g.user = current_user
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('Web_Development/404.html'), 404
+
 '''
 TEMPLATE FOR FRONT_END_DEVELOPERS!!!
 @app.route('/')
@@ -90,7 +94,10 @@ Some simple one line functions that handle html retrieval
 @app.route('/')
 @app.route('/contacts_page')
 def return_contact():
-	return render_template('Web_Development/contact_us.html', title='Contact Us')
+	try:
+		return render_template('Web_Development/contact_us.html', title='Contact Us')
+	except TemplateNotFound:
+		abort(404)
 
 #Return about
 @app.route('/')
