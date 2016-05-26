@@ -14,9 +14,15 @@ def parse_file(filename):
 			header_check = True
 		else:
 			current = {}
-			parts = current_line.split(",")
-			for part, head in zip(parts, header):
-				current[head] = part
+			lines = current_line.split(",")
+			for part, head in zip(lines, header):
+				if '[' in part:
+					part = part.lstrip("[")
+					part = part.strip("]")
+					separate = part.split(";")
+					current[head] = separate
+				else:
+					current[head] = part
 			info_list.append(current)
 
 	return(info_list)

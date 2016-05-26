@@ -7,11 +7,9 @@ from bson import ObjectId
 
 def isbookmarked(string_objid, bookmark_list):
 	norm_test_objid = normalize_from_unicode(string_objid)
-	norm_test_objid = ''.join(filter(lambda c: c in string.printable, norm_test_objid))
 	for item in bookmark_list:
 		current_objid = item[0]#Get the current bookmark
 		norm_item_objid = normalize_from_unicode(current_objid)
-		norm_item_objid = ''.join(filter(lambda c: c in string.printable, norm_item_objid))
 		if norm_item_objid == norm_test_objid:
 			print("in your bookmarks")
 			return True
@@ -29,12 +27,15 @@ def pull_random_schools():#Basic function that returns some schools.
 	return transform_to_School_obj(vessel)
 
 
-def transform_to_School_obj(cursor):
+def transform_to_School_obj(cursor, s_name, fit):
 	from models import Schools
 	print("in transform_to_School_obj")
+	#print(fit_list[u'CUNY Hunter College'])
 	extracted_list = cursor[:]
 	print("extracted", extracted_list)
 	new_school = Schools()
+	print("FIT NUMBER IS!!!!!!!!!")
+	print(fit)
 	for record in extracted_list:
 		print("Creating a response object")
 		print('type in transform_to_School_obj')
@@ -54,27 +55,39 @@ def transform_to_School_obj(cursor):
 								<p class="lead">Tuition: </p>
 		'''
 		new_school.insturl = normalize_from_unicode(record[u'INSTURL'])
-		new_school.stabbr = normalize_from_unicode(record[u'STABBR'])
-		new_school.sat_avg_all = float(normalize_from_unicode(record[u'SAT_AVG_ALL']))
-		new_school.actenmid = normalize_from_unicode(record[u'ACTENMID'])
-		new_school.adm_rate_all = float(normalize_from_unicode(record[u'ADM_RATE_ALL']))
+		if record[u'STABBR'] == u'NULL':
+			new_school.stabbr = "NULL"
+		else:
+			new_school.stabbr = normalize_from_unicode(record[u'STABBR'])
+		if record[u'SAT_AVG_ALL'] == u'NULL':
+			new_school.sat_avg_all = 0
+		else:
+			new_school.sat_avg_all = float(normalize_from_unicode(record[u'SAT_AVG_ALL']))
+		if record[u'ACTENMID'] == u'NULL':
+			new_school.actenmid = 0
+		else:
+			new_school.actenmid = normalize_from_unicode(record[u'ACTENMID'])
+		if record[u'ADM_RATE_ALL'] == u'NULL':
+			new_school.adm_rate_all = 0
+		else:
+			new_school.adm_rate_all = float(normalize_from_unicode(record[u'ADM_RATE_ALL']))
 		new_school.longi = float(normalize_from_unicode(record[u'LONGITUDE']))
 		new_school.lati = float(normalize_from_unicode(record[u'LATITUDE']))
+		new_school.fit_number = fit
 		#new_school.avg_income = 
 		#new_school.tuition = 
 	return new_school
 
-def find_school_by_name(s_name):#Debugging purposes?
+def find_school_by_name(s_name, fit_list):#Debugging purposes?
 	print(s_name)
-	u_s_name = unicode(s_name, "utf-8")
-	school_cursor = pymon.db.school.find({"INSTNM" : u_s_name})
+	school_cursor = pymon.db.school.find({"INSTNM" : s_name})
 	query_count = school_cursor.count()
 	print("the count: ", query_count)
 	if query_count == 0:
 		print("No school found...")
 	else:
 		print("School found!")
-	return transform_to_School_obj(school_cursor)
+	return transform_to_School_obj(school_cursor, s_name, fit_list[s_name])
 
 def resolve_school_objid(school_obj_id):
 	from models import Schools
@@ -105,10 +118,22 @@ def resolve_school_objid(school_obj_id):
 		'''
 		#Additional information that can be displayed
 		new_school.insturl = normalize_from_unicode(record[u'INSTURL'])
-		new_school.stabbr = normalize_from_unicode(record[u'STABBR'])
-		new_school.sat_avg_all = float(normalize_from_unicode(record[u'SAT_AVG_ALL']))
-		new_school.actenmid = normalize_from_unicode(record[u'ACTENMID'])
-		new_school.adm_rate_all = float(normalize_from_unicode(record[u'ADM_RATE_ALL']))
+		if record[u'STABBR'] == u'NULL':
+			new_school.stabbr = "NULL"
+		else:
+			new_school.stabbr = normalize_from_unicode(record[u'STABBR'])
+		if record[u'SAT_AVG_ALL'] == u'NULL':
+			new_school.sat_avg_all = 0
+		else:
+			new_school.sat_avg_all = float(normalize_from_unicode(record[u'SAT_AVG_ALL']))
+		if record[u'ACTENMID'] == u'NULL':
+			new_school.actenmid = 0
+		else:
+			new_school.actenmid = normalize_from_unicode(record[u'ACTENMID'])
+		if record[u'ADM_RATE_ALL'] == u'NULL':
+			new_school.adm_rate_all = 0
+		else:
+			new_school.adm_rate_all = float(normalize_from_unicode(record[u'ADM_RATE_ALL']))
 		#new_school.avg_income = 
 		#new_school.tuition = 
 	return new_school

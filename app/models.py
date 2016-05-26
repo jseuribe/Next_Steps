@@ -53,6 +53,7 @@ class Schools(db.Document):
 	bookmarks = db.IntField(min_value=0)
 	accepted_students = db.ListField(db.StringField(max_length=255))
 	majors_list = db.ListField(db.IntField(min_value=0, max_value=39))
+	fit_number = db.FloatField()
 
 	longi = db.FloatField()
 	lati = db.FloatField()
@@ -81,7 +82,7 @@ class User(db.Document):
 	gpa = db.FloatField(min_value=0, max_value=100.0, required=False)
 	ACT_Math = db.IntField(min_value=1, max_value=36, required=False)
 	ACT_English = db.IntField(min_value=1, max_value=36, required=False)
-	ACT_Writing = db.IntField(min_value=1, max_value=36, required=False)
+	ACT_Reading = db.IntField(min_value=1, max_value=36, required=False)
 	SAT_read = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_write = db.IntField(min_value=0,max_value=800, required=False)
 	SAT_math = db.IntField(min_value=0,max_value=800, required=False)

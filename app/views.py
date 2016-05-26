@@ -7,6 +7,9 @@ from utils import extract_bookmarks
 from flask.ext.login import current_user
 import string
 from bson import ObjectId
+import operator
+from algorithm_main import *
+from normalize_func import *
 
 
 @app.before_request
@@ -93,6 +96,7 @@ def return_account_setup_3():
 @app.route('/account_setup_4')
 @login_required
 def return_account_setup_4():
+	run_fit()
 	return render_template('Web_Development/account_setup_4.html', title="Account Setup Complete")
 
 @app.route('/')
@@ -117,15 +121,27 @@ def register():
 @login_required
 def return_dash():
 	print("returning dashboard")
-	school_obj1 = Schools()
-	school_obj2 = Schools()
-	school_obj3 = Schools()
-	school_obj1 = find_school_by_name("CUNY Hunter College")
-	school_obj2 = find_school_by_name("Columbia University in the City of New York")
-	school_obj3 = find_school_by_name("Stony Brook University")
-	print(school_obj1.instnm)
-	s_list = [school_obj1, school_obj2, school_obj3]
-	return render_template('Web_Development/post_login.html', title='Dashboard', school_list=s_list)
+	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
+
+	user_cursor = pymon.db.user.find({'username': u_name_look_up})
+	user_result = user_cursor.count()
+	first = ""
+	last = ""
+	fit_list = {}
+	top3 = {}
+	if user_result == 0:
+		print("User not found?")
+	for record in user_cursor:
+		fit_list = dict(record['recommended_schools'])
+		first = record['f_name']
+		last = record['l_name']
+		top3 = dict(sorted(fit_list.iteritems(), key=operator.itemgetter(1), reverse=True)[:7])
+
+	key_three = list(top3.keys())
+	s_list = []
+	for key in key_three:
+		s_list.append(find_school_by_name(key, fit_list))
+	return render_template('Web_Development/post_login.html', title='Dashboard', school_list=s_list, f_name=first, l_name=last)
 	
 '''
 Beyond this point are the //LOGOUT FUNCTIONS//
@@ -232,8 +248,8 @@ def add_bookmark(school_objid=None):
 				current_user.save()
 		else:
 			print("Already bookmarked!")
-			return render_template('Web_Development/school_temp.html')
-	return render_template('Web_Development/school_temp.html')
+			return redirect(url_for('return_bookmarks'))
+	return redirect(url_for('return_bookmarks'))
 
 
 @app.route('/')

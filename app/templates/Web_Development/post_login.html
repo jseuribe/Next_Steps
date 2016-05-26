@@ -81,7 +81,7 @@
 						<!-- Profile -->
 						<div class="col-lg-12 col-md-12 col-sm-3 col-xs-4">
 							<!-- Profile Name -->
-							<h2 class="hidden-sm hidden-xs profile-name">Bob Billy</h2>
+							<h2 class="hidden-sm hidden-xs profile-name">{{f_name}} {{l_name}}</h2>
 							<!-- Profile Picture -->
 							<img class="img-thumbnail img-responsive center-block profile-picture" src="{{url_for('static',filename='img/default_profile_pic.png')}}" alt="Generic placeholder image">
 						</div> <!-- /.column control -->
@@ -124,8 +124,16 @@
 									<div class="carousel-inner">
 										<div class="item active">
 											<!-- School Image -->
-											<div class="slidemaster" style="background-image: url('{{url_for('static',filename='img/school_skyline.png')}}'');" id="{{school.instnm}}">
-												<script type="text/javascript"> writeImageUrl("{{school.lati}}", "{{school.longi}}", "{{school.instnm}}"); </script>
+											<div class="slidemaster" style="background-image: url('{{url_for("static",filename="img/school_skyline.png")}}');" id="{{school.instnm}}">
+
+											<script type="text/javascript"> 
+											var schoolLat = '{{ school.lati }}';
+											var schoolLon = '{{school.longi}}';
+											var schoolName = '{{school.instnm}}';
+											writeImageUrl(schoolLat, schoolLon, schoolName); 
+
+											</script>
+
 											</div>
 											<!-- School Name -->
 											<div class="container">
@@ -144,7 +152,7 @@
 						<div class="panel-body">
 							<!-- Fit Number -->
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-								<p class="bg-success">Fit-Number: +100</p>
+								<p class="bg-success">Fit-Number: {{school.fit_number}}</p>
 							</div>
 							<!-- Bookmarks -->
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">

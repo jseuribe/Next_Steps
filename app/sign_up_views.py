@@ -124,8 +124,8 @@ def account_setup_2():
 	n_act_math = 1
 	if request.form['ACT_English']:
 		n_act_english = int(normalize_from_unicode(request.form['ACT_English']))
-	if request.form['ACT_Writing']:
-		n_act_writing = int(normalize_from_unicode(request.form['ACT_Writing']))
+	if request.form['ACT_Reading']:
+		n_act_writing = int(normalize_from_unicode(request.form['ACT_Reading']))
 	if request.form['ACT_Math']:
 		n_act_math = int(normalize_from_unicode(request.form['ACT_Math']))
 
@@ -146,7 +146,7 @@ def account_setup_2():
 	user_obj.pref_degree = n_degree
 	user_obj.major_preference_list = major_list
 	user_obj.ACT_English = n_act_english
-	user_obj.ACT_Writing = n_act_writing
+	user_obj.ACT_Reading = n_act_writing
 	user_obj.ACT_Math = n_act_math
 	user_obj.save()
 	return redirect(url_for('return_account_setup_3'))
