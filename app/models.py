@@ -6,9 +6,11 @@ from flask.ext.login import UserMixin
 from utils import normalize_from_unicode
 
 '''
-School class used to retrieve School Documents from mongo
+School and User class object definitions.
+Python objects are kind of bad????
 '''
 
+#user class that holds school data when fetched
 class Schools(db.Document):
 	id_num = db.StringField(max_length=255, required=False)
 	actenmid = db.StringField(max_length=255, required=False)
@@ -61,6 +63,7 @@ class Schools(db.Document):
 		'allow_inheritance': True
 	}
 
+#User class that holds all user data.
 class User(db.Document):
 	#Sign up Parameters. Created at registration
 	user_id = db.IntField(min_value=0, max_value=9001)#this should be set by mongo to keep it incrementing and such

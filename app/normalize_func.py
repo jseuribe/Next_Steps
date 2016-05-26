@@ -1,6 +1,9 @@
 from __future__ import division
 import numpy as np
 
+'''
+Helper functions for algorithm_main
+'''
 
 # x passes in the name and value of the normalized value
 # coll passes in the collection where to find x

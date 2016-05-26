@@ -6,6 +6,9 @@ from models import User, Schools
 from bcrypt import hashpw, gensalt
 from flask.ext.login import login_user, logout_user
 
+'''
+Function that loads the user object. Used in the login_required func
+'''
 @lm.user_loader
 def load_user(inp_username):
 	u = User.objects(username = inp_username)
@@ -14,6 +17,10 @@ def load_user(inp_username):
 		return None
 	return u[0].username
 
+'''
+Wrapper function that verifies that a user is logged in.
+Method decorated with @login_required will not load unless a user is detected as "logged in"
+'''
 def login_required(f):
 	'''
 	Redirects to the log-in screen if the key "user_id" is not found
@@ -38,6 +45,9 @@ def login_required(f):
 			return redirect(url_for('login'))
 	return wrap
 
+'''
+Simple function that takes a username, password and email, and creates a user object in the DB
+'''
 def create_new_user(inp_username, inp_password, inp_email):
 	#Save to the database the user with the above parameters
 	U = User( email = inp_email, username = inp_username, hashed_pass = hashpw(password, gensalt()))
@@ -45,6 +55,10 @@ def create_new_user(inp_username, inp_password, inp_email):
 
 #You should get the user_id from the context!
 
+'''
+Functions that validate login, and extract hashed passwords
+Password is verified via bcrypt's hashpw function. Quite intuitive!
+'''
 def extract_hashed_pw(query):
 	return query.hashed_pass
 

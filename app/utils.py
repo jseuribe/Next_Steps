@@ -5,6 +5,14 @@ from .forms import LoginForm, RegisterForm
 from flask.ext.login import current_user
 from bson import ObjectId
 
+'''
+PURPOSE: A robust number of helper functions used throughout the views files
+'''
+
+'''
+Verifies if a school has been bookmarked already, in order to prevent users from bookmarking a school twice
+
+'''
 def isbookmarked(string_objid, bookmark_list):
 	norm_test_objid = normalize_from_unicode(string_objid)
 	for item in bookmark_list:
@@ -18,6 +26,10 @@ def isbookmarked(string_objid, bookmark_list):
 			continue
 	return False
 
+'''
+Transforms unicode object to str
+Strips away awful unicode from an otherwise beautiful string.
+'''
 def normalize_from_unicode(inp_str):
 	unicode_vessel = unicodedata.normalize('NFKD', inp_str).encode('ascii', 'ignore')
 	return unicode_vessel
@@ -27,8 +39,13 @@ def pull_random_schools():#Basic function that returns some schools.
 	return transform_to_School_obj(vessel)
 
 
+'''
+transform_to_School_obj(mongoDBCursor, name, fit_number)
+
+Looks up in the DB the school by name, and returns a schools object that contains important school data.
+'''
 def transform_to_School_obj(cursor, s_name, fit):
-	from models import Schools
+	from models import Schools#python is weird
 	print("in transform_to_School_obj")
 	#print(fit_list[u'CUNY Hunter College'])
 	extracted_list = cursor[:]
@@ -44,6 +61,7 @@ def transform_to_School_obj(cursor, s_name, fit):
 		new_school.instnm = normalize_from_unicode(record[u'INSTNM'])
 		new_school.city = normalize_from_unicode(record[u'CITY'])
 		'''
+		reference
 								<p class="lead">Website: </p>
 								<p class="lead">Address: </p>
 								<p class="lead">State: </p>
@@ -74,13 +92,14 @@ def transform_to_School_obj(cursor, s_name, fit):
 		new_school.longi = float(normalize_from_unicode(record[u'LONGITUDE']))
 		new_school.lati = float(normalize_from_unicode(record[u'LATITUDE']))
 		new_school.fit_number = fit
-		#new_school.avg_income = 
-		#new_school.tuition = 
 	return new_school
 
+'''
+Finds a school by name, and returns a school object
+'''
 def find_school_by_name(s_name, fit_list):#Debugging purposes?
 	print(s_name)
-	school_cursor = pymon.db.school.find({"INSTNM" : s_name})
+	school_cursor = pymon.db.school.find({"INSTNM" : s_name})#pymongo query
 	query_count = school_cursor.count()
 	print("the count: ", query_count)
 	if query_count == 0:
@@ -89,8 +108,12 @@ def find_school_by_name(s_name, fit_list):#Debugging purposes?
 		print("School found!")
 	return transform_to_School_obj(school_cursor, s_name, fit_list[s_name])
 
+'''
+finds a school by object_id, and returns a Schools object
+'''
 def resolve_school_objid(school_obj_id):
-	from models import Schools
+	from models import Schools#Python is weird
+
 	print("Find school by id")
 	print(school_obj_id)
 	cursor_list = pymon.db.school.find({"_id": ObjectId(school_obj_id) })
@@ -134,10 +157,11 @@ def resolve_school_objid(school_obj_id):
 			new_school.adm_rate_all = 0
 		else:
 			new_school.adm_rate_all = float(normalize_from_unicode(record[u'ADM_RATE_ALL']))
-		#new_school.avg_income = 
-		#new_school.tuition = 
 	return new_school
 
+'''
+simple function that extracts school objects from a user's bookmark list
+'''
 def extract_bookmarks(school_id_list):
 	school_objects = []
 	for item in school_id_list:
@@ -149,6 +173,9 @@ def extract_bookmarks(school_id_list):
 
 	return school_objects
 
+'''
+checks if the user has completed setup.
+'''
 def setup_complete(username):
 	setup_val = False
 	user_string_name = username
@@ -164,6 +191,3 @@ def setup_complete(username):
 			return setup_val
 
 	return setup_val
-
-
-	

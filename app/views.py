@@ -11,7 +11,12 @@ import operator
 from algorithm_main import *
 from normalize_func import *
 
+'''
+PURPOSE: This file holds the bulk of the simple functions that return the html pages
+And the bulk of the user interface system
+'''
 
+#Obtains the user info before a request is made
 @app.before_request
 def before_request():
 	g.user = current_user
@@ -31,9 +36,15 @@ def serve_html_page():
 
 '''
 Home page links! Anything that renders a template is here. Most things here return a page, instead of acting as an interstitial
-method that flask requires for an action (form completion, login, etc.)g
+method that flask requires for an action (form completion, login, etc.)
 '''
 
+'''
+index controls what page to display once a user clicks go-to homepage.
+This is controlled by session data (what setup phase they left in)
+By what their progress_setup data field is, if logged in.
+Or if they're logged in or not
+'''
 @app.route('/')
 @app.route('/index')
 def index():
@@ -67,26 +78,42 @@ def index():
 		print('Not logged in at all!')
 		return render_template('Web_Development/homepage.html', title='Home')		
 	return render_template('Web_Development/homepage.html', title='Home')
+
+'''
+
+
+Some simple one line functions that handle html retrieval
+
+
+'''
+#Return contacts page
 @app.route('/')
 @app.route('/contacts_page')
 def return_contact():
 	return render_template('Web_Development/contact_us.html', title='Contact Us')
 
+#Return about
 @app.route('/')
 @app.route('/about')
 def return_about():
 	return render_template('Web_Development/about.html', title='About')
 	
+#return privacy
 @app.route('/')
 @app.route('/privacy')
 def return_privacy():
 	return render_template('Web_Development/privacy.html', title='Privacy Policy')
 
+#return terms(they're binding) U can't sue us :^)
 @app.route('/')
 @app.route('/terms')
 def return_terms():
 	return render_template('Web_Development/terms.html', title='Terms of Service')
 
+'''
+Some functions that return account setup
+'''
+#Return the first account setup page(password and username)
 @app.route('/')
 @app.route('/account_setup')
 def return_account_setup():
@@ -95,18 +122,21 @@ def return_account_setup():
 	else:
 		return redirect(url_for('return_account_setup_1'))
 
+#Return the second account setup page (name and address)
 @app.route('/')
 @app.route('/account_setup_2')
 @login_required
 def return_account_setup_2():
 	return render_template('Web_Development/account_setup_2.html', title="Account Setup (Step 3 of 4)")
 
+#Return the third acc setup page (school and grade info)
 @app.route('/')
 @app.route('/account_setup_3')
 @login_required
 def return_account_setup_3():
 	return render_template('Web_Development/account_setup_3.html', title="Account Setup (Step 4 of 4)")
 
+#Return the completion
 @app.route('/')
 @app.route('/account_setup_4')
 @login_required
@@ -114,16 +144,21 @@ def return_account_setup_4():
 	run_fit()
 	return render_template('Web_Development/account_setup_4.html', title="Account Setup Complete")
 
+#Return the login screen
 @app.route('/')
 @app.route('/return_log')
 def return_log():
 	return render_template('Web_Development/login.html', title='Login')
 
+#Return settings?
+'''
 @app.route('/settings')
 @login_required
 def settings():
 	return render_template('settings.html')
+'''
 
+#return the register page
 @app.route('/')
 @app.route('/register', methods=['GET'])
 def register():
@@ -131,6 +166,12 @@ def register():
 	response = render_template('registration.html', title='title', form=form)
 	return response
 
+'''
+Return the dashboard
+
+The dashboard is the page users view when they log in
+
+'''
 @app.route('/')
 @app.route('/dashboard')
 @login_required
@@ -200,6 +241,9 @@ def randumb():
 	print(school_obj.instnm)
 	return render_template('Web_Development/school_temp.html')
 
+'''
+Render the school page object.
+'''
 @app.route('/')
 @app.route('/schoolpage')
 @app.route('/schoolpage/<string:school_objid>')
@@ -208,6 +252,9 @@ def param_test(school_objid=None):
 	school_object = resolve_school_objid(school_objid)
 	return render_template('Web_Development/school_profile.html', school=school_object)
 
+'''
+Display the bookmark list
+'''
 @app.route('/')
 @app.route('/bookmarks')
 @login_required
@@ -221,7 +268,7 @@ def return_bookmarks():
 		return redirect(url_for('return_account_setup_1'))
 
 	user_obj = user_q[0]#This should be the object what is the user.
-	school_bookmarks = user_obj.bookmarks
+	school_bookmarks = user_obj.bookmarks#And this is the user's bookmark list
 
 	school_list = extract_bookmarks(school_bookmarks)
 	print(school_list)
@@ -232,6 +279,9 @@ def return_bookmarks():
 from sign_up_views import *
 from auth_conf import *
 
+'''
+Add a bookmark
+'''
 @app.route('/')
 @app.route('/addbookmark/<string:school_objid>')
 @login_required
@@ -267,6 +317,9 @@ def add_bookmark(school_objid=None):
 	return redirect(url_for('return_bookmarks'))
 
 
+'''
+Mark a school as accepted
+'''
 @app.route('/')
 @app.route('/accepted_to')
 @app.route('/accepted_to/<string:school_objid>')
@@ -311,7 +364,7 @@ def accepted_to_school(school_objid=None):
 		print("Printing new list")
 		print(accepted_list)
 		pymon.db.school.update({'_id': ObjectId(school_objid)}, {'$addToSet': {'accepted_students': session['user_id']}})
-
+		#The user is now in the list of accepted user for the school
 	print("CONFIRMATION---------------------------")
 	confirm_list_cursor = pymon.db.school.find({"_id": ObjectId(school_objid) })
 	for record in confirm_list_cursor:

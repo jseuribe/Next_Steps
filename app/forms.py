@@ -2,6 +2,7 @@ from flask.ext.wtf import Form
 from wtforms import StringField, BooleanField, PasswordField, validators
 from wtforms.validators import DataRequired
 
+#flask forms that are passed into an html file. Vestigial.
 class LoginForm(Form):
 	username = StringField('username', validators=[DataRequired()])
 	password = PasswordField('Password', [validators.Required(), validators.EqualTo('confirm', message='Passwords must match.')])
