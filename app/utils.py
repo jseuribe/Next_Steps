@@ -20,8 +20,7 @@ def gen_img_url(lati_param, longi_param):
 	# Get the url of a location search based on latitude and longitude.
 	lati = str(lati_param)
 	longi = str(longi_param)
-	url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lati + "," + longi + "&radius=300&keyword=university&key=AIzaSyCqenz7cYYbtekGNOthV0jm7ROx7NJKThc"
-	# Get the JSON data
+	url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lati + "," + longi + "&radius=150&keyword=&key=AIzaSyCqenz7cYYbtekGNOthV0jm7ROx7NJKThc"
 	json_data = (json.loads(requests.get(url).text))
 	# Default Picture
 	photo_url = "http://andrewprokos.com/d/new-york-skyline-world-trade-center-night?g2_itemId=25228"
