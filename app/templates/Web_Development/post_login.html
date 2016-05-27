@@ -14,20 +14,6 @@
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.css')}}">
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script>
-		// This function uses the Google Photo Places API.
-		// It retrieves a url of an image of a school based on a latitude and a longitude.
-		function writeImageUrl(a_latitude, a_longitude, college_name) {
-			var picture_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + a_latitude + "," + a_longitude + "&radius=150&keyword=university&key=AIzaSyCqenz7cYYbtekGNOthV0jm7ROx7NJKThc";
-			$.getJSON(picture_url, function (json) {
-			    var photo_reference = json.results[0].photos[0].photo_reference;
-			    picture_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=" + photo_reference + "&key=AIzaSyCqenz7cYYbtekGNOthV0jm7ROx7NJKThc";
-			    document.getElementById(college_name).style.backgroundImage = "url('" + picture_url + "')";
-			});
-		}
-	</script>
 </head>
 <body class="background-chalkboard">
 	<!-- Navigation Bar -->
@@ -124,17 +110,7 @@
 									<div class="carousel-inner">
 										<div class="item active">
 											<!-- School Image -->
-											<div class="slidemaster" style="background-image: url('{{url_for("static",filename="img/school_skyline.png")}}');" id="{{school.instnm}}">
-
-											<script type="text/javascript"> 
-											var schoolLat = '{{ school.lati }}';
-											var schoolLon = '{{school.longi}}';
-											var schoolName = '{{school.instnm}}';
-											writeImageUrl(schoolLat, schoolLon, schoolName); 
-
-											</script>
-
-											</div>
+											<div class="slidemaster" style="background-image: url('{{photo_url}}');"></div>
 											<!-- School Name -->
 											<div class="container">
 												<div class="carousel-caption carousel-caption-school">
@@ -213,6 +189,7 @@
 	</div> <!-- /.container -->
 
 	<!-- JS Files -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
 </body>
 </html>
