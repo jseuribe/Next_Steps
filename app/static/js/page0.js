@@ -14,7 +14,7 @@
 
 		$('input').blur(function(){
 			var pass = $('input[name=Password]').val();
-			var repass = $('input[name=Repassword').val();
+			var repass = $('input[name=Repassword]').val();
 
 			if(pass!=repass){
 				$('#inputPassword').removeClass("valid").addClass("invalid");

@@ -39,7 +39,7 @@
 			var input=$(this);
 			var state=input.val();
 
-			if(state && state != "state_empty"){
+			if(state && state != "-1"){
 				input.removeClass("invalid").addClass("valid");
 			}
 			else{

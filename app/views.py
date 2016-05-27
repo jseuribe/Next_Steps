@@ -22,7 +22,7 @@ def before_request():
 	g.user = current_user
 
 '''
-404 Request Not Found
+404 Request Not Found handler
 
 this is what the refrance: https://en.wikipedia.org/wiki/Super_Mario_Bros.
 '''
@@ -387,6 +387,70 @@ def accepted_to_school(school_objid=None):
 	return return_bookmarks()
 
 
+'''
+Remove a bookmark
+'''
+@app.route('/')
+@app.route('/bookmarks/remove/<string:school_objid>')
+@app.route('/bookmarks/remove/')
+@login_required
+def remove_bookmark(school_objid=None):
+	print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAA")
+	current_user_cursor = User.objects(username=session['username'])
+	if not current_user_cursor:
+		return render_template(url_for('return_dash'))
+	else:
+		current_user = current_user_cursor[0] #obtain the user
+		user_bookmarks = current_user.bookmarks #retrieve a simple thing of lists from the mongo user document
+		print(user_bookmarks)
+		is_marked = not isbookmarked(school_objid, user_bookmarks)
+		if is_marked:
+
+			school_query = resolve_school_objid(school_objid)#Find the school object (existence verification)
+
+			if not school_query:#Verify that our school is in our database
+				print('school not found!')
+				return render_template(url_for('param_test', school_objid))#redirect the user to the school page they were on.
+			else:
+				school_name = school_query.id_num #Obtain the id for storage
+				acceptance_status = 'NoR'#Set default status No-Reply (Pre acceptance/notification from school)
+
+				for i in range(0, len(user_bookmarks)):
+					item = user_bookmarks[i]
+					print(item)
+					if item[0] == school_objid:
+						user_bookmarks.remove(item)
+						break
+
+				#user_bookmarks.append(pair)#Remove from the list
+				current_user.bookmarks = user_bookmarks#Save the new list
+				current_user.save()
+		else:
+			print("Already bookmarked!")
+			return redirect(url_for('return_bookmarks'))
+	return redirect(url_for('return_bookmarks'))
+
+
+
+'''
+DISPLAY USER PROFILE
+'''
+@app.route('/')
+@app.route('/dashboard/user_profile')
+@login_required
+def return_user_profile():
+	u_name_look_up = normalize_from_unicode(session['user_id'])#Retrieve user_name to load from db.
+
+	user_q = User.objects(username=u_name_look_up) #get the object
+
+	#verify the user is in the db
+	if not user_q:
+		flash("Error please try again - USER_NOT_FOUND")
+		return redirect(url_for('index'))
+
+	user_obj = user_q[0]#This should be the object what is the user.
+
+	return render_template('Web_Development/user_profile.html', user=user_obj)
 
 '''
 Mongo find_by_id db.user.find({"_id" : ObjectId("573fdc635aeffc16e6ca6c83"}).pretty()

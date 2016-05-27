@@ -69,32 +69,29 @@
 					<div class="panel-body">
 						<form role="form" id="page1">
 							<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
-								<p class="lead">First Name: </p>
-								<p class="lead">Middle Name: </p>
-								<p class="lead">Last Name: </p>
+								<p class="lead">First Name: {{user.f_name}}</p>
+								<p class="lead">Middle Name: {{user.m_name}}</p>
+								<p class="lead">Last Name: {{user.l_name}}</p>
 								<hr>
-								<p class="lead">Street: </p>
+								<p class="lead">Street: {{user.street}} </p>
 								<p class="lead">City: </p>
-								<p class="lead">State: </p>
+								<p class="lead">State: {{user.street_state}}</p>
 								<p class="lead">ZIP: </p>
 								<hr>
-								<p class="lead">Grade Average: </p>
+								<p class="lead">Grade Average: {{user.gpa}}</p>
 								<hr>
-								<p class="lead">SAT Average: {{school.sat_avg_all}}</p>
-								<p class="lead">SAT Reading: </p>
-								<p class="lead">SAT Writing: </p>
-								<p class="lead">SAT Math: </p>
+								<p class="lead">SAT Reading: {{user.SAT_read}}</p>
+								<p class="lead">SAT Writing:{{user.SAT_write}} </p>
+								<p class="lead">SAT Math: {{user.SAT_math}}</p>
 								<hr>
-								<p class="lead">ACT Average: {{school.actenmid}}</p>
 								<hr>
-								<p class="lead">Preferred Major(s): </p>
-								<p class="lead">Preferred Degree: </p>
+								<p class="lead">Preferred Major(s): {{user.major_preference_list}} </p>
 								<hr>
-								<p class="lead">Tuition Limit: </p>
-								<p class="lead">Preferred States: </p>
-								<p class="lead">Cost Preference: </p>
-								<p class="lead">Distance Preference: </p>
-								<p class="lead">Academic Preference: </p>
+								<p class="lead">Tuition Limit: {{user.tuition}}</p>
+								<p class="lead">Preferred States: {{user.state_preference_list}}</p>
+								<p class="lead">Cost Preference: {{user.cost_preference}} </p>
+								<p class="lead">Distance Preference:{{user.distance_preference}}</p>
+								<p class="lead">Academic Preference:{{user.academic_preference}} </p>
 							</div> <!-- /.column control -->
 
 							<!-- Submit Changes Button -->
