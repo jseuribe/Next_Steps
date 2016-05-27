@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name = "description" content = "This is the user account creation page."/>
-	<meta name = "keyword" content =  "nextstep account"/>
+	<meta name = "description" content = "This is the homepage."/>
+	<meta name = "keyword" content =  "nextstep homepage post login"/>
 	<meta name = "robots" content = "noindex, nofollow"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width = device-width, initial-scale = 1">
-	<title>Account Creation (Step 3 of 4)</title>
+	<title>Next Step</title>
 
 	<link rel="icon" href="{{url_for('static', filename='img/next_step_stickman.ico')}}">
 	<!-- CSS Files -->
@@ -15,7 +15,7 @@
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
 </head>
-<body>
+<body class="background-chalkboard">
 	<!-- Navigation Bar -->
 	<div class="navbar-wrapper">
 		<div class="container" id="navigation_bar">
@@ -35,10 +35,10 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<!-- Row of Buttons in the Navigation Bar -->
 						<ul class="nav navbar-nav">
-							<li><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home</a></li>
-							<li><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
-							<li><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
-							<li class="active"><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Login<span class="sr-only">(current)</span></a></li>
+							<li class="active"><a href="{{url_for('index')}}"><span class="glyphicon glyphicon-home hidden-sm" aria-hidden="true"></span> Home<span class="sr-only">(current)</span></a></li>
+							<li><a href="{{url_for('return_about')}}"><span class="glyphicon glyphicon-info-sign hidden-sm"></span> About</a></li>
+							<li><a href="{{url_for('return_contact')}}"><span class="glyphicon glyphicon-envelope hidden-sm" aria-hidden="true"></span> Contact us</a></li>
+							<li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-user hidden-sm" aria-hidden="true"></span> Logout</a></li>
 						</ul>
 						<!-- Search Form in the Navigation Bar -->
 						<form class="navbar-form navbar-right" role="search" method="get" action="http://www.google.com/search">
@@ -55,198 +55,141 @@
 	</div><!-- /.navbar-wrapper -->
 
 	<!-- Page Contents -->
-	<div class="container container-no-carousel" id="contents">
-		<!-- Page Header -->
+	<div class="container container-no-carousel">
+		<div class="page-header page-header-white">
+			<h2>Homepage</h2>
+		</div> <!-- /.page-header -->
 		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="page-header" id="page-header">
-					<h2>User Account Creation Page</h2>
-				</div> <!-- /.page-header -->
-			</div> <!-- /.column control -->
-		</div> <!-- /.row -->
-
-		<!-- Account Setup Panel -->
-		<div class="row">
-			<!-- Panel -->
-			<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						Please fill out the following:
-					</div>  <!-- /.panel-heading -->
-					<div class="panel-body">
-						<!-- Progress Bar -->
-						<div class="panel-body">
-							<div class="progress">
-								<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-									50%
-								</div>
+			<!-- Profile Panel -->
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<div class="well well-profile-panel">
+					<div class="row text-center">
+						<!-- Profile -->
+						<div class="col-lg-12 col-md-12 col-sm-3 col-xs-4">
+							<!-- Profile Name -->
+							<h2 class="hidden-sm hidden-xs profile-name">{{f_name}} {{l_name}}</h2>
+							<!-- Profile Picture -->
+							<img class="img-thumbnail img-responsive center-block profile-picture" src="{{url_for('static',filename='img/default_profile_pic.png')}}" alt="Generic placeholder image">
+						</div> <!-- /.column control -->
+						<div class="col-lg-12 col-md-12 col-sm-9 col-xs-8">
+							<!-- Log Off Button -->
+							<div class="row profile-logoff-button">
+								<a class="btn btn-sm btn-primary col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-12 col-xs-12" href="login.html" role="button">Log off</a>
 							</div>
-						</div> <!-- /.progress bar -->
+							<!-- View Full Profile Button -->
+							<div class="row profile-button">
+								<a class="btn btn-sm btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12" href="user_profile.html" role="button">
+									<span class="glyphicon glyphicon-user pull-left" aria-hidden="true"></span>
+									View Full Profile
+								</a>
+							</div>
+							<!-- View Bookmarked Schools Button -->
+							<div class="row profile-button">
+								<a class="btn btn-sm btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12" href="{{url_for('return_bookmarks')}}" role="button">
+									<span class="glyphicon glyphicon-tags pull-left hidden-md" aria-hidden="true"></span>
+									View Bookmarked Schools
+								</a>
+							</div>
+						</div> <!-- /.column-control -->
+					</div> <!-- /.row -->
+				</div> <!-- /.well -->
+			</div> <!-- /.profile panel -->
 
-						<!-- Forms -->
-						<div class="row">
-							<form role="form" action="/account_setup_2/confirm" method="POST" id="page2">
-								<!-- Grade Average -->
-								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
-									<div class="form-group">
-										<label>Grade Average</label>
-										<input class="form-control numericonly" id="inputGPA" name="gpa" type="number" min="0" max="100" onchange="limitGrade(this);">
-										<span class ="error">Please enter your Grade Average</span>
-									</div> <!-- /.form-group -->
-								</div> <!-- /.column control -->
+			<!-- School Panel and Ranking Lists-->
+			<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+				<!-- School Panel -->
+				<div class="well well-school-panel">
 
-								<!-- ACT Scores -->
-								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
-									<label id="inputSAT">ACT Scores</label>
-									<span class="error">Please fill in all ACT Scores</span>
-								</div> <!-- /.col-lg-10 -->
-								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
+					{% for school in school_list %}
+					<!-- Panel -->
+					<div class="panel panel-default">
+						<!-- School Details -->
+						<a href="{{url_for( 'param_test', school_objid=school.id_num)}}">
+							<div class="panel-heading panel-heading-school">
+								<div id="school_1" class="carousel slide" data-ride="carousel">
+									<div class="carousel-inner">
+										<div class="item active">
+											<!-- School Image -->
+											<div class="slidemaster" style="background-image: url('{{photo_url}}');"></div>
+											<!-- School Name -->
+											<div class="container">
+												<div class="carousel-caption carousel-caption-school">
+													<div class="description-transparent">
+														<h5>{{school.instnm}}</h5>
+													</div>
+												</div> <!-- /.carousel-caption -->
+											</div> <!-- /.container -->
+										</div> <!-- /.item active-->
+									</div> <!-- /.carousel-inner -->
+								</div> <!-- /.carousel slide -->
+							</div> <!-- /.panel-heading -->
+						</a>
+						<!-- Fit Number and Bookmarks -->
+						<div class="panel-body">
+							<!-- Fit Number -->
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<p class="bg-success">Fit-Number: {{school.fit_number}}</p>
+							</div>
+							<!-- Bookmarks -->
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<p class="bg-info">Bookmarks: 100</p>
+							</div>
+						</div> <!-- /.panel-body -->
+					</div> <!-- /.panel -->
+					{% endfor %}
 
-									<!-- ACT ENGLISH -->
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-										<div class="input-group input-group-md">
-											<label class="input-group-addon" style="text-indent: 6px;">English</label>
-											<input class="form-control numericonly valid" id="ACT_English" name="ACT_English" type="number" min="1" max="36">
-										</div> <!-- /.input-group -->
-									</div> <!-- /.column control -->
+				</div> <!-- /.well -->
+			</div> <!-- /.school panel -->
 
-									<!-- ACT WRITING -->
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-										<div class="input-group input-group-md">
-											<label class="input-group-addon" style="text-indent: 8px;">Writing</label>
-											<input class="form-control numericonly valid" id="ACT_Reading" name="ACT_Reading" type="number" min="1" max="36">
-										</div> <!-- /.input-group -->
-									</div> <!-- /.column control -->
-
-									<!-- ACT MATH -->
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-										<div class="input-group input-group-md">
-											<label class="input-group-addon" style="text-indent: 20px;">Math</label>
-											<input class="form-control numericonly valid" id="ACT_Math" name="ACT_Math" type="number" min="1" max="36">
-										</div> <!-- /.input-group -->
-									</div> <!-- /.column control -->
-								</div> <!-- /.column control -->
-
-								<!-- SAT Scores -->
-								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
-									<label id="inputSAT">SAT Scores</label>
-									<span class="error">Please fill in all SAT Scores</span>
-								</div> <!-- /.col-lg-10 -->
-								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
-
-									<!-- SAT READING -->
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-										<div class="input-group input-group-md">
-											<label class="input-group-addon">Reading</label>
-											<input class="form-control numericonly" id="inputSATR" name="Read" type="number" min="0" max="800" name="Read" onchange="limitSAT(this);">
-										</div> <!-- /.input-group -->
-									</div> <!-- /.column control -->
-
-									<!-- SAT WRITING -->
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-										<div class="input-group input-group-md">
-											<label class="input-group-addon" style="text-indent: 8px;">Writing</label>
-											<input class="form-control numericonly" id="inputSATW" name="Write" type="number" min="0" max="800" name="Write" onchange="limitSAT(this);">
-										</div> <!-- /.input-group -->
-									</div> <!-- /.column control -->
-
-									<!-- SAT MATH -->
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-										<div class="input-group input-group-md">
-											<label class="input-group-addon" style="text-indent: 20px;">Math</label>
-											<input class="form-control numericonly" id="inputSATM" name="Math" type="number" min="0" max="800" name="Math" onchange="limitSAT(this);">
-										</div> <!-- /.input-group -->
-									</div> <!-- /.column control -->
-								</div> <!-- /.column control -->
-								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12"><hr></div>
-
-								<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
-									<!-- Preferred Major(s) -->
-									<div class="form-group">
-										<label>Which major(s) are you interested in?<br><small>(Hold ctrl, shift, or &#8984; cmd to select more. If you do not have a preference, leave it as it is)</small></label>
-										<select multiple id="inputMajor" name="majors" class="form-control">
-											<option value="1" type="number">Agriculture, Agriculture Operations, and Related Sciences</option>
-											<option value="2" type="number">Architecture and Related Services</option>
-											<option value="3" type="number">Area, Ethnic, Cultural, Gender, and Group Studies</option>
-											<option value="4" type="number">Aviation</option>
-											<option value="5" type="number">Biological and Biomedical Sciences</option>
-											<option value="6" type="number">Business, Management, Marketing, and Related Support Services</option>
-											<option value="7" type="number">Communication, Journalism, and Related Programs</option>
-											<option value="8" type="number">Communications Technologies/technicians and Support Services</option>
-											<option value="9" type="number">Computer and Information Sciences and Support Services</option>
-											<option value="10" type="number">Construction Trades</option>
-											<option value="11" type="number">Education</option>
-											<option value="12" type="number">Engineering</option>
-											<option value="13" type="number">Engineering Technologies and Engineering-Related Fields</option>
-											<option value="14" type="number">English Language and Literature/letters</option>
-											<option value="15" type="number">Family and Consumer Sciences/human Sciences</option>
-											<option value="16" type="number">Foreign Languages, Literatures, and Linguistics</option>
-											<option value="17" type="number">Health Professions and Related Programs</option>
-											<option value="18" type="number">History</option>
-											<option value="19" type="number">Homeland Security, Law Enforcement, Firefighting</option>
-											<option value="20" type="number">Human Services</option>
-											<option value="21" type="number">Legal Professions and Studies</option>
-											<option value="22" type="number">Liberal Arts and Sciences Studies and Humanities</option>
-											<option value="23" type="number">Library Science</option>
-											<option value="24" type="number">Mathematics and Statistics</option>
-											<option value="25" type="number">Mechanic and Repair Technologies/technicians</option>
-											<option value="26" type="number">Military Technologies and Applied Sciences</option>
-											<option value="27" type="number">Multi/interdisciplinary Studies</option>
-											<option value="28" type="number">Natural Resources and Conservation</option>
-											<option value="29" type="number">Parks, Recreation, Leisure, and Fitness Studies</option>
-											<option value="30" type="number">Personal and Culinary Services</option>
-											<option value="31" type="number">Philosophy and Religious Studies</option>
-											<option value="32" type="number">Physical Sciences</option>
-											<option value="33" type="number">Precision Production</option>
-											<option value="34" type="number">Psychology</option>
-											<option value="35" type="number">Science Technologies/technicians</option>
-											<option value="36" type="number">Social Sciences</option>
-											<option value="37" type="number">Theology and Religious Vocations</option>
-											<option value="38" type="number">Transportation and Materials Moving</option>
-											<option value="39" type="number">Visual and Performing Arts</option>
-										</select>
-									</div> <!-- form-group -->
-
-									<!-- Preferred Degree -->
-									<div class="form-group">
-										<label>Preferred Degree</label>
-										<select class="form-control" id="inputDegree" name="degree">
-											<option value="0" type='number'>&nbsp;</option>
-											<option value="1" type='number'>Associate</option>
-											<option value="2" type='number'>Bachelor</option>
-											<option value="3" type='number'>Master</option>
-											<option value="4" type='number' >Graduate</option>
-											<option value="0" type='number'>No Preference</option>
-										</select>
-										<span class ="error">Please select your preferred degree</span>
-									</div> <!-- /.form-group -->
-
-									<hr>
-
-									<!-- Previous Button -->
-									<a href="{{url_for('return_account_setup_1')}}" class="btn btn-primary pull-left" role="button">&larr; Back</a>
-
-									<!-- Next Button -->
-									<input id="submitPage2" type="submit" class="btn btn-primary pull-right" value="Next &rarr;">
-								</div> <!-- /.column control -->
-							</form>
-						</div> <!-- /.row -->
-					</div> <!-- /.panel-body -->
-				</div> <!-- /.panel -->
-			</div> <!-- /.column control -->
+			<!-- Ranking List Panel -->
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+				<div class="well well-ranking-list">
+					<div class="panel-group">
+						<!-- Top Schools Based On Fit Numbers -->
+						<div class="panel panel-primary">
+							<div class="panel-heading panel-heading-ranking-list">
+								<p class="text-center"><small>Top Schools for You</small></p>
+							</div> <!-- panel-heading -->
+							<div class="panel-body panel-body-ranking-list">
+								<ol class="ol-ranking-list"> <!-- ordered list -->
+									<li><small>Stony Brook University</small></li>
+									<li><small>Hunter College</small></li>
+									<li><small>More Colleges</small></li>
+									<li><small>Even More Colleges</small></li>
+								</ol>
+							</div> <!-- panel-body -->
+						</div> <!-- /.panel -->
+						<!-- Top Schools Based on Bookmarks -->
+						<div class="panel panel-primary">
+							<div class="panel-heading panel-heading-ranking-list">
+								<p class="text-center"><small>Most Bookmarked Schools</small></p>
+							</div> <!-- /.panel-heading -->
+							<div class="panel-body panel-body-ranking-list">
+								<ol class="ol-ranking-list"> <!-- ordered list -->
+									<li><small>University at Buffalo</small></li>
+									<li><small>Columbia University</small></li>
+									<li><small>Hunter College</small></li>
+									<li><small>More Colleges</small></li>
+									<li><small>Even More Colleges</small></li>
+								</ol>
+							</div> <!-- /.panel-body -->
+						</div> <!--/. panel -->
+					</div> <!-- /.panel-group -->
+				</div> <!-- /.ranking list -->
+			</div> <!-- /.school panel and ranking list -->
 		</div> <!-- /.row -->
 
 		<!-- FOOTER -->
-		<footer class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<br>
-			<p class="pull-right"><a href="#">Back to top</a></p>
-			<p>&copy; 2016 Next Step, Inc. &middot; <a href="{{url_for('return_privacy')}}">Privacy</a> &middot; <a href="{{url_for('return_terms')}}">Terms</a></p>
-		</footer>
-	</div> <!-- /container -->
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<footer class="footer-white">
+				<p class="pull-right"><a href="#">Back to top</a></p>
+				<p>&copy; 2016 Next Step, Inc. &middot; <a href="{{url_for('return_privacy')}}">Privacy</a> &middot; <a href="{{url_for('return_terms')}}">Terms</a></p>
+			</footer>
+		</div> <!-- ./footer -->
+	</div> <!-- /.container -->
 
 	<!-- JS Files -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
-	<!-- <script type="text/javascript" src="{{ url_for('static',filename='js/page2.js')}}"></script> -->
 </body>
 </html>
