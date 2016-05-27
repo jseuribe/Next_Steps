@@ -35,7 +35,7 @@
 			}
 		});		
 		<!--State must have choice from dropdown-->
-		$('#inputState').on('input', function() {
+		$('#inputstate').on('input', function() {
 			var input=$(this);
 			var state=input.val();
 
@@ -89,15 +89,8 @@
 			}
 			if (!zeroErrors){
 				event.preventDefault(); 
+			    alert("blahbal");
 			}
 		});
 		
-		<!--Class limits to alphabets only-->
-		$('.alphaonly').bind('keyup blur',function(){ 
-			$(this).val( $(this).val().replace(/[^A-Za-z]/g,'') );
-		});
-		<!--Class limits to numeric only-->
-		$('.numericonly').bind('keyup blur',function(){ 
-			$(this).val( $(this).val().replace(/[^0-9]/g,'') );
-		});
 	});

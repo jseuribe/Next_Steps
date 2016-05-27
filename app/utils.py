@@ -4,6 +4,8 @@ from flask import g, request, url_for, render_template, flash, redirect, session
 from .forms import LoginForm, RegisterForm
 from flask.ext.login import current_user
 from bson import ObjectId
+import json
+import requests
 
 '''
 PURPOSE: A robust number of helper functions used throughout the views files
@@ -13,6 +15,26 @@ PURPOSE: A robust number of helper functions used throughout the views files
 Verifies if a school has been bookmarked already, in order to prevent users from bookmarking a school twice
 
 '''
+
+def gen_img_url(lati_param, longi_param):
+	# Get the url of a location search based on latitude and longitude.
+	lati = str(lati_param)
+	longi = str(longi_param)
+	url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lati + "," + longi + "&radius=300&keyword=university&key=AIzaSyCqenz7cYYbtekGNOthV0jm7ROx7NJKThc"
+	# Get the JSON data
+	json_data = (json.loads(requests.get(url).text))
+	# Default Picture
+	photo_url = "http://andrewprokos.com/d/new-york-skyline-world-trade-center-night?g2_itemId=25228"
+	# If there are zero results, photo_url will be default picture.
+	# If there are results, photo_url will be school picture.
+	if 'status' in json_data:
+	    if json_data['status'] != "ZERO_RESULTS":
+	        if 'results' in json_data:
+	            if 'photos' in json_data['results'][0]:
+	                if 'photo_reference' in json_data['results'][0]['photos'][0]:
+	                    photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=500&photoreference=" + json_data['results'][0]['photos'][0]['photo_reference'] + "&key=AIzaSyCqenz7cYYbtekGNOthV0jm7ROx7NJKThc"
+	return photo_url
+
 def isbookmarked(string_objid, bookmark_list):
 	norm_test_objid = normalize_from_unicode(string_objid)
 	for item in bookmark_list:
@@ -92,6 +114,7 @@ def transform_to_School_obj(cursor, s_name, fit):
 		new_school.longi = float(normalize_from_unicode(record[u'LONGITUDE']))
 		new_school.lati = float(normalize_from_unicode(record[u'LATITUDE']))
 		new_school.fit_number = fit
+		new_school.school_img_url = gen_img_url(new_school.lati, new_school.longi)
 	return new_school
 
 '''
@@ -191,3 +214,5 @@ def setup_complete(username):
 			return setup_val
 
 	return setup_val
+
+

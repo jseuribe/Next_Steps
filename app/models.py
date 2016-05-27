@@ -56,6 +56,7 @@ class Schools(db.Document):
 	accepted_students = db.ListField(db.StringField(max_length=255))
 	majors_list = db.ListField(db.IntField(min_value=0, max_value=39))
 	fit_number = db.FloatField()
+	school_img_url = db.StringField()
 
 	longi = db.FloatField()
 	lati = db.FloatField()

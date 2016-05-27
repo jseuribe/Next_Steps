@@ -78,7 +78,7 @@
 							</div>
 							<!-- View Full Profile Button -->
 							<div class="row profile-button">
-								<a class="btn btn-sm btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12" href="user_profile.html" role="button">
+								<a class="btn btn-sm btn-default col-lg-12 col-md-12 col-sm-12 col-xs-12" href="{{url_for('return_user_profile')}}" role="button">
 									<span class="glyphicon glyphicon-user pull-left" aria-hidden="true"></span>
 									View Full Profile
 								</a>
@@ -110,7 +110,7 @@
 									<div class="carousel-inner">
 										<div class="item active">
 											<!-- School Image -->
-											<div class="slidemaster" style="background-image: url('{{photo_url}}');"></div>
+											<div class="slidemaster" style="background-image: url('{{school.school_img_url}}');"></div>
 											<!-- School Name -->
 											<div class="container">
 												<div class="carousel-caption carousel-caption-school">

@@ -10,6 +10,7 @@ from bson import ObjectId
 import operator
 from algorithm_main import *
 from normalize_func import *
+import requests
 
 '''
 PURPOSE: This file holds the bulk of the simple functions that return the html pages
@@ -412,9 +413,6 @@ def remove_bookmark(school_objid=None):
 				print('school not found!')
 				return render_template(url_for('param_test', school_objid))#redirect the user to the school page they were on.
 			else:
-				school_name = school_query.id_num #Obtain the id for storage
-				acceptance_status = 'NoR'#Set default status No-Reply (Pre acceptance/notification from school)
-
 				for i in range(0, len(user_bookmarks)):
 					item = user_bookmarks[i]
 					print(item)
@@ -422,7 +420,6 @@ def remove_bookmark(school_objid=None):
 						user_bookmarks.remove(item)
 						break
 
-				#user_bookmarks.append(pair)#Remove from the list
 				current_user.bookmarks = user_bookmarks#Save the new list
 				current_user.save()
 		else:
