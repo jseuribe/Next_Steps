@@ -30,7 +30,7 @@ def extract_this_attribute(user_collection, attribute, username):
 	value_cursor = user_collection.find({'username': username}, {attribute: 1, '_id': 0})
 	value = None
 	for record in value_cursor:
-		print(record[attribute])
+		#print(record[attribute])
 		value = record[attribute]
 	return value
 
@@ -53,7 +53,7 @@ def calculateAllFitNumbers():
 def getPredictedAcceptedValue(key, school):
 	predicted_value = 0.0
 	size = len(list(school["accepted_students"]))
-	print(school['accepted_students'])
+	#print(school['accepted_students'])
 	if (key == "SAT_read"):
 		if (school["SATVRMID"] != "NULL"):
 			predicted_value = int(school["SATVRMID"])
@@ -108,7 +108,7 @@ def calculateFitNumber(student, school):
 
 	# Check degree preference
 	pref_d_val = 0
-	print(student)
+	#print(student)
 	d_pref_string = None
 	if "pref_degree" in student:
 		d_pref_string = student["pref_degree"]
