@@ -1,5 +1,5 @@
 from __future__ import division
-import numpy as np
+#import numpy as np
 
 '''
 Helper functions for algorithm_main
