@@ -1,7 +1,7 @@
 from __future__ import division, print_function
 from pymongo import MongoClient
 from normalize_func import normalize
-import numpy as np
+#import numpy as np
 import pprint
 
 '''
