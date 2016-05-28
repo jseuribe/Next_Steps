@@ -110,8 +110,17 @@ def transform_to_School_obj(cursor, s_name, fit):
 			new_school.adm_rate_all = 0
 		else:
 			new_school.adm_rate_all = float(normalize_from_unicode(record[u'ADM_RATE_ALL']))
-		new_school.longi = float(normalize_from_unicode(record[u'LONGITUDE']))
-		new_school.lati = float(normalize_from_unicode(record[u'LATITUDE']))
+		lat_norm = normalize_from_unicode(record[u'LATITUDE'])
+		lon_norm = normalize_from_unicode(record[u'LONGITUDE'])
+		print("lat ", lat_norm, " lon_norm ", lon_norm)
+		if lon_norm != 'NULL':
+			new_school.longi = float(lon_norm)
+		else:
+			new_school.longi = 0.0
+		if lat_norm != 'NULL':
+			new_school.lati = float(lat_norm)
+		else:
+			new_school.lati = 0.0
 		new_school.fit_number = fit
 		new_school.school_img_url = gen_img_url(new_school.lati, new_school.longi)
 	return new_school
